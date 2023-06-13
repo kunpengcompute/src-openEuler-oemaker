@@ -7,11 +7,11 @@
 %endif
 
 Name:           oemaker
-Summary:        a duilding tool for DVD ISO making and ISO cutting
+Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.0.2
-Release:        1
+Release:        2
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -159,6 +159,11 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Sat Jun 10 2023 zhaotianyang <zhaotianyang4@huawei.com> - 3.0.2-2
+- ID:NA
+- SUG:NA
+- DESC: fix wrong spelling of summary in spec file
+
 * Tue May 23 2023 chenhuihan <chenhuihan@huawei.com> - 3.0.2-1
 - ID:NA
 - SUG:NA
