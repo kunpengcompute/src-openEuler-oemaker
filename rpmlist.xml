@@ -55,15 +55,13 @@
     <packagelist type="aarch64">
         <packagereq>edk2-aarch64</packagereq>
         <packagereq>grub2-efi-aa64</packagereq>
-        <packagereq>grub2-efi-aa64-modules</packagereq>
-        <packagereq>hisi_hpre</packagereq>
-        <packagereq>hisi_trng_v2</packagereq>
-        <packagereq>hisi_sec2</packagereq>
-        <packagereq>hisi_zip</packagereq>
+	<packagereq>grub2-efi-aa64-modules</packagereq>
+	<packagereq>kae-driver</packagereq>
+        <packagereq>kae-openssl</packagereq>
+        <packagereq>kae-zip</packagereq>
         <packagereq>uadk_engine</packagereq>
         <packagereq>libwd</packagereq>
         <packagereq>shim-aa64</packagereq>
-        <packagereq>uacce</packagereq>
     </packagelist>
     <packagelist type="x86_64">
         <packagereq>edk2-ovmf</packagereq>
