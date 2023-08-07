@@ -11,7 +11,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.0.2
-Release:        3
+Release:        4
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -26,6 +26,9 @@ Source7:        desktop_normal_x86_64.xml
 Requires:       createrepo dnf-plugins-core genisoimage isomd5sum grep bash libselinux-utils libxml2
 Requires:       lorax >= 19.6.78-1
 
+
+Patch0001:    0001-change-rescue-parameter-with-new-anaconda.patch
+Patch0002:    0002-enable-eject-in-install.img.patch
 
 %description
 a building tool for DVD ISO making and ISO cutting
@@ -63,6 +66,7 @@ cp %{SOURCE6} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/aarch64/de
 rm -rf  %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/x86_64/desktop_normal.xml
 cp %{SOURCE7} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/x86_64/desktop_normal.xml
 cd %{_builddir}/%{name}-%{version}/%{name}
+%autopatch -p1
 
 %install
 mkdir -p %{buildroot}/opt/
@@ -159,6 +163,11 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Thu Aug 07 2023 sunhai <sunhai10@huawei.com> - 3.0.2-4
+- ID:NA
+- SUG:NA
+- DESC: add pre version patches
+
 * Mon Jul 31 2023 liuyang <liuyang645@huawei.com> - 3.0.2-3
 - ID:NA
 - SUG:NA
