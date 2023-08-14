@@ -138,7 +138,6 @@
         <packagereq>bind-utils</packagereq>
         <packagereq>binutils</packagereq>
         <packagereq>binutils-devel</packagereq>
-        <packagereq>binutils-help</packagereq>
         <packagereq>bison</packagereq>
         <packagereq>bison-help</packagereq>
         <packagereq>blas-devel</packagereq>
