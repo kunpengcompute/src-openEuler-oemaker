@@ -487,7 +487,7 @@
         <packagereq>krb5-server</packagereq>
         <packagereq>lapack</packagereq>
         <packagereq>lapack-devel</packagereq>
-        <packagereq>lcr</packagereq>
+        <packagereq>libisula</packagereq>
         <packagereq>ldns</packagereq>
         <packagereq>ldns-help</packagereq>
         <packagereq>less</packagereq>
