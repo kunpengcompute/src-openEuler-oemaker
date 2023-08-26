@@ -1394,6 +1394,7 @@
     <packagelist type="edge_x86_64">
         <packagereq>grub2-pc</packagereq>
         <packagereq>grub2-pc-modules</packagereq>
+        <packagereq>grub2-efi-x64</packagereq>
     </packagelist>
     <packagelist type="edge_common">
         <packagereq>kubernetes</packagereq>
