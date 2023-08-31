@@ -566,6 +566,7 @@
         <packagereq>libgdata-help</packagereq>
         <packagereq>libgee</packagereq>
         <packagereq>libgee-help</packagereq>
+        <packagereq>libgmem</packagereq>
         <packagereq>libgnome</packagereq>
         <packagereq>libgnomecanvas</packagereq>
         <packagereq>libgnomecanvas-help</packagereq>
