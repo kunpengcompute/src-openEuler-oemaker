@@ -258,6 +258,8 @@
         <packagereq>diffstat</packagereq>
         <packagereq>diffutils</packagereq>
         <packagereq>diffutils-help</packagereq>
+        <packagereq>dim</packagereq>
+        <packagereq>dim_tools</packagereq>
         <packagereq>dmidecode</packagereq>
         <packagereq>dmraid</packagereq>
         <packagereq>dmraid-events</packagereq>
