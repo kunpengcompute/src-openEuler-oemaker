@@ -11,7 +11,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.0.4
-Release:        4
+Release:        5
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -161,6 +161,11 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Tue Sep 19 2023 liyunfei <liyunfei33@huawei.com> - 3.0.4-5
+- ID:NA
+- SUG:NA
+- DESC: Add clang-15, llvm-15 and lld-15 packages.
+
 * Mon Sep 4 2023 luhuaxin <luhuaxin1@huawei.com> - 3.0.4-4
 - ID:NA
 - SUG:NA

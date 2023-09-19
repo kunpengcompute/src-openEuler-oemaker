@@ -190,6 +190,12 @@
         <packagereq>cifs-utils-help</packagereq>
         <packagereq>cjkuni-ukai-fonts</packagereq>
         <packagereq>cjkuni-ukai-fonts-help</packagereq>
+        <packagereq>clang</packagereq>
+        <packagereq>clang-analyzer</packagereq>
+        <packagereq>clang-devel</packagereq>
+        <packagereq>clang-libs</packagereq>
+        <packagereq>clang-resource-filesystem</packagereq>
+        <packagereq>clang-tools-extra</packagereq>
         <packagereq>clibcni-devel</packagereq>
         <packagereq>cloud-init</packagereq>
         <packagereq>cloud-init-help</packagereq>
@@ -349,6 +355,7 @@
         <packagereq>gettext-help</packagereq>
         <packagereq>gettext-libs</packagereq>
         <packagereq>git</packagereq>
+        <packagereq>git-clang-format</packagereq>
         <packagereq>git-help</packagereq>
         <packagereq>gjs</packagereq>
         <packagereq>glib2</packagereq>
@@ -789,6 +796,16 @@
         <packagereq>linux-firmware-mrvl</packagereq>
         <packagereq>linux-firmware-netronome</packagereq>
         <packagereq>linux-firmware-ti-connectivity</packagereq>
+        <packagereq>lld</packagereq>
+        <packagereq>lld-devel</packagereq>
+        <packagereq>lld-libs</packagereq>
+        <packagereq>llvm</packagereq>
+        <packagereq>llvm-devel</packagereq>
+        <packagereq>llvm-doc</packagereq>
+        <packagereq>llvm-googletest</packagereq>
+        <packagereq>llvm-libs</packagereq>
+        <packagereq>llvm-static</packagereq>
+        <packagereq>llvm-test</packagereq>
         <packagereq>lm_sensors</packagereq>
         <packagereq>lm_sensors-devel</packagereq>
         <packagereq>lm_sensors-help</packagereq>
