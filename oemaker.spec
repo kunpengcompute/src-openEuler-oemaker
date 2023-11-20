@@ -10,8 +10,8 @@ Name:           oemaker
 Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
-Version:        3.0.4
-Release:        5
+Version:        3.1.0
+Release:        1
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -23,7 +23,7 @@ Source5:        edge_normal_x86_64.xml
 Source6:        desktop_normal_aarch64.xml
 Source7:        desktop_normal_x86_64.xml
 
-Requires:       createrepo dnf-plugins-core genisoimage isomd5sum grep bash libselinux-utils libxml2
+Requires:       createrepo dnf-plugins-core genisoimage isomd5sum grep bash libselinux-utils libxml2 anaconda libselinux-utils
 Requires:       lorax >= 19.6.78-1
 
 # Patch here
@@ -72,6 +72,7 @@ mkdir -p %{buildroot}/opt/oemaker
 mkdir -p %{buildroot}/opt/oemaker/config
 mkdir -p %{buildroot}/opt/oemaker/config/x86_64
 mkdir -p %{buildroot}/opt/oemaker/config/aarch64
+mkdir -p %{buildroot}/opt/oemaker/config/common
 mkdir -p %{buildroot}/opt/oemaker/docs
 mkdir -p %{buildroot}/%{_bindir}
 mkdir -p %{buildroot}/%{_sysconfdir}/isocut
@@ -89,8 +90,15 @@ install -m 700 %{name}/isomaker/env_restore.sh %{buildroot}/opt/oemaker/env_rest
 install -m 400 %{name}/isomaker/config/rpmlist.xml %{buildroot}/opt/oemaker/config/rpmlist.xml
 install -m 400 %{name}/isomaker/config/x86_64/* %{buildroot}/opt/oemaker/config/x86_64/
 install -m 400 %{name}/isomaker/config/aarch64/* %{buildroot}/opt/oemaker/config/aarch64/
+install -m 400 %{name}/isomaker/config/common/* %{buildroot}/opt/oemaker/config/common/
 install -m 700 %{name}/isomaker/docs/* %{buildroot}/opt/oemaker/docs/
 cp -a %{name}/isomaker/80-openeuler %{buildroot}/opt/oemaker/
+
+%ifarch x86_64
+cp -a %{buildroot}/opt/oemaker/config/common/* %{buildroot}/opt/oemaker/config/x86_64/
+%else
+cp -a %{buildroot}/opt/oemaker/config/common/* %{buildroot}/opt/oemaker/config/aarch64/
+%endif
 
 
 install -m 550 %{name}/isocut/isocut.py %{buildroot}/%{_bindir}/isocut
@@ -161,6 +169,11 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Mon Nov 20 2023 chenhuihan <chenhuihan@huawei.com> - 3.1.0-1
+- ID:NA
+- SUG:NA
+- DESC: support for livecd and isocut optimize
+
 * Tue Sep 19 2023 liyunfei <liyunfei33@huawei.com> - 3.0.4-5
 - ID:NA
 - SUG:NA
