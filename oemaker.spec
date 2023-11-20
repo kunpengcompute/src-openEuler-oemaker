@@ -11,7 +11,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.0.4
-Release:        5
+Release:        6
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -161,6 +161,11 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Mon Nov 20 2023 zhongjiawei <zhongjiawei1@huawei.com> - 3.0.4-6
+- ID:NA
+- SUG:NA
+- DESC: update rpmlist.xml docker-runc package name tobe runc
+
 * Tue Sep 19 2023 liyunfei <liyunfei33@huawei.com> - 3.0.4-5
 - ID:NA
 - SUG:NA
