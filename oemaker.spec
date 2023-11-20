@@ -70,9 +70,15 @@ cd %{_builddir}/%{name}-%{version}/%{name}
 mkdir -p %{buildroot}/opt/
 mkdir -p %{buildroot}/opt/oemaker
 mkdir -p %{buildroot}/opt/oemaker/config
+%ifarch x86_64
 mkdir -p %{buildroot}/opt/oemaker/config/x86_64
+mkdir -p %{buildroot}/opt/oemaker/config/x86_64/livecd/live/config_files/x86_64
+%else
 mkdir -p %{buildroot}/opt/oemaker/config/aarch64
+mkdir -p %{buildroot}/opt/oemaker/config/aarch64/livecd/live/config_files/aarch64
+%endif
 mkdir -p %{buildroot}/opt/oemaker/config/common
+mkdir -p %{buildroot}/opt/oemaker/config/common/livecd/live
 mkdir -p %{buildroot}/opt/oemaker/docs
 mkdir -p %{buildroot}/%{_bindir}
 mkdir -p %{buildroot}/%{_sysconfdir}/isocut
@@ -88,16 +94,35 @@ install -m 700 %{name}/isomaker/rpm.sh %{buildroot}/opt/oemaker/rpm.sh
 install -m 700 %{name}/isomaker/env_record.sh %{buildroot}/opt/oemaker/env_record.sh
 install -m 700 %{name}/isomaker/env_restore.sh %{buildroot}/opt/oemaker/env_restore.sh
 install -m 400 %{name}/isomaker/config/rpmlist.xml %{buildroot}/opt/oemaker/config/rpmlist.xml
-install -m 400 %{name}/isomaker/config/x86_64/* %{buildroot}/opt/oemaker/config/x86_64/
-install -m 400 %{name}/isomaker/config/aarch64/* %{buildroot}/opt/oemaker/config/aarch64/
-install -m 400 %{name}/isomaker/config/common/* %{buildroot}/opt/oemaker/config/common/
+%ifarch x86_64
+install -m 640 %{name}/isomaker/config/x86_64/livecd/live/config_files/x86_64/* %{buildroot}/opt/oemaker/config/x86_64/livecd/live/config_files/x86_64/
+install -m 700 %{name}/isomaker/config/x86_64/livecd/live/x86.tmpl %{buildroot}/opt/oemaker/config/x86_64/livecd/live/x86.tmpl
+install -m 400 %{name}/isomaker/config/x86_64/livecd/livecd_x86_64.ks %{buildroot}/opt/oemaker/config/x86_64/livecd/livecd_x86_64.ks
+install -m 600 %{name}/isomaker/config/x86_64/livecd/rpmlist %{buildroot}/opt/oemaker/config/x86_64/livecd/rpmlist
+install -m 400 %{name}/isomaker/config/x86_64/desktop_normal.xml %{buildroot}/opt/oemaker/config/x86_64/desktop_normal.xml
+install -m 400 %{name}/isomaker/config/x86_64/edge_normal.xml %{buildroot}/opt/oemaker/config/x86_64/edge_normal.xml
+install -m 400 %{name}/isomaker/config/x86_64/ks.cfg %{buildroot}/opt/oemaker/config/x86_64/ks.cfg
+install -m 400 %{name}/isomaker/config/x86_64/normal.xml %{buildroot}/opt/oemaker/config/x86_64/normal.xml
+install -m 400 %{name}/isomaker/config/x86_64/standard.conf %{buildroot}/opt/oemaker/config/x86_64/standard.conf
+%else
+install -m 640 %{name}/isomaker/config/aarch64/livecd/live/config_files/aarch64/* %{buildroot}/opt/oemaker/config/aarch64/livecd/live/config_files/aarch64/
+install -m 700 %{name}/isomaker/config/aarch64/livecd/live/aarch64.tmpl %{buildroot}/opt/oemaker/config/aarch64/livecd/live/aarch64.tmpl
+install -m 400 %{name}/isomaker/config/aarch64/livecd/livecd_aarch64.ks %{buildroot}/opt/oemaker/config/aarch64/livecd/livecd_aarch64.ks
+install -m 600 %{name}/isomaker/config/aarch64/livecd/rpmlist %{buildroot}/opt/oemaker/config/aarch64/livecd/rpmlist
+install -m 400 %{name}/isomaker/config/aarch64/desktop_normal.xml %{buildroot}/opt/oemaker/config/aarch64/desktop_normal.xml
+install -m 400 %{name}/isomaker/config/aarch64/edge_normal.xml %{buildroot}/opt/oemaker/config/aarch64/edge_normal.xml
+install -m 400 %{name}/isomaker/config/aarch64/normal.xml %{buildroot}/opt/oemaker/config/aarch64/normal.xml
+install -m 400 %{name}/isomaker/config/aarch64/standard.conf %{buildroot}/opt/oemaker/config/aarch64/standard.conf
+%endif
+install -m 700 %{name}/isomaker/config/common/livecd/live/* %{buildroot}/opt/oemaker/config/common/livecd/live/
+install -m 400 %{name}/isomaker/config/common/livecd/root_pwd %{buildroot}/opt/oemaker/config/common/livecd/root_pwd
 install -m 700 %{name}/isomaker/docs/* %{buildroot}/opt/oemaker/docs/
-cp -a %{name}/isomaker/80-openeuler %{buildroot}/opt/oemaker/
+cp -ar %{name}/isomaker/80-openeuler %{buildroot}/opt/oemaker/
 
 %ifarch x86_64
-cp -a %{buildroot}/opt/oemaker/config/common/* %{buildroot}/opt/oemaker/config/x86_64/
+cp -ar %{buildroot}/opt/oemaker/config/common/* %{buildroot}/opt/oemaker/config/x86_64/
 %else
-cp -a %{buildroot}/opt/oemaker/config/common/* %{buildroot}/opt/oemaker/config/aarch64/
+cp -ar %{buildroot}/opt/oemaker/config/common/* %{buildroot}/opt/oemaker/config/aarch64/
 %endif
 
 
