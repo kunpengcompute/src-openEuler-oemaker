@@ -199,6 +199,11 @@ rm -rf $RPM_BUILD_DIR/%{name}
 - SUG:NA
 - DESC: support for livecd and isocut optimize
 
+* Mon Nov 20 2023 zhongjiawei <zhongjiawei1@huawei.com> - 3.0.4-6
+- ID:NA
+- SUG:NA
+- DESC: update rpmlist.xml docker-runc package name tobe runc
+
 * Tue Sep 19 2023 liyunfei <liyunfei33@huawei.com> - 3.0.4-5
 - ID:NA
 - SUG:NA
