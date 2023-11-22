@@ -10,8 +10,8 @@ Name:           oemaker
 Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
-Version:        3.0.4
-Release:        6
+Version:        3.1.0
+Release:        1
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -23,7 +23,7 @@ Source5:        edge_normal_x86_64.xml
 Source6:        desktop_normal_aarch64.xml
 Source7:        desktop_normal_x86_64.xml
 
-Requires:       createrepo dnf-plugins-core genisoimage isomd5sum grep bash libselinux-utils libxml2
+Requires:       createrepo dnf-plugins-core genisoimage isomd5sum grep bash libselinux-utils libxml2 anaconda libselinux-utils
 Requires:       lorax >= 19.6.78-1
 
 # Patch here
@@ -67,11 +67,14 @@ cd %{_builddir}/%{name}-%{version}/%{name}
 %autopatch -p1
 
 %install
+sys_arch=$(uname -m)
 mkdir -p %{buildroot}/opt/
 mkdir -p %{buildroot}/opt/oemaker
 mkdir -p %{buildroot}/opt/oemaker/config
-mkdir -p %{buildroot}/opt/oemaker/config/x86_64
-mkdir -p %{buildroot}/opt/oemaker/config/aarch64
+mkdir -p %{buildroot}/opt/oemaker/config/${sys_arch}
+mkdir -p %{buildroot}/opt/oemaker/config/${sys_arch}/livecd/live/config_files/${sys_arch}
+mkdir -p %{buildroot}/opt/oemaker/config/common
+mkdir -p %{buildroot}/opt/oemaker/config/common/livecd/live
 mkdir -p %{buildroot}/opt/oemaker/docs
 mkdir -p %{buildroot}/%{_bindir}
 mkdir -p %{buildroot}/%{_sysconfdir}/isocut
@@ -87,38 +90,46 @@ install -m 700 %{name}/isomaker/rpm.sh %{buildroot}/opt/oemaker/rpm.sh
 install -m 700 %{name}/isomaker/env_record.sh %{buildroot}/opt/oemaker/env_record.sh
 install -m 700 %{name}/isomaker/env_restore.sh %{buildroot}/opt/oemaker/env_restore.sh
 install -m 400 %{name}/isomaker/config/rpmlist.xml %{buildroot}/opt/oemaker/config/rpmlist.xml
-install -m 400 %{name}/isomaker/config/x86_64/* %{buildroot}/opt/oemaker/config/x86_64/
-install -m 400 %{name}/isomaker/config/aarch64/* %{buildroot}/opt/oemaker/config/aarch64/
+install -m 640 %{name}/isomaker/config/${sys_arch}/livecd/live/config_files/${sys_arch}/* %{buildroot}/opt/oemaker/config/${sys_arch}/livecd/live/config_files/${sys_arch}/
+install -m 400 %{name}/isomaker/config/${sys_arch}/livecd/livecd_${sys_arch}.ks %{buildroot}/opt/oemaker/config/${sys_arch}/livecd/livecd_${sys_arch}.ks
+install -m 600 %{name}/isomaker/config/${sys_arch}/livecd/rpmlist %{buildroot}/opt/oemaker/config/${sys_arch}/livecd/rpmlist
+install -m 400 %{name}/isomaker/config/${sys_arch}/desktop_normal.xml %{buildroot}/opt/oemaker/config/${sys_arch}/desktop_normal.xml
+install -m 400 %{name}/isomaker/config/${sys_arch}/edge_normal.xml %{buildroot}/opt/oemaker/config/${sys_arch}/edge_normal.xml
+install -m 400 %{name}/isomaker/config/${sys_arch}/normal.xml %{buildroot}/opt/oemaker/config/${sys_arch}/normal.xml
+install -m 400 %{name}/isomaker/config/${sys_arch}/standard.conf %{buildroot}/opt/oemaker/config/${sys_arch}/standard.conf
+%ifarch x86_64
+install -m 700 %{name}/isomaker/config/x86_64/livecd/live/x86.tmpl %{buildroot}/opt/oemaker/config/x86_64/livecd/live/x86.tmpl
+install -m 400 %{name}/isomaker/config/x86_64/ks.cfg %{buildroot}/opt/oemaker/config/x86_64/ks.cfg
+%else
+install -m 700 %{name}/isomaker/config/aarch64/livecd/live/aarch64.tmpl %{buildroot}/opt/oemaker/config/aarch64/livecd/live/aarch64.tmpl
+%endif
+install -m 700 %{name}/isomaker/config/common/livecd/live/* %{buildroot}/opt/oemaker/config/common/livecd/live/
+install -m 400 %{name}/isomaker/config/common/livecd/root_pwd %{buildroot}/opt/oemaker/config/common/livecd/root_pwd
 install -m 700 %{name}/isomaker/docs/* %{buildroot}/opt/oemaker/docs/
-cp -a %{name}/isomaker/80-openeuler %{buildroot}/opt/oemaker/
+cp -ar %{name}/isomaker/80-openeuler %{buildroot}/opt/oemaker/
+
+cp -ar %{buildroot}/opt/oemaker/config/common/* %{buildroot}/opt/oemaker/config/${sys_arch}/
 
 
 install -m 550 %{name}/isocut/isocut.py %{buildroot}/%{_bindir}/isocut
 install -m 600 %{name}/isocut/config/repodata.template %{buildroot}/%{_sysconfdir}/isocut/
 
-%if 0%{?efi_aa64}
-    install -m 600 %{name}/isocut/config/aarch64/rpmlist %{buildroot}/%{_sysconfdir}/isocut/
-    install -m 600 %{name}/isocut/config/aarch64/anaconda-ks.cfg %{buildroot}/%{_sysconfdir}/isocut/
-%endif
 
-%if 0%{?efi_x64}
-    install -m 600 %{name}/isocut/config/x86_64/rpmlist %{buildroot}/%{_sysconfdir}/isocut/
-    install -m 600 %{name}/isocut/config/x86_64/anaconda-ks.cfg %{buildroot}/%{_sysconfdir}/isocut/
-%endif
+install -m 600 %{name}/isocut/config/${sys_arch}/rpmlist %{buildroot}/%{_sysconfdir}/isocut/
+install -m 600 %{name}/isocut/config/${sys_arch}/anaconda-ks.cfg %{buildroot}/%{_sysconfdir}/isocut/
+
 
 mkdir -p %{buildroot}/opt/envmaker
 mkdir -p %{buildroot}/opt/envmaker/config
-mkdir -p %{buildroot}/opt/envmaker/config/x86_64
-mkdir -p %{buildroot}/opt/envmaker/config/aarch64
+mkdir -p %{buildroot}/opt/envmaker/config/${sys_arch}
 mkdir -p %{buildroot}/opt/envmaker/utils
 
 install -m 700 %{name}/envmaker/envmaker.sh %{buildroot}/opt/envmaker/envmaker.sh
 install -m 700 %{name}/envmaker/utils/chroot.sh %{buildroot}/opt/envmaker/utils/chroot.sh
 install -m 700 %{name}/envmaker/utils/common_fun.sh %{buildroot}/opt/envmaker/utils/common_fun.sh
 install -m 700 %{name}/envmaker/utils/parse_rpmlist_xml.sh %{buildroot}/opt/envmaker/utils/parse_rpmlist_xml.sh
-install -m 400 %{name}/envmaker/config/aarch64/openEuler_repo.conf %{buildroot}/opt/envmaker/config/aarch64/openEuler_repo.conf
-install -m 400 %{name}/envmaker/config/x86_64/openEuler_repo.conf %{buildroot}/opt/envmaker/config/x86_64/openEuler_repo.conf
-install -m 400 %{name}/envmaker/config/compile_env_rpmlist.xml %{buildroot}/opt/envmaker/config/compile_env_rpmlist.xml
+install -m 600 %{name}/envmaker/config/${sys_arch}/openEuler_repo.conf %{buildroot}/opt/envmaker/config/${sys_arch}/openEuler_repo.conf
+install -m 600 %{name}/envmaker/config/compile_env_rpmlist.xml %{buildroot}/opt/envmaker/config/compile_env_rpmlist.xml
 
 %pre
 
@@ -161,6 +172,11 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Mon Nov 20 2023 chenhuihan <chenhuihan@huawei.com> - 3.1.0-1
+- ID:NA
+- SUG:NA
+- DESC: support for livecd and isocut optimize
+
 * Mon Nov 20 2023 zhongjiawei <zhongjiawei1@huawei.com> - 3.0.4-6
 - ID:NA
 - SUG:NA
