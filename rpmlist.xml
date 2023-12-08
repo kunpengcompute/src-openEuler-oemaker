@@ -1290,7 +1290,6 @@
         <packagereq>tcsh-help</packagereq>
         <packagereq>telepathy-filesystem</packagereq>
         <packagereq>telepathy-glib</packagereq>
-        <packagereq>telepathy-glib-help</packagereq>
         <packagereq>telepathy-logger</packagereq>
         <packagereq>telepathy-logger-help</packagereq>
         <packagereq>telnet</packagereq>
