@@ -796,9 +796,6 @@
         <packagereq>linux-firmware-mrvl</packagereq>
         <packagereq>linux-firmware-netronome</packagereq>
         <packagereq>linux-firmware-ti-connectivity</packagereq>
-        <packagereq>lld</packagereq>
-        <packagereq>lld-devel</packagereq>
-        <packagereq>lld-libs</packagereq>
         <packagereq>llvm</packagereq>
         <packagereq>llvm-devel</packagereq>
         <packagereq>llvm-doc</packagereq>
