@@ -1318,10 +1318,6 @@
         <packagereq>tpm2-tss-help</packagereq>
         <packagereq>traceroute</packagereq>
         <packagereq>traceroute-help</packagereq>
-        <packagereq>tracker</packagereq>
-        <packagereq>tracker-help</packagereq>
-        <packagereq>tracker-miners</packagereq>
-        <packagereq>tracker-miners-help</packagereq>
         <packagereq>tree</packagereq>
         <packagereq>tree-help</packagereq>
         <packagereq>trousers</packagereq>
