@@ -770,7 +770,7 @@
         <packagereq>libvirt-daemon-driver-storage-mpath</packagereq>
         <packagereq>libvirt-daemon-driver-storage-rbd</packagereq>
         <packagereq>libvirt-daemon-driver-storage-scsi</packagereq>
-        <packagereq>libvirt-daemon-kvm</packagereq>
+	<packagereq>libvirt-daemon-kvm</packagereq>
         <packagereq>libvirt-daemon-qemu</packagereq>
         <packagereq>libvirt-devel</packagereq>
         <packagereq>libvirt-docs</packagereq>
@@ -1433,6 +1433,10 @@
         <packagereq>kubernetes-kubelet</packagereq>
         <packagereq>kubernetes-master</packagereq>
         <packagereq>kubernetes-node</packagereq>
+        <packagereq>kubernetes-cloudcore</packagereq>
+        <packagereq>kubernetes-edgecore</packagereq>
+        <packagereq>kubernetes-edgesite</packagereq>
+        <packagereq>kubernetes-keadm</packagereq>
         <packagereq type="default">k3s</packagereq>
         <packagereq type="default">k3s-selinux</packagereq>
         <packagereq type="default">k3s-plugins</packagereq>

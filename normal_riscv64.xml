@@ -303,7 +303,7 @@
       <packagereq type="default">rsyslog</packagereq>
       <packagereq type="default">security-tool</packagereq>
       <packagereq type="default">sg3_utils</packagereq>
-	  <packagereq type="default">systemd-cryptsetup</packagereq>
+      <packagereq type="default">systemd-cryptsetup</packagereq>
       <packagereq type="optional">dracut-config-generic</packagereq>
       <packagereq type="optional">dracut-network</packagereq>
       <packagereq type="optional">rdma-core</packagereq>
@@ -1371,6 +1371,7 @@
     <packagelist>
       <packagereq type="optional">freerdp</packagereq>
       <packagereq type="optional">tigervnc</packagereq>
+      <packagereq type="optional">vinagre</packagereq>
     </packagelist>
   </group>
   <group>

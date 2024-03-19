@@ -8,7 +8,7 @@ diff --git a/isomaker/rpm.sh b/isomaker/rpm.sh
 index a9efe4b..b2ba4de 100644
 --- a/isomaker/rpm.sh
 +++ b/isomaker/rpm.sh
-@@ -185,7 +185,7 @@ function get_desktop_rpms()
+@@ -203,7 +203,7 @@ function get_desktop_rpms()
  
  function get_everything_rpms()
  {
@@ -17,7 +17,7 @@ index a9efe4b..b2ba4de 100644
      parse_rpmlist_xml "exclude"
      cat parsed_rpmlist_exclude
      if [ -s parsed_rpmlist_exclude ];then
-@@ -259,7 +259,7 @@ function everything_source_rpms_download()
+@@ -277,7 +277,7 @@ function everything_source_rpms_download()
  function everything_debug_rpms_download()
  {
      mkdir ${EVERY_DEBUG_DIR}
