@@ -85,7 +85,6 @@
         <packagereq>adobe-mappings-cmap-help</packagereq>
         <packagereq>adobe-mappings-pdf</packagereq>
         <packagereq>adobe-mappings-pdf-help</packagereq>
-        <packagereq>adwaita-gtk2-theme</packagereq>
         <packagereq>aide</packagereq>
         <packagereq>aide-help</packagereq>
         <packagereq>alsa-firmware</packagereq>
@@ -306,7 +305,6 @@
         <packagereq>elfutils-devel</packagereq>
         <packagereq>ethtool</packagereq>
         <packagereq>ethtool-help</packagereq>
-        <packagereq>evolution-data-server</packagereq>
         <packagereq>exempi</packagereq>
         <packagereq>exempi-help</packagereq>
         <packagereq>expat</packagereq>
@@ -398,7 +396,6 @@
         <packagereq>grubby-help</packagereq>
         <packagereq>gssproxy</packagereq>
         <packagereq>gssproxy-help</packagereq>
-        <packagereq>gvfs</packagereq>
         <packagereq>gzip</packagereq>
         <packagereq>gzip-help</packagereq>
         <packagereq>haveged</packagereq>
@@ -514,8 +511,6 @@
         <packagereq>libblkid</packagereq>
         <packagereq>libbonobo</packagereq>
         <packagereq>libbonobo-help</packagereq>
-        <packagereq>libbonoboui</packagereq>
-        <packagereq>libbonoboui-help</packagereq>
         <packagereq>libcanberra-gtk2</packagereq>
         <packagereq>libcanberra-help</packagereq>
         <packagereq>libcap</packagereq>
@@ -571,15 +566,9 @@
         <packagereq>libgcc</packagereq>
         <packagereq>libgcrypt</packagereq>
         <packagereq>libgcrypt-help</packagereq>
-        <packagereq>libgdata</packagereq>
-        <packagereq>libgdata-help</packagereq>
         <packagereq>libgee</packagereq>
         <packagereq>libgee-help</packagereq>
         <packagereq>libgmem</packagereq>
-        <packagereq>libgnome</packagereq>
-        <packagereq>libgnomecanvas</packagereq>
-        <packagereq>libgnomecanvas-help</packagereq>
-        <packagereq>libgnome-help</packagereq>
         <packagereq>libgnomekbd</packagereq>
         <packagereq>libgomp</packagereq>
         <packagereq>libgpg-error</packagereq>
@@ -876,11 +865,7 @@
         <packagereq>mtr-help</packagereq>
         <packagereq>multipath-tools</packagereq>
         <packagereq>multipath-tools-help</packagereq>
-        <packagereq>mutter</packagereq>
-        <packagereq>mutter-help</packagereq>
         <packagereq>mysql</packagereq>
-        <packagereq>nautilus</packagereq>
-        <packagereq>nautilus-help</packagereq>
         <packagereq>ncompress</packagereq>
         <packagereq>ncompress-help</packagereq>
         <packagereq>ncurses</packagereq>
