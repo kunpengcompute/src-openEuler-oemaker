@@ -39,6 +39,8 @@
       <packagereq type="mandatory">openssh</packagereq>
       <packagereq type="mandatory">openssh-server</packagereq>
       <packagereq type="mandatory">openssh-clients</packagereq>
+      <packagereq type="mandatory">openEuler-release</packagereq>
+      <packagereq type="mandatory">openEuler-latest-release</packagereq>
       <packagereq type="mandatory">parted</packagereq>
       <packagereq type="mandatory">passwd</packagereq>
       <packagereq type="mandatory">policycoreutils</packagereq>
@@ -58,8 +60,6 @@
       <packagereq type="mandatory">xfsprogs</packagereq>
       <packagereq type="mandatory">yum</packagereq>
       <packagereq type="mandatory">wget</packagereq>
-      <packagereq type="mandatory">openEuler-release</packagereq>
-      <packagereq type="mandatory">openEuler-latest-release</packagereq>
       <packagereq type="default">NetworkManager</packagereq>
       <packagereq type="default">NetworkManager-config-server</packagereq>
       <packagereq type="default">authselect</packagereq>
@@ -117,10 +117,6 @@
       <packagereq type="default">kubernetes-kubelet</packagereq>
       <packagereq type="default">kubernetes-master</packagereq>
       <packagereq type="default">kubernetes-node</packagereq>
-      <packagereq type="default">kubernetes-cloudcore</packagereq>
-      <packagereq type="default">kubernetes-edgecore</packagereq>
-      <packagereq type="default">kubernetes-edgesite</packagereq>
-      <packagereq type="default">kubernetes-keadm</packagereq>
       <packagereq type="default">k3s</packagereq>
       <packagereq type="default">k3s-selinux</packagereq>
       <packagereq type="default">k3s-plugins</packagereq>

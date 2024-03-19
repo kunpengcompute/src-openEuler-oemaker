@@ -1430,10 +1430,14 @@
         <packagereq>kubernetes-kubelet</packagereq>
         <packagereq>kubernetes-master</packagereq>
         <packagereq>kubernetes-node</packagereq>
-        <packagereq>kubeedge-cloudcore</packagereq>
-        <packagereq>kubeedge-edgecore</packagereq>
-        <packagereq>kubeedge-edgesite</packagereq>
-        <packagereq>kubeedge-keadm</packagereq>
+        <packagereq>kubernetes-cloudcore</packagereq>
+        <packagereq>kubernetes-edgecore</packagereq>
+        <packagereq>kubernetes-edgesite</packagereq>
+        <packagereq>kubernetes-keadm</packagereq>
+        <packagereq type="default">k3s</packagereq>
+        <packagereq type="default">k3s-selinux</packagereq>
+        <packagereq type="default">k3s-plugins</packagereq>
+        <packagereq type="default">k3s-containerd</packagereq>
         <packagereq>grub2-common</packagereq>
         <packagereq>grub2-tools-minimal</packagereq>
         <packagereq>grub2-tools-extra</packagereq>

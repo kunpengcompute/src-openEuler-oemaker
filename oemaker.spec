@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        6
+Release:        7
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -33,6 +33,7 @@ Source11:	rpmlist_loongarch64.xml
 Source12:	desktop_normal_loongarch64.xml
 Source13:       devstation_aarch64_rpmlist
 Source14:       devstation_x86_64_rpmlist
+Source15:       edge_normal_riscv64.xml
 
 Requires:       createrepo dnf-plugins-core genisoimage isomd5sum grep bash libselinux-utils libxml2 anaconda libselinux-utils
 Requires:       lorax >= 19.6.78-1
@@ -100,6 +101,8 @@ rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/rpmlist.xml
 cp %{SOURCE8} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/rpmlist.xml
 rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/normal.xml
 cp %{SOURCE9} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/normal.xml
+rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/edge_normal.xml
+cp %{SOURCE15} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/edge_normal.xml
 %endif
 
 
@@ -146,6 +149,13 @@ install -m 400 %{name}/isomaker/config/x86_64/ks.cfg %{buildroot}/opt/oemaker/co
 %ifarch aarch64
 install -m 700 %{name}/isomaker/config/aarch64/livecd/live/aarch64.tmpl %{buildroot}/opt/oemaker/config/aarch64/livecd/live/aarch64.tmpl
 install -m 700 %{name}/isomaker/config/aarch64/livecd/devstation_live/aarch64.tmpl %{buildroot}/opt/oemaker/config/aarch64/livecd/devstation_live/aarch64.tmpl
+%endif
+%ifarch riscv64
+install -m 700 %{name}/isomaker/config/riscv64/livecd/live/riscv64.tmpl %{buildroot}/opt/oemaker/config/riscv64/livecd/live/riscv64.tmpl
+%endif
+%ifarch loongarch64
+install -m 700 %{name}/isomaker/config/loongarch64/livecd/live/loongarch64.tmpl %{buildroot}/opt/oemaker/config/loongarch64/livecd/live/loongarch64.tmpl
+install -m 400 %{name}/isomaker/config/loongarch64/ks.cfg %{buildroot}/opt/oemaker/config/loongarch64/ks.cfg
 %endif
 %ifarch riscv64
 install -m 700 %{name}/isomaker/config/riscv64/livecd/live/riscv64.tmpl %{buildroot}/opt/oemaker/config/riscv64/livecd/live/riscv64.tmpl
@@ -224,6 +234,11 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Fri Apr 18 2025 Liu Wang <1823363429@qq.com> - 3.3.0-7
+- ID:NA
+- SUG:NA
+- DESC: sync openEuler-24.03-LTS-SP2 branch to master
+
 * Tue Apr 15 2025 Liu Wang <1823363429@qq.com> - 3.3.0-6
 - ID:NA
 - SUG:NA

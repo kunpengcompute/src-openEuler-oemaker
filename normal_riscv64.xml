@@ -294,6 +294,7 @@
       <packagereq type="default">authselect</packagereq>
       <packagereq type="default">dnf-plugins-core</packagereq>
       <packagereq type="default">dracut-config-rescue</packagereq>
+      <packagereq type="default">iptables-nft</packagereq>
       <packagereq type="default">kernel-tools</packagereq>
       <packagereq type="default">sysfsutils</packagereq>
       <packagereq type="default">linux-firmware</packagereq>
@@ -302,6 +303,7 @@
       <packagereq type="default">rsyslog</packagereq>
       <packagereq type="default">security-tool</packagereq>
       <packagereq type="default">sg3_utils</packagereq>
+	  <packagereq type="default">systemd-cryptsetup</packagereq>
       <packagereq type="optional">dracut-config-generic</packagereq>
       <packagereq type="optional">dracut-network</packagereq>
       <packagereq type="optional">rdma-core</packagereq>
@@ -473,6 +475,8 @@
       <packagereq type="mandatory">java-1.8.0-openjdk-devel</packagereq>
       <packagereq type="mandatory">libedit-devel</packagereq>
       <packagereq type="mandatory">libaio-devel</packagereq>
+      <packagereq type="mandatory">DCF</packagereq>
+      <packagereq type="mandatory">opengauss</packagereq>
     </packagelist>
   </group>
   <group>
@@ -669,6 +673,7 @@
     <uservisible>true</uservisible>
     <packagelist>
       <packagereq type="mandatory">PackageKit</packagereq>
+      <packagereq type="mandatory">cockpit</packagereq>
       <packagereq type="mandatory">cockpit</packagereq>
       <packagereq type="mandatory">openssh-server</packagereq>
       <packagereq type="default">sscg</packagereq>
@@ -1341,6 +1346,7 @@
       <packagereq type="mandatory">qemu</packagereq>
       <packagereq type="mandatory">qemu-block-iscsi</packagereq>
       <packagereq type="mandatory">qemu-img</packagereq>
+      <packagereq type="mandatory">stratovirt</packagereq>
     </packagelist>
   </group>
   <group>
@@ -1400,6 +1406,7 @@
       <packagereq type="mandatory">spice-vdagent</packagereq>
       <packagereq type="mandatory">xorg-x11-drivers</packagereq>
       <packagereq type="mandatory">xorg-x11-server-Xorg</packagereq>
+      <packagereq type="mandatory">xorg-x11-utils</packagereq>
       <packagereq type="mandatory">xorg-x11-xauth</packagereq>
       <packagereq type="mandatory">xorg-x11-xinit</packagereq>
       <packagereq type="mandatory">xvattr</packagereq>
