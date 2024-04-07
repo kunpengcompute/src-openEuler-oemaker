@@ -1406,7 +1406,6 @@
     <uservisible>false</uservisible>
     <packagelist>
       <packagereq type="mandatory">glx-utils</packagereq>
-      <packagereq type="mandatory">initial-setup-gui</packagereq>
       <packagereq type="mandatory">mesa-dri-drivers</packagereq>
       <packagereq type="mandatory">plymouth-system-theme</packagereq>
       <packagereq type="mandatory">spice-vdagent</packagereq>
