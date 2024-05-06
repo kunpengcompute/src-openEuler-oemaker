@@ -717,8 +717,6 @@
         <packagereq>libverto-glib</packagereq>
         <packagereq>libverto-libevent</packagereq>
         <packagereq>libvirt</packagereq>
-        <packagereq>libvirt-admin</packagereq>
-        <packagereq>libvirt-bash-completion</packagereq>
         <packagereq>libvirt-client</packagereq>
         <packagereq>libvirt-daemon</packagereq>
         <packagereq>libvirt-daemon-config-network</packagereq>
@@ -739,7 +737,7 @@
         <packagereq>libvirt-daemon-driver-storage-mpath</packagereq>
         <packagereq>libvirt-daemon-driver-storage-rbd</packagereq>
         <packagereq>libvirt-daemon-driver-storage-scsi</packagereq>
-        <packagereq>libvirt-daemon-kvm</packagereq>
+	<packagereq>libvirt-daemon-kvm</packagereq>
         <packagereq>libvirt-daemon-qemu</packagereq>
         <packagereq>libvirt-devel</packagereq>
         <packagereq>libvirt-docs</packagereq>
