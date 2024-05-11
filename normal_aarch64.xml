@@ -64,7 +64,6 @@
       <packagereq type="mandatory">gpm-devel</packagereq>
       <packagereq type="mandatory">gstreamer1-devel</packagereq>
       <packagereq type="mandatory">gstreamer1-plugins-base-devel</packagereq>
-      <packagereq type="mandatory">gvfs-devel</packagereq>
       <packagereq type="mandatory">hunspell-devel</packagereq>
       <packagereq type="mandatory">java-1.8.0-openjdk-devel</packagereq>
       <packagereq type="mandatory">libXau-devel</packagereq>
@@ -620,69 +619,6 @@
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
-    </packagelist>
-  </group>
-    <group>
-    <id>gnome-desktop</id>
-    <name>GNOME</name>
-    <name xml:lang="zh_CN">GNOME</name>
-    <description>GNOME is a highly intuitive and user friendly desktop environment.</description>
-    <description xml:lang="zh_CN">GNOME 是一个非常直观且用户友好的桌面环境。</description>
-    <default>false</default>
-    <uservisible>false</uservisible>
-    <packagelist>
-      <packagereq type="mandatory">at-spi2-atk</packagereq>
-      <packagereq type="mandatory">at-spi2-core</packagereq>
-      <packagereq type="mandatory">avahi</packagereq>
-      <packagereq type="mandatory">control-center</packagereq>
-      <packagereq type="mandatory">dconf</packagereq>
-      <packagereq type="mandatory">eog</packagereq>
-      <packagereq type="mandatory">evince</packagereq>
-      <packagereq type="mandatory">evince-nautilus</packagereq>
-      <packagereq type="mandatory">file-roller</packagereq>
-      <packagereq type="mandatory">file-roller-nautilus</packagereq>
-      <packagereq type="mandatory">firewall-config</packagereq>
-      <packagereq type="mandatory">fprintd-pam</packagereq>
-      <packagereq type="mandatory">gdm</packagereq>
-      <packagereq type="mandatory">glib-networking</packagereq>
-      <packagereq type="mandatory">gnome-bluetooth</packagereq>
-      <packagereq type="mandatory">gnome-color-manager</packagereq>
-      <packagereq type="mandatory">gnome-dictionary</packagereq>
-      <packagereq type="mandatory">gnome-font-viewer</packagereq>
-      <packagereq type="mandatory">gnome-getting-started-docs</packagereq>
-      <packagereq type="mandatory">gnome-icon-theme</packagereq>
-      <packagereq type="mandatory">gnome-packagekit</packagereq>
-      <packagereq type="mandatory">gnome-packagekit-updater</packagereq>
-      <packagereq type="mandatory">gnome-screenshot</packagereq>
-      <packagereq type="mandatory">gnome-session</packagereq>
-      <packagereq type="mandatory">gnome-session-xsession</packagereq>
-      <packagereq type="mandatory">gnome-settings-daemon</packagereq>
-      <packagereq type="mandatory">gnome-shell</packagereq>
-      <packagereq type="mandatory">gnome-themes-standard</packagereq>
-      <packagereq type="mandatory">gnome-user-docs</packagereq>
-      <packagereq type="mandatory">gvfs-afc</packagereq>
-      <packagereq type="mandatory">gvfs-afp</packagereq>
-      <packagereq type="mandatory">gvfs-archive</packagereq>
-      <packagereq type="mandatory">gvfs-fuse3</packagereq>
-      <packagereq type="mandatory">gvfs-goa</packagereq>
-      <packagereq type="mandatory">gvfs-gphoto2</packagereq>
-      <packagereq type="mandatory">gvfs-mtp</packagereq>
-      <packagereq type="mandatory">gvfs-smb</packagereq>
-      <packagereq type="mandatory">initial-setup-gui</packagereq>
-      <packagereq type="mandatory">libcanberra-gtk2</packagereq>
-      <packagereq type="mandatory">libcanberra-gtk3</packagereq>
-      <packagereq type="mandatory">librsvg2</packagereq>
-      <packagereq type="mandatory">metacity</packagereq>
-      <packagereq type="mandatory">nautilus</packagereq>
-      <packagereq type="mandatory">nm-connection-editor</packagereq>
-      <packagereq type="mandatory">PackageKit-command-not-found</packagereq>
-      <packagereq type="mandatory">PackageKit-gtk3-module</packagereq>
-      <packagereq type="mandatory">sane-backends-drivers-scanners</packagereq>
-      <packagereq type="mandatory">vinagre</packagereq>
-      <packagereq type="mandatory">vino</packagereq>
-      <packagereq type="mandatory">xdg-user-dirs-gtk</packagereq>
-      <packagereq type="mandatory">yelp</packagereq>
-      <packagereq type="optional">vim-X11</packagereq>
     </packagelist>
   </group>
   <group>
@@ -1442,18 +1378,6 @@
     </packagelist>
   </group>
   <group>
-    <id>smart-card</id>
-    <name>Smart Card Support</name>
-    <name xml:lang="zh_CN">智能卡支持</name>
-    <description>Support for using smart card authentication.</description>
-    <description xml:lang="zh_CN">支持使用智能卡验证。</description>
-    <default>true</default>
-    <uservisible>true</uservisible>
-    <packagelist>
-      <packagereq type="default">esc</packagereq>
-    </packagelist>
-  </group>
-  <group>
     <id>web-server</id>
     <name>Basic Web Server</name>
     <name xml:lang="zh_CN">基本网页服务器</name>
@@ -1646,7 +1570,6 @@
   <langpacks>
     <match install="aspell-%s" name="aspell"/>
     <match install="autocorr-%s" name="autocorr-en"/>
-    <match install="gnome-getting-started-docs-%s" name="gnome-getting-started-docs"/>
     <match install="hunspell-%s" name="hunspell"/>
     <match install="hyphen-%s" name="hyphen"/>
     <match install="libreoffice-help-%s" name="libreoffice-core"/>
