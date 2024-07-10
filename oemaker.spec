@@ -11,7 +11,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.1.0
-Release:        7
+Release:        8
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -27,6 +27,7 @@ Requires:       createrepo dnf-plugins-core genisoimage isomd5sum grep bash libs
 Requires:       lorax >= 19.6.78-1
 
 # Patch here
+Patch0001:      0001-bugfix-IABY7K.patch
 
 %description
 a building tool for DVD ISO making and ISO cutting
@@ -172,6 +173,11 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Wed Jul 10 2024 wangchong <wangchong56@huawei.com> - 3.1.0-8
+- ID:NA
+- SUG:NA
+- DESC: fix issue IABY7K
+
 * Thu Mar 28 2024 mayunlong <mayunlong6@huawei.com> - 3.1.0-7
 - ID:NA
 - SUG:NA
