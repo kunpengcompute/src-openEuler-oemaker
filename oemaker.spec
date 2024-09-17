@@ -10,8 +10,8 @@ Name:           oemaker
 Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
-Version:        3.1.0
-Release:        8
+Version:        3.2.0
+Release:        1
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -27,7 +27,6 @@ Requires:       createrepo dnf-plugins-core genisoimage isomd5sum grep bash libs
 Requires:       lorax >= 19.6.78-1
 
 # Patch here
-Patch0001:      0001-bugfix-IABY7K.patch
 
 %description
 a building tool for DVD ISO making and ISO cutting
@@ -173,6 +172,11 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Mon Sep 9 2024 xiangyuning <xiangyuning@huawei.com> - 3.2.0-1
+- ID:NA
+- SUG:NA
+- upgrade to 3.2.0
+
 * Wed Jul 10 2024 wangchong <wangchong56@huawei.com> - 3.1.0-8
 - ID:NA
 - SUG:NA
