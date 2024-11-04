@@ -11,7 +11,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.2.0
-Release:        1
+Release:        2
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -22,6 +22,8 @@ Source4:        edge_normal_aarch64.xml
 Source5:        edge_normal_x86_64.xml
 Source6:        desktop_normal_aarch64.xml
 Source7:        desktop_normal_x86_64.xml
+Source8:        rpmlist_riscv64.xml
+Source9:        normal_riscv64.xml
 
 Requires:       createrepo dnf-plugins-core genisoimage isomd5sum grep bash libselinux-utils libxml2 anaconda libselinux-utils
 Requires:       lorax >= 19.6.78-1
@@ -65,6 +67,13 @@ rm -rf  %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/x86_64/desktop_n
 cp %{SOURCE7} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/x86_64/desktop_normal.xml
 cd %{_builddir}/%{name}-%{version}/%{name}
 %autopatch -p1
+%ifarch riscv64
+rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/rpmlist.xml
+cp %{SOURCE8} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/rpmlist.xml
+rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/normal.xml
+cp %{SOURCE9} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/normal.xml
+%endif
+
 
 %install
 sys_arch=$(uname -m)
@@ -100,8 +109,12 @@ install -m 400 %{name}/isomaker/config/${sys_arch}/standard.conf %{buildroot}/op
 %ifarch x86_64
 install -m 700 %{name}/isomaker/config/x86_64/livecd/live/x86.tmpl %{buildroot}/opt/oemaker/config/x86_64/livecd/live/x86.tmpl
 install -m 400 %{name}/isomaker/config/x86_64/ks.cfg %{buildroot}/opt/oemaker/config/x86_64/ks.cfg
-%else
+%endif
+%ifarch aarch64
 install -m 700 %{name}/isomaker/config/aarch64/livecd/live/aarch64.tmpl %{buildroot}/opt/oemaker/config/aarch64/livecd/live/aarch64.tmpl
+%endif
+%ifarch riscv64
+install -m 700 %{name}/isomaker/config/riscv64/livecd/live/riscv64.tmpl %{buildroot}/opt/oemaker/config/riscv64/livecd/live/riscv64.tmpl
 %endif
 install -m 700 %{name}/isomaker/config/common/livecd/live/* %{buildroot}/opt/oemaker/config/common/livecd/live/
 install -m 400 %{name}/isomaker/config/common/livecd/root_pwd %{buildroot}/opt/oemaker/config/common/livecd/root_pwd
@@ -172,7 +185,10 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
-* Mon Sep 9 2024 xiangyuning <xiangyuning@huawei.com> - 3.2.0-1
+* Mon Sep 23 2024 Ouuleilei <wangliu@iscas.ac.cn> - 3.2.0-2
+- fix riscv64.tmpl file miss problem and add riscv64 rpmlist.xml normal.xml
+
+* Wed Sep 18 2024 xiangyuning <xiangyuning@huawei.com> - 3.2.0-1
 - ID:NA
 - SUG:NA
 - upgrade to 3.2.0
