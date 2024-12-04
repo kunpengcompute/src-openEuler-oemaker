@@ -11,7 +11,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.1.0
-Release:        6
+Release:        7
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -173,6 +173,11 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Tue Dec 3 2024 zhaolichang <zhaolichang@huawei.com> - 3.1.0-7
+- ID:NA
+- SUG:NA
+- DESC: add libkperf and oeAware-manager
+
 * Wed Jul 10 2024 wangchong <wangchong56@huawei.com> - 3.1.0-6
 - ID:NA
 - SUG:NA
