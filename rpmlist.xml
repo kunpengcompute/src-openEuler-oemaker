@@ -1383,7 +1383,6 @@
         <packagereq>DCF</packagereq>
         <packagereq>opengauss</packagereq>
         <packagereq>oeAware-manager</packagereq>
-        <packagereq>libkperf</packagereq>
     </packagelist>
     <packagelist type="edge_aarch64">
         <packagereq>grub2-efi-aa64</packagereq>
