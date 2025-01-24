@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        1
+Release:        2
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -223,6 +223,13 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Thu Jan 23 2025 Funda Wang <fundawang@yeah.net> - 3.3.0-2
+- ID:NA
+- SUG:NA
+- DESC: tpm2-tools-help was merged into tpm2-tools as of Oct 2024
+- DESC: attr-help was merged into attr as of Dec 2024
+- DESC: xorg-x11-utils was retired as of Dec 2024
+
 * Thu Jan 23 2025 Li Ping <1477412247@qq.com> - 3.3.0-1
 - ID:NA
 - SUG:NA
