@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        2
+Release:        3
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -43,6 +43,7 @@ Requires:       xorriso
 # Patch here
 Patch0001:      0001-bugfix-IABY7K.patch
 Patch0002:      0001-fix-livecd-grub2-efi.cfg-not-found.patch
+Patch0003:      0001-Fixes-boot-failure-caused-by-invalid-volume-IDs.patch
 
 %description
 a building tool for DVD ISO making and ISO cutting
@@ -223,6 +224,11 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Mon Mar 3 2025 hugel <gengqihu2@h-partners.com> - 3.3.0-3
+- ID:NA
+- SUG:NA
+- DESC: Fix boot failure caused by invalid volume IDs
+
 * Thu Jan 23 2025 Funda Wang <fundawang@yeah.net> - 3.3.0-2
 - ID:NA
 - SUG:NA
