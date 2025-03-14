@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        3
+Release:        4
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -224,6 +224,11 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Fri Mar 14 2025 wangchong <wangchong56@huawei.com> - 3.3.0-4
+- ID:NA
+- SUG:NA
+- DESC: add kernel-rt, raspberrypi-kernel, raspberrypi-kernel-rt, haoc-kernel, vk-kernel and kernel-extra-modules to the exclude tag
+
 * Mon Mar 3 2025 hugel <gengqihu2@h-partners.com> - 3.3.0-3
 - ID:NA
 - SUG:NA

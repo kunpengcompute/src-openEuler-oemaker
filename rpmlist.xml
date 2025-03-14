@@ -40,17 +40,50 @@
         <packagereq>drbd-utils</packagereq>
         <packagereq>gnome-boxes</packagereq>
         <packagereq>nodejs-grunt-contrib-watch</packagereq>
+        <packagereq>kernel-rt</packagereq>
+        <packagereq>kernel-rt-tools</packagereq>
+        <packagereq>kernel-rt-source</packagereq>
+        <packagereq>kernel-rt-devel</packagereq>
+        <packagereq>kernel-rt-headers</packagereq>
+        <packagereq>kernel-rt-tools-devel</packagereq>
+        <packagereq>raspberrypi-kernel</packagereq>
+        <packagereq>raspberrypi-kernel-devel</packagereq>
+        <packagereq>raspberrypi-kernel-rt</packagereq>
+        <packagereq>raspberrypi-kernel-rt-devel</packagereq>
+        <packagereq>haoc-kernel</packagereq>
+        <packagereq>haoc-kernel-source</packagereq>
+        <packagereq>haoc-kernel-tools</packagereq>
+        <packagereq>haoc-kernel-tools-devel</packagereq>
+        <packagereq>haoc-kernel-devel</packagereq>
+        <packagereq>haoc-kernel-headers</packagereq>
+        <packagereq>kernel-extra-modules</packagereq>
+        <packagereq>vk-kernel</packagereq>
+        <packagereq>vk-kernel-devel</packagereq>
+        <packagereq>vk-kernel-headers</packagereq>
+        <packagereq>vk-kernel-source</packagereq>
+        <packagereq>vk-kernel-tools</packagereq>
+        <packagereq>vk-kernel-tools-devel</packagereq>
     </packagelist>
     <packagelist type="src_exclude">
         <packagereq>drbd</packagereq>
         <packagereq>gnome-boxes</packagereq>
         <packagereq>nodejs-grunt-contrib-watch</packagereq>
+        <packagereq>haoc-kernel</packagereq>
+        <packagereq>kernel-rt</packagereq>
+        <packagereq>raspberrypi-kernel</packagereq>
+        <packagereq>raspberrypi-kernel-rt</packagereq>
+        <packagereq>vk-kernel</packagereq>
     </packagelist>
     <packagelist type="everything_debug_exclude">
         <packagereq>drbd-debuginfo</packagereq>
         <packagereq>drbd-debugsource</packagereq>
         <packagereq>gnome-boxes-debuginfo</packagereq>
         <packagereq>gnome-boxes-debugsource</packagereq>
+        <packagereq>kernel-rt-debuginfo</packagereq>
+        <packagereq>kernel-rt-debugsource</packagereq>
+        <packagereq>kernel-rt-tools-debuginfo</packagereq>
+        <packagereq>haoc-kernel-debugsource</packagereq>
+        <packagereq>vk-kernel-debugsource</packagereq>
     </packagelist>
     <packagelist type="aarch64">
         <packagereq>edk2-aarch64</packagereq>
