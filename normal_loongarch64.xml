@@ -1281,7 +1281,6 @@
     <packagelist>
       <packagereq type="optional">freerdp</packagereq>
       <packagereq type="optional">tigervnc</packagereq>
-      <packagereq type="optional">vinagre</packagereq>
     </packagelist>
   </group>
   <group>

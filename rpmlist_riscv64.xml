@@ -57,38 +57,11 @@
         <packagereq>haoc-kernel-devel</packagereq>
         <packagereq>haoc-kernel-headers</packagereq>
     	<packagereq>nvwa</packagereq>
-	<packagereq>python3-keras-rl2</packagereq>
-        <packagereq>kernel-rt</packagereq>
-        <packagereq>kernel-rt-tools</packagereq>
-        <packagereq>kernel-rt-source</packagereq>
-        <packagereq>kernel-rt-devel</packagereq>
-        <packagereq>kernel-rt-headers</packagereq>
-        <packagereq>kernel-rt-tools-devel</packagereq>
-        <packagereq>raspberrypi-kernel</packagereq>
-        <packagereq>raspberrypi-kernel-devel</packagereq>
-        <packagereq>raspberrypi-kernel-rt</packagereq>
-        <packagereq>raspberrypi-kernel-rt-devel</packagereq>
-        <packagereq>haoc-kernel</packagereq>
-        <packagereq>haoc-kernel-source</packagereq>
-        <packagereq>haoc-kernel-tools</packagereq>
-        <packagereq>haoc-kernel-tools-devel</packagereq>
-        <packagereq>haoc-kernel-devel</packagereq>
-        <packagereq>haoc-kernel-headers</packagereq>
-    	<packagereq>nvwa</packagereq>
     </packagelist>
     <packagelist type="src_exclude">
         <packagereq>drbd</packagereq>
         <packagereq>gnome-boxes</packagereq>
         <packagereq>nodejs-grunt-contrib-watch</packagereq>
-        <packagereq>haoc-kernel</packagereq>
-        <packagereq>kernel-rt</packagereq>
-        <packagereq>raspberrypi-kernel</packagereq>
-        <packagereq>raspberrypi-kernel-rt</packagereq>
-        <packagereq>apache-commons-vfs</packagereq>
-	<packagereq>apache-poi</packagereq>
-        <packagereq>mchange-commons</packagereq>
-        <packagereq>metrics</packagereq>
-	<packagereq>typesafe-config</packagereq>
         <packagereq>haoc-kernel</packagereq>
         <packagereq>kernel-rt</packagereq>
         <packagereq>raspberrypi-kernel</packagereq>
@@ -115,11 +88,6 @@
         <packagereq>libwd</packagereq>
         <packagereq>shim-aa64</packagereq>
         <packagereq>oeAware-manager</packagereq>
-        <packagereq>librados2</packagereq>
-        <packagereq>kata-containers</packagereq>
-        <packagereq>DCF</packagereq>
-        <packagereq>opengauss</packagereq>
-        <packagereq>oeAware-manager</packagereq>
     </packagelist>
     <packagelist type="x86_64">
         <packagereq>edk2-ovmf</packagereq>
@@ -132,11 +100,6 @@
       <packagereq>edk2-ovmf-riscv64</packagereq>
       <packagereq>grub2-efi-riscv64</packagereq>
       <packagereq>grub2-efi-riscv64-modules</packagereq>
-        <packagereq>librados2</packagereq>
-        <packagereq>kata-containers</packagereq>
-        <packagereq>DCF</packagereq>
-        <packagereq>opengauss</packagereq>
-        <packagereq>oeAware-manager</packagereq>
     </packagelist>
     <packagelist type="common">
         <packagereq>abattis-cantarell-fonts</packagereq>
@@ -1475,38 +1438,6 @@
         <packagereq>kubernetes-kubelet</packagereq>
         <packagereq>kubernetes-master</packagereq>
         <packagereq>kubernetes-node</packagereq>
-        <packagereq>k3s</packagereq>
-        <packagereq>k3s-selinux</packagereq>
-        <packagereq>k3s-plugins</packagereq>
-        <packagereq>k3s-containerd</packagereq>
-        <packagereq>kubeedge-cloudcore</packagereq>
-        <packagereq>kubeedge-edgecore</packagereq>
-        <packagereq>kubeedge-edgesite</packagereq>
-        <packagereq>kubeedge-keadm</packagereq>
-    </packagelist>
-    <packagelist type="edge_x86_64">
-        <packagereq>grub2-pc</packagereq>
-        <packagereq>grub2-pc-modules</packagereq>
-        <packagereq>grub2-efi-x64</packagereq>
-        <packagereq>shim</packagereq>
-    </packagelist>
-    <packagelist type="edge_riscv64">
-        <packagereq>grub2-efi-riscv64</packagereq>
-        <packagereq>grub2-efi-riscv64-cdboot</packagereq>
-        <packagereq>grub2-efi-riscv64-modules</packagereq>
-    </packagelist>
-    <packagelist type="edge_common">
-        <packagereq>kubernetes</packagereq>
-        <packagereq>kubernetes-client</packagereq>
-        <packagereq>kubernetes-help</packagereq>
-        <packagereq>kubernetes-kubeadm</packagereq>
-        <packagereq>kubernetes-kubelet</packagereq>
-        <packagereq>kubernetes-master</packagereq>
-        <packagereq>kubernetes-node</packagereq>
-        <packagereq>kubeedge-cloudcore</packagereq>
-        <packagereq>kubeedge-edgecore</packagereq>
-        <packagereq>kubeedge-edgesite</packagereq>
-        <packagereq>kubeedge-keadm</packagereq>
         <packagereq>k3s</packagereq>
         <packagereq>k3s-selinux</packagereq>
         <packagereq>k3s-plugins</packagereq>
