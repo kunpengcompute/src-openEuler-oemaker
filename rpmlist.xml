@@ -750,8 +750,6 @@
         <packagereq>libverto-glib</packagereq>
         <packagereq>libverto-libevent</packagereq>
         <packagereq>libvirt</packagereq>
-        <packagereq>libvirt-admin</packagereq>
-        <packagereq>libvirt-bash-completion</packagereq>
         <packagereq>libvirt-client</packagereq>
         <packagereq>libvirt-daemon</packagereq>
         <packagereq>libvirt-daemon-config-network</packagereq>
