@@ -1313,8 +1313,6 @@
     <uservisible>false</uservisible>
     <packagelist>
       <packagereq type="mandatory">libvirt</packagereq>
-      <packagereq type="mandatory">libvirt-admin</packagereq>
-      <packagereq type="mandatory">libvirt-bash-completion</packagereq>
       <packagereq type="mandatory">libvirt-client</packagereq>
       <packagereq type="mandatory">libvirt-daemon</packagereq>
       <packagereq type="mandatory">libvirt-daemon-config-network</packagereq>
@@ -1336,11 +1334,11 @@
       <packagereq type="mandatory">libvirt-daemon-driver-storage-rbd</packagereq>
       <packagereq type="mandatory">libvirt-daemon-driver-storage-scsi</packagereq>
       <packagereq type="mandatory">libvirt-daemon-kvm</packagereq>
+      <packagereq type="mandatory">libvirt-daemon-plugin-sanlock</packagereq>
       <packagereq type="mandatory">libvirt-daemon-qemu</packagereq>
       <packagereq type="mandatory">libvirt-devel</packagereq>
       <packagereq type="mandatory">libvirt-docs</packagereq>
       <packagereq type="mandatory">libvirt-libs</packagereq>
-      <packagereq type="mandatory">libvirt-lock-sanlock</packagereq>
       <packagereq type="mandatory">libvirt-nss</packagereq>
       <packagereq type="mandatory">python3-libvirt</packagereq>
       <packagereq type="mandatory">edk2-aarch64</packagereq>
@@ -1404,7 +1402,6 @@
     <uservisible>false</uservisible>
     <packagelist>
       <packagereq type="mandatory">glx-utils</packagereq>
-      <packagereq type="mandatory">initial-setup-gui</packagereq>
       <packagereq type="mandatory">mesa-dri-drivers</packagereq>
       <packagereq type="mandatory">plymouth-system-theme</packagereq>
       <packagereq type="mandatory">spice-vdagent</packagereq>
