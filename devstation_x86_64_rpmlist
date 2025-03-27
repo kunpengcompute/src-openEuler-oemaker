@@ -8,7 +8,6 @@ bind-dnssec-utils
 boost-iostreams
 btrfs-progs
 checkpolicy
-code
 coreutils
 cronie
 cryptsetup

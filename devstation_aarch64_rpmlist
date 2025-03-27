@@ -7,7 +7,6 @@ bind
 bind-dnssec-utils
 boost-iostreams
 checkpolicy
-code
 coreutils
 cronie
 cryptsetup
