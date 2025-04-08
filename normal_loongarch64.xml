@@ -86,12 +86,10 @@
       <packagereq type="mandatory">net-snmp-devel</packagereq>
       <packagereq type="mandatory">newt-devel</packagereq>
       <packagereq type="mandatory">openscap-devel</packagereq>
-      <packagereq type="mandatory">papi-devel</packagereq>
       <packagereq type="mandatory">protobuf-c</packagereq>
       <packagereq type="mandatory">sane-backends-devel</packagereq>
       <packagereq type="mandatory">slang-devel</packagereq>
       <packagereq type="mandatory">startup-notification-devel</packagereq>
-      <packagereq type="mandatory">tbb-devel</packagereq>
       <packagereq type="mandatory">tk-devel</packagereq>
       <packagereq type="mandatory">unixODBC-devel</packagereq>
       <packagereq type="mandatory">xorg-x11-proto-devel</packagereq>
@@ -118,15 +116,12 @@
       <packagereq type="mandatory">firewalld</packagereq>
       <packagereq type="mandatory">gfs2-utils</packagereq>
       <packagereq type="mandatory">glibc-all-langpacks</packagereq>
-      <packagereq type="mandatory">grub2-efi-x64</packagereq>
-      <packagereq type="mandatory">grub2-efi-x64-cdboot</packagereq>
       <packagereq type="mandatory">grub2-tools</packagereq>
       <packagereq type="mandatory">grub2-tools-extra</packagereq>
       <packagereq type="mandatory">iscsi-initiator-utils</packagereq>
       <packagereq type="mandatory">lvm2</packagereq>
       <packagereq type="mandatory">mdadm</packagereq>
       <packagereq type="mandatory">realmd</packagereq>
-      <packagereq type="mandatory">shim</packagereq>
       <packagereq type="mandatory">libteam</packagereq>
       <packagereq type="mandatory">tmux</packagereq>
       <packagereq type="mandatory">xfsprogs</packagereq>
@@ -154,7 +149,6 @@
       <packagereq type="mandatory">file</packagereq>
       <packagereq type="mandatory">iptstate</packagereq>
       <packagereq type="mandatory">irqbalance</packagereq>
-      <packagereq type="mandatory">kpatch</packagereq>
       <packagereq type="mandatory">logrotate</packagereq>
       <packagereq type="mandatory">lsof</packagereq>
       <packagereq type="mandatory">net-tools</packagereq>
@@ -269,8 +263,6 @@
       <packagereq type="mandatory">openssh</packagereq>
       <packagereq type="mandatory">openssh-server</packagereq>
       <packagereq type="mandatory">openssh-clients</packagereq>
-      <packagereq type="mandatory">openEuler-release</packagereq>
-      <packagereq type="mandatory">openEuler-latest-release</packagereq>
       <packagereq type="mandatory">parted</packagereq>
       <packagereq type="mandatory">passwd</packagereq>
       <packagereq type="mandatory">policycoreutils</packagereq>
@@ -290,12 +282,13 @@
       <packagereq type="mandatory">xfsprogs</packagereq>
       <packagereq type="mandatory">yum</packagereq>
       <packagereq type="mandatory">wget</packagereq>
+      <packagereq type="mandatory">openEuler-release</packagereq>
+      <packagereq type="mandatory">openEuler-latest-release</packagereq>
       <packagereq type="default">NetworkManager</packagereq>
       <packagereq type="default">NetworkManager-config-server</packagereq>
       <packagereq type="default">authselect</packagereq>
       <packagereq type="default">dnf-plugins-core</packagereq>
       <packagereq type="default">dracut-config-rescue</packagereq>
-      <packagereq type="default">iptables-nft</packagereq>
       <packagereq type="default">kernel-tools</packagereq>
       <packagereq type="default">sysfsutils</packagereq>
       <packagereq type="default">linux-firmware</packagereq>
@@ -304,7 +297,6 @@
       <packagereq type="default">rsyslog</packagereq>
       <packagereq type="default">security-tool</packagereq>
       <packagereq type="default">sg3_utils</packagereq>
-	  <packagereq type="default">systemd-cryptsetup</packagereq>
       <packagereq type="optional">dracut-config-generic</packagereq>
       <packagereq type="optional">dracut-network</packagereq>
       <packagereq type="optional">rdma-core</packagereq>
@@ -321,7 +313,6 @@
     <uservisible>false</uservisible>
     <packagelist>
       <packagereq type="default">crash</packagereq>
-      <packagereq type="default">crash-gcore-command</packagereq>
       <packagereq type="default">crash-trace-command</packagereq>
       <packagereq type="optional">xrestop</packagereq>
     </packagelist>
@@ -478,8 +469,8 @@
       <packagereq type="mandatory">java-1.8.0-openjdk-devel</packagereq>
       <packagereq type="mandatory">libedit-devel</packagereq>
       <packagereq type="mandatory">libaio-devel</packagereq>
+      <packagereq type="mandatory">numactl-devel</packagereq>
       <packagereq type="mandatory">DCF</packagereq>
-      <packagereq type="mandatory">opengauss</packagereq>
     </packagelist>
   </group>
   <group>
@@ -677,7 +668,6 @@
     <packagelist>
       <packagereq type="mandatory">PackageKit</packagereq>
       <packagereq type="mandatory">cockpit</packagereq>
-      <packagereq type="mandatory">cockpit</packagereq>
       <packagereq type="mandatory">openssh-server</packagereq>
       <packagereq type="default">sscg</packagereq>
     </packagelist>
@@ -741,7 +731,6 @@
     <default>true</default>
     <uservisible>false</uservisible>
     <packagelist>
-      <packagereq type="mandatory">firefox</packagereq>
     </packagelist>
   </group>
     <group>
@@ -857,10 +846,10 @@
     <default>true</default>
     <uservisible>true</uservisible>
     <packagelist>
-      <packagereq type="optional">dhcp-server</packagereq>
-      <packagereq type="optional">krb5-server</packagereq>
-      <packagereq type="optional">dnsmasq</packagereq>
-      <packagereq type="optional">freeradius</packagereq>
+      <packagereq type="mandatory">dhcp-server</packagereq>
+      <packagereq type="mandatory">krb5-server</packagereq>
+      <packagereq type="default">dnsmasq</packagereq>
+      <packagereq type="default">freeradius</packagereq>
       <packagereq type="optional">libreswan</packagereq>
       <packagereq type="optional">radvd</packagereq>
       <packagereq type="optional">rsyslog</packagereq>
@@ -880,8 +869,8 @@
     <default>true</default>
     <uservisible>false</uservisible>
     <packagelist>
-      <packagereq type="optional">arpwatch</packagereq>
-      <packagereq type="optional">ipset</packagereq>
+      <packagereq type="default">arpwatch</packagereq>
+      <packagereq type="default">ipset</packagereq>
       <packagereq type="optional">iptraf-ng</packagereq>
       <packagereq type="optional">iptstate</packagereq>
       <packagereq type="optional">dnsmasq</packagereq>
@@ -904,7 +893,6 @@
     <uservisible>false</uservisible>
     <packagelist>
       <packagereq type="default">NetworkManager-bluetooth</packagereq>
-      <packagereq type="default">NetworkManager-wifi</packagereq>
       <packagereq type="default">NetworkManager-wwan</packagereq>
       <packagereq type="default">dhcp</packagereq>
       <packagereq type="default">iptables</packagereq>
@@ -925,88 +913,10 @@
       <packagereq type="optional">hdparm</packagereq>
       <packagereq type="optional">tuned</packagereq>
       <packagereq type="mandatory">sysstat</packagereq>
-      <packagereq type="default">pcp</packagereq>
-      <packagereq type="default">pcp-conf</packagereq>
-      <packagereq type="default">pcp-devel</packagereq>
-      <packagereq type="default">pcp-doc</packagereq>
-      <packagereq type="default">pcp-export-pcp2graphite</packagereq>
-      <packagereq type="default">pcp-export-pcp2influxdb</packagereq>
-      <packagereq type="default">pcp-export-pcp2json</packagereq>
-      <packagereq type="default">pcp-export-pcp2xml</packagereq>
-      <packagereq type="default">pcp-export-pcp2zabbix</packagereq>
-      <packagereq type="default">pcp-export-zabbix-agent</packagereq>
-      <packagereq type="default">pcp-import-collectl2pcp</packagereq>
-      <packagereq type="default">pcp-import-ganglia2pcp</packagereq>
-      <packagereq type="default">pcp-import-iostat2pcp</packagereq>
-      <packagereq type="default">pcp-import-mrtg2pcp</packagereq>
-      <packagereq type="default">pcp-libs</packagereq>
-      <packagereq type="default">pcp-libs-devel</packagereq>
-      <packagereq type="default">pcp-pmda-apache</packagereq>
-      <packagereq type="default">pcp-pmda-bash</packagereq>
-      <packagereq type="default">pcp-pmda-bonding</packagereq>
-      <packagereq type="default">pcp-pmda-cifs</packagereq>
-      <packagereq type="default">pcp-pmda-cisco</packagereq>
-      <packagereq type="default">pcp-pmda-dbping</packagereq>
-      <packagereq type="default">pcp-pmda-dm</packagereq>
-      <packagereq type="default">pcp-pmda-docker</packagereq>
-      <packagereq type="default">pcp-pmda-ds389</packagereq>
-      <packagereq type="default">pcp-pmda-gfs2</packagereq>
-      <packagereq type="default">pcp-pmda-gluster</packagereq>
-      <packagereq type="default">pcp-pmda-gpfs</packagereq>
-      <packagereq type="default">pcp-pmda-gpsd</packagereq>
-      <packagereq type="default">pcp-pmda-haproxy</packagereq>
-      <packagereq type="default">pcp-pmda-infiniband</packagereq>
-      <packagereq type="default">pcp-pmda-json</packagereq>
-      <packagereq type="default">pcp-pmda-kvm</packagereq>
-      <packagereq type="default">pcp-pmda-libvirt</packagereq>
-      <packagereq type="default">pcp-pmda-lio</packagereq>
-      <packagereq type="default">pcp-pmda-lmsensors</packagereq>
-      <packagereq type="default">pcp-pmda-logger</packagereq>
-      <packagereq type="default">pcp-pmda-lustre</packagereq>
-      <packagereq type="default">pcp-pmda-lustrecomm</packagereq>
-      <packagereq type="default">pcp-pmda-mailq</packagereq>
-      <packagereq type="default">pcp-pmda-memcache</packagereq>
-      <packagereq type="default">pcp-pmda-mic</packagereq>
-      <packagereq type="default">pcp-pmda-mounts</packagereq>
-      <packagereq type="default">pcp-pmda-mysql</packagereq>
-      <packagereq type="default">pcp-pmda-named</packagereq>
-      <packagereq type="default">pcp-pmda-netfilter</packagereq>
-      <packagereq type="default">pcp-pmda-news</packagereq>
-      <packagereq type="default">pcp-pmda-nfsclient</packagereq>
-      <packagereq type="default">pcp-pmda-nvidia-gpu</packagereq>
-      <packagereq type="default">pcp-pmda-oracle</packagereq>
-      <packagereq type="default">pcp-pmda-pdns</packagereq>
-      <packagereq type="default">pcp-pmda-perfevent</packagereq>
-      <packagereq type="default">pcp-pmda-prometheus</packagereq>
-      <packagereq type="default">pcp-pmda-redis</packagereq>
-      <packagereq type="default">pcp-pmda-roomtemp</packagereq>
-      <packagereq type="default">pcp-pmda-rsyslog</packagereq>
-      <packagereq type="default">pcp-pmda-samba</packagereq>
-      <packagereq type="default">pcp-pmda-sendmail</packagereq>
-      <packagereq type="default">pcp-pmda-shping</packagereq>
-      <packagereq type="default">pcp-pmda-slurm</packagereq>
-      <packagereq type="default">pcp-pmda-smart</packagereq>
-      <packagereq type="default">pcp-pmda-snmp</packagereq>
-      <packagereq type="default">pcp-pmda-summary</packagereq>
-      <packagereq type="default">pcp-pmda-systemd</packagereq>
-      <packagereq type="default">pcp-pmda-trace</packagereq>
-      <packagereq type="default">pcp-pmda-unbound</packagereq>
-      <packagereq type="default">pcp-pmda-weblog</packagereq>
-      <packagereq type="default">pcp-pmda-zimbra</packagereq>
-      <packagereq type="default">pcp-pmda-zswap</packagereq>
-      <packagereq type="default">pcp-selinux</packagereq>
-      <packagereq type="default">pcp-system-tools</packagereq>
-      <packagereq type="default">pcp-testsuite</packagereq>
-      <packagereq type="default">pcp-webapi</packagereq>
-      <packagereq type="default">pcp-zeroconf</packagereq>
-      <packagereq type="default">perl-PCP-LogImport</packagereq>
-      <packagereq type="default">perl-PCP-LogSummary</packagereq>
-      <packagereq type="default">perl-PCP-MMV</packagereq>
-      <packagereq type="default">perl-PCP-PMDA</packagereq>
       <packagereq type="default">powertop</packagereq>
+      <packagereq type="optional">fio</packagereq>
       <packagereq type="optional">iperf3</packagereq>
       <packagereq type="optional">libpfm</packagereq>
-      <packagereq type="optional">papi</packagereq>
       <packagereq type="optional">tuned-utils</packagereq>
     </packagelist>
   </group>
@@ -1102,9 +1012,7 @@
       <packagereq type="default">cockpit</packagereq>
       <packagereq type="default">net-snmp</packagereq>
       <packagereq type="default">net-snmp-utils</packagereq>
-      <packagereq type="default">openwsman-client</packagereq>
       <packagereq type="default">tog-pegasus</packagereq>
-      <packagereq type="optional">openwsman-server</packagereq>
     </packagelist>
   </group>
   <group>
@@ -1158,7 +1066,6 @@
       <packagereq type="mandatory">polkit</packagereq>
       <packagereq type="mandatory">realmd</packagereq>
       <packagereq type="mandatory">openEuler-release</packagereq>
-      <packagereq type="mandatory">openEuler-latest-release</packagereq>
       <packagereq type="mandatory">timedatex</packagereq>
       <packagereq type="default">dhcp</packagereq>
       <packagereq type="default">NetworkManager-config-server</packagereq>
@@ -1200,14 +1107,12 @@
       <packagereq type="mandatory">file</packagereq>
       <packagereq type="mandatory">iptstate</packagereq>
       <packagereq type="mandatory">irqbalance</packagereq>
-      <packagereq type="mandatory">kpatch</packagereq>
       <packagereq type="mandatory">logrotate</packagereq>
       <packagereq type="mandatory">lsof</packagereq>
       <packagereq type="mandatory">net-tools</packagereq>
       <packagereq type="mandatory">pciutils</packagereq>
       <packagereq type="mandatory">quota</packagereq>
       <packagereq type="mandatory">openEuler-release</packagereq>
-      <packagereq type="mandatory">openEuler-latest-release</packagereq>
       <packagereq type="mandatory">sudo</packagereq>
       <packagereq type="mandatory">symlinks</packagereq>
       <packagereq type="mandatory">systemd-udev</packagereq>
@@ -1347,11 +1252,11 @@
       <packagereq type="mandatory">libvirt-libs</packagereq>
       <packagereq type="mandatory">libvirt-nss</packagereq>
       <packagereq type="mandatory">python3-libvirt</packagereq>
+      <packagereq type="mandatory">edk2-ovmf-loongarch64</packagereq>
       <packagereq type="mandatory">qemu-help</packagereq>
       <packagereq type="mandatory">qemu</packagereq>
       <packagereq type="mandatory">qemu-block-iscsi</packagereq>
       <packagereq type="mandatory">qemu-img</packagereq>
-      <packagereq type="mandatory">stratovirt</packagereq>
     </packagelist>
   </group>
   <group>
@@ -1546,7 +1451,6 @@
       <groupid>smb-server</groupid>
       <groupid>virtualization-hypervisor</groupid>
       <groupid>web-server</groupid>
-      <groupid>opengauss-server</groupid>
     </optionlist>
   </environment>
   <environment>

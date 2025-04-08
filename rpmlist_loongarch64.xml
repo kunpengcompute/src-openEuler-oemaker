@@ -16,74 +16,127 @@
         <packagereq>python3-abrt-container-addon</packagereq>
     </packagelist>
     <packagelist type="exclude">
-        <packagereq>texlive-collection-bibtexextra</packagereq>
-        <packagereq>texlive-collection-mathscience</packagereq>
-        <packagereq>texlive-collection-latexextra</packagereq>
-        <packagereq>texlive-collection-fontsextra</packagereq>
-        <packagereq>texlive-ctanupload</packagereq>
-        <packagereq>texlive-exceltex</packagereq>
-        <packagereq>texlive-latexindent</packagereq>
-        <packagereq>texlive-biblatex-apa</packagereq>
-        <packagereq>texlive-collection-binextra</packagereq>
-        <packagereq>texlive-collection-fontutils</packagereq>
-        <packagereq>texlive-includernw</packagereq>
-        <packagereq>texlive-oldstandard</packagereq>
-        <packagereq>texlive-scheme-full</packagereq>
-        <packagereq>texlive-scheme-gust</packagereq>
-        <packagereq>texlive-scheme-medium</packagereq>
-        <packagereq>texlive-scheme-tetex</packagereq>
-        <packagereq>drbd</packagereq>
-        <packagereq>drbd-bash-completion</packagereq>
-        <packagereq>drbd-pacemaker</packagereq>
-        <packagereq>drbd-rgmanager</packagereq>
-        <packagereq>drbd-udev</packagereq>
-        <packagereq>drbd-utils</packagereq>
-        <packagereq>gnome-boxes</packagereq>
-        <packagereq>nodejs-grunt-contrib-watch</packagereq>
-        <packagereq>kernel-rt</packagereq>
-        <packagereq>kernel-rt-tools</packagereq>
-        <packagereq>kernel-rt-source</packagereq>
-        <packagereq>kernel-rt-devel</packagereq>
-        <packagereq>kernel-rt-headers</packagereq>
-        <packagereq>kernel-rt-tools-devel</packagereq>
-        <packagereq>raspberrypi-kernel</packagereq>
-        <packagereq>raspberrypi-kernel-devel</packagereq>
-        <packagereq>raspberrypi-kernel-rt</packagereq>
-        <packagereq>raspberrypi-kernel-rt-devel</packagereq>
-        <packagereq>haoc-kernel</packagereq>
-        <packagereq>haoc-kernel-source</packagereq>
-        <packagereq>haoc-kernel-tools</packagereq>
-        <packagereq>haoc-kernel-tools-devel</packagereq>
-        <packagereq>haoc-kernel-devel</packagereq>
-        <packagereq>haoc-kernel-headers</packagereq>
-        <packagereq>kernel-extra-modules</packagereq>
-        <packagereq>vk-kernel</packagereq>
-        <packagereq>vk-kernel-devel</packagereq>
-        <packagereq>vk-kernel-headers</packagereq>
-        <packagereq>vk-kernel-source</packagereq>
-        <packagereq>vk-kernel-tools</packagereq>
-        <packagereq>vk-kernel-tools-devel</packagereq>
+	<packagereq>abrt-atomic</packagereq>
+	<packagereq>abrt-cli</packagereq>
+	<packagereq>abrt-console-notification</packagereq>
+	<packagereq>abrt-desktop</packagereq>
+	<packagereq>apptainer</packagereq>
+	<packagereq>apptainer-suid</packagereq>
+	<packagereq>castor</packagereq>
+	<packagereq>castor-maven-plugin</packagereq>
+	<packagereq>compat-openssl11-devel</packagereq>
+	<packagereq>gnome-boxes</packagereq>
+	<packagereq>ibus-table-chinese-array</packagereq>
+	<packagereq>ldapjdk</packagereq>
+	<packagereq>libcmpiCppImpl0</packagereq>
+	<packagereq>libev-libevent-devel</packagereq>
+	<packagereq>moby-client</packagereq>
+	<packagereq>moby-engine</packagereq>
+	<packagereq>moby</packagereq>
+	<packagereq>nfs-utils-min</packagereq>
+	<packagereq>nodejs-grunt-contrib-watch</packagereq>
+	<packagereq>oncn-bwm-devel</packagereq>
+	<packagereq>pcp-pmda-bpftrace</packagereq>
+	<packagereq>pcp-testsuite</packagereq>
+	<packagereq>postgresql-private-devel</packagereq>
+	<packagereq>protobuf2-compiler</packagereq>
+	<packagereq>protobuf2-devel</packagereq>
+	<packagereq>protobuf2-lite-devel</packagereq>
+	<packagereq>protobuf2-lite-static</packagereq>
+	<packagereq>protobuf2-static</packagereq>
+	<packagereq>protobuf2-vim</packagereq>
+	<packagereq>python3-abrt-addon</packagereq>
+	<packagereq>python3-keras-rl2</packagereq>
+	<packagereq>python3-pytype</packagereq>
+	<packagereq>texlive-biblatex-apa</packagereq>
+	<packagereq>texlive-collection-bibtexextra</packagereq>
+	<packagereq>texlive-collection-binextra</packagereq>
+	<packagereq>texlive-collection-fontsextra</packagereq>
+	<packagereq>texlive-collection-fontutils</packagereq>
+	<packagereq>texlive-collection-latexextra</packagereq>
+	<packagereq>texlive-collection-mathscience</packagereq>
+	<packagereq>texlive-ctanupload</packagereq>
+	<packagereq>texlive-exceltex</packagereq>
+	<packagereq>texlive-includernw</packagereq>
+	<packagereq>texlive-latexindent</packagereq>
+	<packagereq>texlive-oldstandard</packagereq>
+	<packagereq>texlive-scheme-full</packagereq>
+	<packagereq>texlive-scheme-gust</packagereq>
+	<packagereq>texlive-scheme-medium</packagereq>
+	<packagereq>texlive-scheme-tetex</packagereq>
+	<packagereq>tomcatjss</packagereq>
+	<packagereq>cassandra-java-driver</packagereq>
+	<packagereq>cassandra-java-driver-extras</packagereq>
+	<packagereq>cassandra-java-driver-mapping</packagereq>
+	<packagereq>cassandra-java-driver-tests</packagereq>
+	<packagereq>closure-compiler</packagereq>
+	<packagereq>gala-anteater</packagereq>
+	<packagereq>gala-ops</packagereq>
+	<packagereq>google-http-java-client-protobuf</packagereq>
+	<packagereq>hdf5-openmpi</packagereq>
+	<packagereq>hdf5-openmpi-devel</packagereq>
+	<packagereq>hdf5-openmpi-static</packagereq>
+	<packagereq>language-detector</packagereq>
+	<packagereq>linkchecker</packagereq>
+	<packagereq>mailman</packagereq>
+	<packagereq>netcdf-openmpi</packagereq>
+	<packagereq>netcdf-openmpi-devel</packagereq>
+	<packagereq>netcdf-openmpi-static</packagereq>
+	<packagereq>nodejs-closure-compiler</packagereq>
+	<packagereq>nodejs-lodash-cli</packagereq>
+	<packagereq>obs-service-rust2rpm</packagereq>
+	<packagereq>pcp-pmda-mongodb</packagereq>
+	<packagereq>protostream</packagereq>
+	<packagereq>python3-authheaders</packagereq>
+	<packagereq>python3-dkimpy</packagereq>
+	<packagereq>python3-email-validator</packagereq>
+	<packagereq>python3-eventlet</packagereq>
+	<packagereq>python3-gala-anteater</packagereq>
+	<packagereq>python3-kdcproxy</packagereq>
+	<packagereq>python3-pydantic</packagereq>
+	<packagereq>python3-pymongo</packagereq>
+	<packagereq>python3-pymongo-gridfs</packagereq>
+	<packagereq>python3-rust2rpm</packagereq>
+	<packagereq>python3-samba</packagereq>
+	<packagereq>python3-samba-dc</packagereq>
+	<packagereq>python3-samba-test</packagereq>
+	<packagereq>rust-packaging</packagereq>
+	<packagereq>samba-test</packagereq>
+	<packagereq>samba-tools</packagereq>
+	<packagereq>texlive-fontspec-doc</packagereq>
+	<packagereq>texlive-polyglossia-doc</packagereq>
+	<packagereq>texlive-unicode-math-doc</packagereq>
+	<packagereq>docker-client-java</packagereq>
+	<packagereq>glassfish-hk2-configuration</packagereq>
+	<packagereq>hibernate</packagereq>
+	<packagereq>infinispan</packagereq>
+	<packagereq>ironjacamar</packagereq>
+	<packagereq>jetty</packagereq>
+	<packagereq>jetty-infinispan</packagereq>
+	<packagereq>mysql-connector-java</packagereq>
+	<packagereq>picketbox</packagereq>
+	<packagereq>resteasy</packagereq>
+	<packagereq>resteasy-optional</packagereq>
+	<packagereq>resteasy-test</packagereq>
+	<packagereq>wildfly-core</packagereq>
+	<packagereq>wildfly-core-feature-pack</packagereq>
+	<packagereq>xstream-hibernate</packagereq>
+	<packagereq>resteasy-optional</packagereq>
+	<packagereq>artemis-rest</packagereq>
+	<packagereq>infinispan</packagereq>
+	<packagereq>protostream</packagereq>
+	<packagereq>hibernate4-infinispan</packagereq>
     </packagelist>
     <packagelist type="src_exclude">
         <packagereq>drbd</packagereq>
         <packagereq>gnome-boxes</packagereq>
         <packagereq>nodejs-grunt-contrib-watch</packagereq>
-        <packagereq>haoc-kernel</packagereq>
-        <packagereq>kernel-rt</packagereq>
-        <packagereq>raspberrypi-kernel</packagereq>
-        <packagereq>raspberrypi-kernel-rt</packagereq>
-        <packagereq>vk-kernel</packagereq>
     </packagelist>
     <packagelist type="everything_debug_exclude">
         <packagereq>drbd-debuginfo</packagereq>
         <packagereq>drbd-debugsource</packagereq>
         <packagereq>gnome-boxes-debuginfo</packagereq>
         <packagereq>gnome-boxes-debugsource</packagereq>
-        <packagereq>kernel-rt-debuginfo</packagereq>
-        <packagereq>kernel-rt-debugsource</packagereq>
-        <packagereq>kernel-rt-tools-debuginfo</packagereq>
-        <packagereq>haoc-kernel-debugsource</packagereq>
-        <packagereq>vk-kernel-debugsource</packagereq>
     </packagelist>
     <packagelist type="aarch64">
         <packagereq>edk2-aarch64</packagereq>
@@ -101,6 +154,11 @@
         <packagereq>grub2-efi-x64</packagereq>
         <packagereq>grub2-efi-x64-modules</packagereq>
         <packagereq>shim</packagereq>
+    </packagelist>
+    <packagelist type="loongarch64">
+        <packagereq>edk2-ovmf-loongarch64</packagereq>
+        <packagereq>grub2-efi-loongarch64</packagereq>
+        <packagereq>grub2-efi-loongarch64-modules</packagereq>
     </packagelist>
     <packagelist type="common">
         <packagereq>abattis-cantarell-fonts</packagereq>
@@ -134,10 +192,6 @@
         <packagereq>at-help</packagereq>
         <packagereq>attr</packagereq>
         <packagereq>attr-help</packagereq>
-        <packagereq>atune</packagereq>
-        <packagereq>atune-client</packagereq>
-        <packagereq>atune-db</packagereq>
-        <packagereq>atune-engine</packagereq>
         <packagereq>audiofile</packagereq>
         <packagereq>audit</packagereq>
         <packagereq>audit-help</packagereq>
@@ -199,7 +253,6 @@
         <packagereq>boost-timer</packagereq>
         <packagereq>boost-wave</packagereq>
         <packagereq>bridge-utils</packagereq>
-        <packagereq>brltty-docs</packagereq>
         <packagereq>brotli</packagereq>
         <packagereq>btrfs-progs</packagereq>
         <packagereq>btrfs-progs-help</packagereq>
@@ -433,8 +486,6 @@
         <packagereq>gzip-help</packagereq>
         <packagereq>haveged</packagereq>
         <packagereq>haveged-help</packagereq>
-        <packagereq>hdf5</packagereq>
-        <packagereq>hdf5-devel</packagereq>
         <packagereq>hdparm</packagereq>
         <packagereq>hdparm-help</packagereq>
         <packagereq>hostname</packagereq>
@@ -494,7 +545,6 @@
         <packagereq>json-c-help</packagereq>
         <packagereq>json-glib</packagereq>
         <packagereq>json-glib-help</packagereq>
-        <packagereq>kata-containers</packagereq>
         <packagereq>kbd</packagereq>
         <packagereq>kbd-help</packagereq>
         <packagereq>kbd-legacy</packagereq>
@@ -516,9 +566,6 @@
         <packagereq>kmod</packagereq>
         <packagereq>kmod-help</packagereq>
         <packagereq>kpartx</packagereq>
-        <packagereq>kpatch</packagereq>
-        <packagereq>kpatch-help</packagereq>
-        <packagereq>kpatch-runtime</packagereq>
         <packagereq>krb5</packagereq>
         <packagereq>krb5-client</packagereq>
         <packagereq>krb5-devel</packagereq>
@@ -875,7 +922,6 @@
         <packagereq>mdadm-help</packagereq>
         <packagereq>mesa-filesystem</packagereq>
         <packagereq>mesa-libGLES</packagereq>
-        <packagereq>mesa-libxatracker</packagereq>
         <packagereq>metacity</packagereq>
         <packagereq>metacity-help</packagereq>
         <packagereq>mlocate</packagereq>
@@ -896,7 +942,6 @@
         <packagereq>mtr-help</packagereq>
         <packagereq>multipath-tools</packagereq>
         <packagereq>multipath-tools-help</packagereq>
-        <packagereq>mysql</packagereq>
         <packagereq>ncompress</packagereq>
         <packagereq>ncompress-help</packagereq>
         <packagereq>ncurses</packagereq>
@@ -1368,8 +1413,6 @@
         <packagereq>wget-help</packagereq>
         <packagereq>which</packagereq>
         <packagereq>which-help</packagereq>
-        <packagereq>wpa_supplicant</packagereq>
-        <packagereq>wpa_supplicant-help</packagereq>
         <packagereq>wqy-microhei-fonts</packagereq>
         <packagereq>wqy-microhei-fonts-help</packagereq>
         <packagereq>wqy-zenhei-fonts</packagereq>
@@ -1412,8 +1455,6 @@
         <packagereq>unixODBC-devel</packagereq>
         <packagereq>jemalloc-devel</packagereq>
         <packagereq>DCF</packagereq>
-        <packagereq>opengauss</packagereq>
-        <packagereq>oeAware-manager</packagereq>
     </packagelist>
     <packagelist type="edge_aarch64">
         <packagereq>grub2-efi-aa64</packagereq>
@@ -1425,18 +1466,12 @@
         <packagereq>grub2-pc-modules</packagereq>
         <packagereq>grub2-efi-x64</packagereq>
     </packagelist>
+    <packagelist type="edge_loongarch64">
+        <packagereq>grub2-efi-loongarch64</packagereq>
+        <packagereq>grub2-efi-loongarch64-cdboot</packagereq>
+        <packagereq>grub2-efi-loongarch64-modules</packagereq>
+    </packagelist>
     <packagelist type="edge_common">
-        <packagereq>kubernetes</packagereq>
-        <packagereq>kubernetes-client</packagereq>
-        <packagereq>kubernetes-help</packagereq>
-        <packagereq>kubernetes-kubeadm</packagereq>
-        <packagereq>kubernetes-kubelet</packagereq>
-        <packagereq>kubernetes-master</packagereq>
-        <packagereq>kubernetes-node</packagereq>
-        <packagereq type="default">k3s</packagereq>
-        <packagereq type="default">k3s-selinux</packagereq>
-        <packagereq type="default">k3s-plugins</packagereq>
-        <packagereq type="default">k3s-containerd</packagereq>
         <packagereq>grub2-common</packagereq>
         <packagereq>grub2-tools-minimal</packagereq>
         <packagereq>grub2-tools-extra</packagereq>
@@ -1444,7 +1479,6 @@
         <packagereq>grub2-help</packagereq>
         <packagereq>lvm2-help</packagereq>
         <packagereq>lvm2</packagereq>
-        <packagereq>shim</packagereq>
         <packagereq>mdadm</packagereq>
         <packagereq>mdadm-help</packagereq>
         <packagereq>dosfstools-help</packagereq>

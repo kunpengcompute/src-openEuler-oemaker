@@ -118,15 +118,14 @@
       <packagereq type="mandatory">firewalld</packagereq>
       <packagereq type="mandatory">gfs2-utils</packagereq>
       <packagereq type="mandatory">glibc-all-langpacks</packagereq>
-      <packagereq type="mandatory">grub2-efi-x64</packagereq>
-      <packagereq type="mandatory">grub2-efi-x64-cdboot</packagereq>
+      <packagereq type="mandatory">grub2-efi-riscv64</packagereq>
+      <packagereq type="mandatory">grub2-efi-riscv64-cdboot</packagereq>
       <packagereq type="mandatory">grub2-tools</packagereq>
       <packagereq type="mandatory">grub2-tools-extra</packagereq>
       <packagereq type="mandatory">iscsi-initiator-utils</packagereq>
       <packagereq type="mandatory">lvm2</packagereq>
       <packagereq type="mandatory">mdadm</packagereq>
       <packagereq type="mandatory">realmd</packagereq>
-      <packagereq type="mandatory">shim</packagereq>
       <packagereq type="mandatory">libteam</packagereq>
       <packagereq type="mandatory">tmux</packagereq>
       <packagereq type="mandatory">xfsprogs</packagereq>
@@ -368,8 +367,6 @@
       <packagereq type="default">pesign</packagereq>
       <packagereq type="default">source-highlight</packagereq>
       <packagereq type="default">systemtap</packagereq>
-      <packagereq type="default">valgrind</packagereq>
-      <packagereq type="default">valgrind-devel</packagereq>
       <packagereq type="optional">babel</packagereq>
       <packagereq type="optional">chrpath</packagereq>
       <packagereq type="optional">expect</packagereq>
@@ -770,7 +767,6 @@
       <packagereq type="default">hwloc</packagereq>
       <packagereq type="default">mstflint</packagereq>
       <packagereq type="default">qperf</packagereq>
-      <packagereq type="optional">libvma</packagereq>
     </packagelist>
   </group>
   <group>
@@ -1304,7 +1300,6 @@
       <packagereq type="optional">net-snmp-utils</packagereq>
       <packagereq type="optional">oddjob</packagereq>
       <packagereq type="optional">oddjob-mkhomedir</packagereq>
-      <packagereq type="optional">rear</packagereq>
       <packagereq type="optional">sysstat</packagereq>
       <packagereq type="optional">x3270-x11</packagereq>
     </packagelist>
