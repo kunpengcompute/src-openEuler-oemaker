@@ -117,10 +117,10 @@
       <packagereq type="default">kubernetes-kubelet</packagereq>
       <packagereq type="default">kubernetes-master</packagereq>
       <packagereq type="default">kubernetes-node</packagereq>
-      <packagereq type="default">kubeedge-cloudcore</packagereq>
-      <packagereq type="default">kubeedge-edgecore</packagereq>
-      <packagereq type="default">kubeedge-edgesite</packagereq>
-      <packagereq type="default">kubeedge-keadm</packagereq>
+      <packagereq type="default">k3s</packagereq>
+      <packagereq type="default">k3s-selinux</packagereq>
+      <packagereq type="default">k3s-plugins</packagereq>
+      <packagereq type="default">k3s-containerd</packagereq>
       <packagereq type="default">mdadm</packagereq>
       <packagereq type="default">mdadm-help</packagereq>
     </packagelist>

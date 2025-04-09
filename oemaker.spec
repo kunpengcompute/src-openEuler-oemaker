@@ -6,12 +6,16 @@
 %global efi_x64 1
 %endif
 
+%ifarch loongarch64
+%global efi_loongarch64 1
+%endif
+
 Name:           oemaker
 Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
-Version:        3.1.0
-Release:        10
+Version:        3.2.0
+Release:        13
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -22,12 +26,24 @@ Source4:        edge_normal_aarch64.xml
 Source5:        edge_normal_x86_64.xml
 Source6:        desktop_normal_aarch64.xml
 Source7:        desktop_normal_x86_64.xml
+Source8:        rpmlist_riscv64.xml
+Source9:        normal_riscv64.xml
+Source10:	normal_loongarch64.xml
+Source11:	rpmlist_loongarch64.xml
+Source12:	desktop_normal_loongarch64.xml
+Source13:       edge_normal_riscv64.xml
+
 
 Requires:       createrepo dnf-plugins-core genisoimage isomd5sum grep bash libselinux-utils libxml2 anaconda libselinux-utils
 Requires:       lorax >= 19.6.78-1
+%ifarch loongarch64
+Requires:       xorriso
+%endif
 
 # Patch here
 Patch0001:      0001-bugfix-IABY7K.patch
+Patch0002:      0001-fix-livecd-grub2-efi.cfg-not-found.patch
+Patch0003:	enable-efi-boot-for-loongarch64.patch
 
 %description
 a building tool for DVD ISO making and ISO cutting
@@ -54,8 +70,15 @@ rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/aarch64/normal.xm
 cp %{SOURCE1} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/aarch64/normal.xml
 rm -rf  %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/x86_64/normal.xml
 cp %{SOURCE2} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/x86_64/normal.xml
+rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/loongarch64/normal.xml
+cp %{SOURCE10} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/loongarch64/normal.xml
+%ifarch loongarch64
+rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/rpmlist.xml
+cp %{SOURCE11} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/rpmlist.xml
+%else
 rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/rpmlist.xml
 cp %{SOURCE3} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/rpmlist.xml
+%endif
 rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/aarch64/edge_normal.xml
 cp %{SOURCE4} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/aarch64/edge_normal.xml
 rm -rf  %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/x86_64/edge_normal.xml
@@ -64,8 +87,19 @@ rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/aarch64/desktop_n
 cp %{SOURCE6} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/aarch64/desktop_normal.xml
 rm -rf  %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/x86_64/desktop_normal.xml
 cp %{SOURCE7} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/x86_64/desktop_normal.xml
+rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/loongarch64/desktop_normal.xml
+cp %{SOURCE12} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/loongarch64/desktop_normal.xml
 cd %{_builddir}/%{name}-%{version}/%{name}
 %autopatch -p1
+%ifarch riscv64
+rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/rpmlist.xml
+cp %{SOURCE8} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/rpmlist.xml
+rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/normal.xml
+cp %{SOURCE9} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/normal.xml
+rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/edge_normal.xml
+cp %{SOURCE13} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/edge_normal.xml
+%endif
+
 
 %install
 sys_arch=$(uname -m)
@@ -101,8 +135,16 @@ install -m 400 %{name}/isomaker/config/${sys_arch}/standard.conf %{buildroot}/op
 %ifarch x86_64
 install -m 700 %{name}/isomaker/config/x86_64/livecd/live/x86.tmpl %{buildroot}/opt/oemaker/config/x86_64/livecd/live/x86.tmpl
 install -m 400 %{name}/isomaker/config/x86_64/ks.cfg %{buildroot}/opt/oemaker/config/x86_64/ks.cfg
-%else
+%endif
+%ifarch aarch64
 install -m 700 %{name}/isomaker/config/aarch64/livecd/live/aarch64.tmpl %{buildroot}/opt/oemaker/config/aarch64/livecd/live/aarch64.tmpl
+%endif
+%ifarch riscv64
+install -m 700 %{name}/isomaker/config/riscv64/livecd/live/riscv64.tmpl %{buildroot}/opt/oemaker/config/riscv64/livecd/live/riscv64.tmpl
+%endif
+%ifarch loongarch64
+install -m 700 %{name}/isomaker/config/loongarch64/livecd/live/loongarch64.tmpl %{buildroot}/opt/oemaker/config/loongarch64/livecd/live/loongarch64.tmpl
+install -m 400 %{name}/isomaker/config/loongarch64/ks.cfg %{buildroot}/opt/oemaker/config/loongarch64/ks.cfg
 %endif
 install -m 700 %{name}/isomaker/config/common/livecd/live/* %{buildroot}/opt/oemaker/config/common/livecd/live/
 install -m 400 %{name}/isomaker/config/common/livecd/root_pwd %{buildroot}/opt/oemaker/config/common/livecd/root_pwd
@@ -173,6 +215,11 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Tue Apr 8 2025 xiangyuning <xiangyuning@huawei.com> - 3.2.0-13
+- ID:NA
+- SUG:NA
+- DESC: upgrade to 3.2.0 and sync change from 2403-sp1
+
 * Mon Mar 24 2025 wangchong <wangchong56@huawei.com> - 3.1.0-10
 - ID:NA
 - SUG:NA

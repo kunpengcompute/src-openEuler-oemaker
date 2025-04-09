@@ -1,0 +1,23 @@
+From 54a698db663b89b826b0f2ef183b95a8730e1d03 Mon Sep 17 00:00:00 2001
+From: ouuleilei <wangliu@iscas.ac.cn>
+Date: Mon, 23 Dec 2024 15:07:22 +0800
+Subject: [PATCH] fix livecd grub2-efi.cfg not found
+
+---
+ .../livecd/live/config_files/riscv64/{grub.cfg => grub.conf}      | 0
+ .../live/config_files/riscv64/{grub-efi.cfg => grub2-efi.cfg}     | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ rename isomaker/config/riscv64/livecd/live/config_files/riscv64/{grub.cfg => grub.conf} (100%)
+ rename isomaker/config/riscv64/livecd/live/config_files/riscv64/{grub-efi.cfg => grub2-efi.cfg} (100%)
+
+diff --git a/isomaker/config/riscv64/livecd/live/config_files/riscv64/grub.cfg b/isomaker/config/riscv64/livecd/live/config_files/riscv64/grub.conf
+similarity index 100%
+rename from isomaker/config/riscv64/livecd/live/config_files/riscv64/grub.cfg
+rename to isomaker/config/riscv64/livecd/live/config_files/riscv64/grub.conf
+diff --git a/isomaker/config/riscv64/livecd/live/config_files/riscv64/grub-efi.cfg b/isomaker/config/riscv64/livecd/live/config_files/riscv64/grub2-efi.cfg
+similarity index 100%
+rename from isomaker/config/riscv64/livecd/live/config_files/riscv64/grub-efi.cfg
+rename to isomaker/config/riscv64/livecd/live/config_files/riscv64/grub2-efi.cfg
+-- 
+2.47.1
+
