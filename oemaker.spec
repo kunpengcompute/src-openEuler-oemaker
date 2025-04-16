@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        5
+Release:        6
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -224,6 +224,11 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Tue Apr 15 2025 Liu Wang <1823363429@qq.com> - 3.3.0-6
+- ID:NA
+- SUG:NA
+- DESC: sync 25.03 modify to master branch and add roo-code, uv, python3-mcp packages
+
 * Sat Mar 22 2025 Funda Wang <fundawang@yeah.net> - 3.3.0-5
 - ID:NA
 - SUG:NA
