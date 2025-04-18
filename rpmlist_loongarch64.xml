@@ -191,6 +191,7 @@
         <packagereq>at</packagereq>
         <packagereq>at-help</packagereq>
         <packagereq>attr</packagereq>
+        <packagereq>attr-help</packagereq>
         <packagereq>audiofile</packagereq>
         <packagereq>audit</packagereq>
         <packagereq>audit-help</packagereq>
@@ -876,6 +877,7 @@
         <packagereq>lockdev</packagereq>
         <packagereq>lockdev-help</packagereq>
         <packagereq>logrotate</packagereq>
+        <packagereq>logrotate-help</packagereq>
         <packagereq>lshw</packagereq>
         <packagereq>lshw-help</packagereq>
         <packagereq>lsof</packagereq>

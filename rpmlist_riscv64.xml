@@ -41,6 +41,23 @@
         <packagereq>gnome-boxes</packagereq>
         <packagereq>nodejs-grunt-contrib-watch</packagereq>
 	<packagereq>python3-keras-rl2</packagereq>
+        <packagereq>kernel-rt</packagereq>
+        <packagereq>kernel-rt-tools</packagereq>
+        <packagereq>kernel-rt-source</packagereq>
+        <packagereq>kernel-rt-devel</packagereq>
+        <packagereq>kernel-rt-headers</packagereq>
+        <packagereq>kernel-rt-tools-devel</packagereq>
+        <packagereq>raspberrypi-kernel</packagereq>
+        <packagereq>raspberrypi-kernel-devel</packagereq>
+        <packagereq>raspberrypi-kernel-rt</packagereq>
+        <packagereq>raspberrypi-kernel-rt-devel</packagereq>
+        <packagereq>haoc-kernel</packagereq>
+        <packagereq>haoc-kernel-source</packagereq>
+        <packagereq>haoc-kernel-tools</packagereq>
+        <packagereq>haoc-kernel-tools-devel</packagereq>
+        <packagereq>haoc-kernel-devel</packagereq>
+        <packagereq>haoc-kernel-headers</packagereq>
+    	<packagereq>nvwa</packagereq>
     </packagelist>
     <packagelist type="src_exclude">
         <packagereq>drbd</packagereq>
@@ -51,12 +68,20 @@
         <packagereq>mchange-commons</packagereq>
         <packagereq>metrics</packagereq>
 	<packagereq>typesafe-config</packagereq>
+        <packagereq>haoc-kernel</packagereq>
+        <packagereq>kernel-rt</packagereq>
+        <packagereq>raspberrypi-kernel</packagereq>
+        <packagereq>raspberrypi-kernel-rt</packagereq>
     </packagelist>
     <packagelist type="everything_debug_exclude">
         <packagereq>drbd-debuginfo</packagereq>
         <packagereq>drbd-debugsource</packagereq>
         <packagereq>gnome-boxes-debuginfo</packagereq>
         <packagereq>gnome-boxes-debugsource</packagereq>
+        <packagereq>kernel-rt-debuginfo</packagereq>
+        <packagereq>kernel-rt-debugsource</packagereq>
+        <packagereq>kernel-rt-tools-debuginfo</packagereq>
+        <packagereq>haoc-kernel-debugsource</packagereq>
     </packagelist>
     <packagelist type="aarch64">
         <packagereq>edk2-aarch64</packagereq>
@@ -72,6 +97,7 @@
         <packagereq>kata-containers</packagereq>
         <packagereq>DCF</packagereq>
         <packagereq>opengauss</packagereq>
+        <packagereq>oeAware-manager</packagereq>
     </packagelist>
     <packagelist type="x86_64">
         <packagereq>edk2-ovmf</packagereq>
@@ -87,6 +113,7 @@
         <packagereq>edk2-ovmf-riscv64</packagereq>
         <packagereq>grub2-efi-riscv64</packagereq>
         <packagereq>grub2-efi-riscv64-modules</packagereq>
+        <packagereq>oeAware-manager</packagereq>
     </packagelist>
     <packagelist type="common">
         <packagereq>abattis-cantarell-fonts</packagereq>
@@ -119,6 +146,7 @@
         <packagereq>at</packagereq>
         <packagereq>at-help</packagereq>
         <packagereq>attr</packagereq>
+        <packagereq>attr-help</packagereq>
         <packagereq>atune</packagereq>
         <packagereq>atune-client</packagereq>
         <packagereq>atune-db</packagereq>
@@ -479,6 +507,7 @@
         <packagereq>json-c-help</packagereq>
         <packagereq>json-glib</packagereq>
         <packagereq>json-glib-help</packagereq>
+        <packagereq>kata-containers</packagereq>
         <packagereq>kbd</packagereq>
         <packagereq>kbd-help</packagereq>
         <packagereq>kbd-legacy</packagereq>
@@ -814,6 +843,7 @@
         <packagereq>lockdev</packagereq>
         <packagereq>lockdev-help</packagereq>
         <packagereq>logrotate</packagereq>
+        <packagereq>logrotate-help</packagereq>
         <packagereq>lshw</packagereq>
         <packagereq>lshw-help</packagereq>
         <packagereq>lsof</packagereq>
@@ -1312,6 +1342,7 @@
         <packagereq>tpm2-abrmd</packagereq>
         <packagereq>tpm2-abrmd-help</packagereq>
         <packagereq>tpm2-tools</packagereq>
+        <packagereq>tpm2-tools-help</packagereq>
         <packagereq>tpm2-tss</packagereq>
         <packagereq>tpm2-tss-help</packagereq>
         <packagereq>traceroute</packagereq>
@@ -1393,7 +1424,8 @@
         <packagereq>zziplib-utils</packagereq>
         <packagereq>unixODBC-devel</packagereq>
         <packagereq>jemalloc-devel</packagereq>
-
+        <packagereq>DCF</packagereq>
+        <packagereq>opengauss</packagereq>
     </packagelist>
     <packagelist type="edge_aarch64">
         <packagereq>grub2-efi-aa64</packagereq>
@@ -1417,6 +1449,13 @@
         <packagereq>grub2-pc-modules</packagereq>
         <packagereq>grub2-efi-x64</packagereq>
         <packagereq>shim</packagereq>
+    </packagelist>
+    <packagelist type="edge_riscv64">
+        <packagereq>grub2-efi-riscv64</packagereq>
+        <packagereq>grub2-efi-riscv64-cdboot</packagereq>
+        <packagereq>grub2-efi-riscv64-modules</packagereq>
+    </packagelist>
+    <packagelist type="edge_common">
         <packagereq>kubernetes</packagereq>
         <packagereq>kubernetes-client</packagereq>
         <packagereq>kubernetes-help</packagereq>
@@ -1428,8 +1467,10 @@
         <packagereq>kubeedge-edgecore</packagereq>
         <packagereq>kubeedge-edgesite</packagereq>
         <packagereq>kubeedge-keadm</packagereq>
-    </packagelist>
-    <packagelist type="edge_common">
+        <packagereq>k3s</packagereq>
+        <packagereq>k3s-selinux</packagereq>
+        <packagereq>k3s-plugins</packagereq>
+        <packagereq>k3s-containerd</packagereq>
         <packagereq>grub2-common</packagereq>
         <packagereq>grub2-tools-minimal</packagereq>
         <packagereq>grub2-tools-extra</packagereq>

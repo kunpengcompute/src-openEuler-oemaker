@@ -295,6 +295,7 @@
       <packagereq type="default">authselect</packagereq>
       <packagereq type="default">dnf-plugins-core</packagereq>
       <packagereq type="default">dracut-config-rescue</packagereq>
+      <packagereq type="default">iptables-nft</packagereq>
       <packagereq type="default">kernel-tools</packagereq>
       <packagereq type="default">sysfsutils</packagereq>
       <packagereq type="default">linux-firmware</packagereq>
@@ -303,6 +304,7 @@
       <packagereq type="default">rsyslog</packagereq>
       <packagereq type="default">security-tool</packagereq>
       <packagereq type="default">sg3_utils</packagereq>
+	  <packagereq type="default">systemd-cryptsetup</packagereq>
       <packagereq type="optional">dracut-config-generic</packagereq>
       <packagereq type="optional">dracut-network</packagereq>
       <packagereq type="optional">rdma-core</packagereq>
