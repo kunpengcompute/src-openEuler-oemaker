@@ -1083,7 +1083,7 @@
       <packagereq type="mandatory">libcurl-devel</packagereq>
       <packagereq type="mandatory">libjpeg-turbo</packagereq>
       <packagereq type="mandatory">libjpeg-turbo-devel</packagereq>
-      <packagereq type="mandatory">python3-magic</packagereq>
+      <packagereq type="mandatory">python3-file-magic</packagereq>
     </packagelist>
   </group>
   <group>
