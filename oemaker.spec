@@ -14,8 +14,8 @@ Name:           oemaker
 Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
-Version:        3.2.0
-Release:        14
+Version:        3.3.0
+Release:        7
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -31,8 +31,9 @@ Source9:        normal_riscv64.xml
 Source10:	normal_loongarch64.xml
 Source11:	rpmlist_loongarch64.xml
 Source12:	desktop_normal_loongarch64.xml
-Source13:       edge_normal_riscv64.xml
-
+Source13:       devstation_aarch64_rpmlist
+Source14:       devstation_x86_64_rpmlist
+Source15:       edge_normal_riscv64.xml
 
 Requires:       createrepo dnf-plugins-core genisoimage isomd5sum grep bash libselinux-utils libxml2 anaconda libselinux-utils
 Requires:       lorax >= 19.6.78-1
@@ -43,7 +44,7 @@ Requires:       xorriso
 # Patch here
 Patch0001:      0001-bugfix-IABY7K.patch
 Patch0002:      0001-fix-livecd-grub2-efi.cfg-not-found.patch
-Patch0003:	enable-efi-boot-for-loongarch64.patch
+Patch0003:      0001-Fixes-boot-failure-caused-by-invalid-volume-IDs.patch
 
 %description
 a building tool for DVD ISO making and ISO cutting
@@ -89,6 +90,10 @@ rm -rf  %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/x86_64/desktop_n
 cp %{SOURCE7} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/x86_64/desktop_normal.xml
 rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/loongarch64/desktop_normal.xml
 cp %{SOURCE12} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/loongarch64/desktop_normal.xml
+rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/aarch64/livecd/devstation_rpmlist
+cp %{SOURCE13} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/aarch64/livecd/devstation_rpmlist
+rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/x86_64/livecd/devstation_rpmlist
+cp %{SOURCE14} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/x86_64/livecd/devstation_rpmlist
 cd %{_builddir}/%{name}-%{version}/%{name}
 %autopatch -p1
 %ifarch riscv64
@@ -97,7 +102,7 @@ cp %{SOURCE8} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/rpmlist.xm
 rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/normal.xml
 cp %{SOURCE9} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/normal.xml
 rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/edge_normal.xml
-cp %{SOURCE13} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/edge_normal.xml
+cp %{SOURCE15} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/edge_normal.xml
 %endif
 
 
@@ -108,6 +113,7 @@ mkdir -p %{buildroot}/opt/oemaker
 mkdir -p %{buildroot}/opt/oemaker/config
 mkdir -p %{buildroot}/opt/oemaker/config/${sys_arch}
 mkdir -p %{buildroot}/opt/oemaker/config/${sys_arch}/livecd/live/config_files/${sys_arch}
+mkdir -p %{buildroot}/opt/oemaker/config/${sys_arch}/livecd/devstation_live/config_files/${sys_arch}
 mkdir -p %{buildroot}/opt/oemaker/config/common
 mkdir -p %{buildroot}/opt/oemaker/config/common/livecd/live
 mkdir -p %{buildroot}/opt/oemaker/docs
@@ -126,18 +132,30 @@ install -m 700 %{name}/isomaker/env_record.sh %{buildroot}/opt/oemaker/env_recor
 install -m 700 %{name}/isomaker/env_restore.sh %{buildroot}/opt/oemaker/env_restore.sh
 install -m 400 %{name}/isomaker/config/rpmlist.xml %{buildroot}/opt/oemaker/config/rpmlist.xml
 install -m 640 %{name}/isomaker/config/${sys_arch}/livecd/live/config_files/${sys_arch}/* %{buildroot}/opt/oemaker/config/${sys_arch}/livecd/live/config_files/${sys_arch}/
+install -m 640 %{name}/isomaker/config/${sys_arch}/livecd/devstation_live/config_files/${sys_arch}/* %{buildroot}/opt/oemaker/config/${sys_arch}/livecd/devstation_live/config_files/${sys_arch}/
 install -m 400 %{name}/isomaker/config/${sys_arch}/livecd/livecd_${sys_arch}.ks %{buildroot}/opt/oemaker/config/${sys_arch}/livecd/livecd_${sys_arch}.ks
+install -m 400 %{name}/isomaker/config/${sys_arch}/livecd/devstation_livecd_${sys_arch}.ks %{buildroot}/opt/oemaker/config/${sys_arch}/livecd/devstation_livecd_${sys_arch}.ks
 install -m 600 %{name}/isomaker/config/${sys_arch}/livecd/rpmlist %{buildroot}/opt/oemaker/config/${sys_arch}/livecd/rpmlist
+install -m 600 %{name}/isomaker/config/${sys_arch}/livecd/devstation_rpmlist %{buildroot}/opt/oemaker/config/${sys_arch}/livecd/devstation_rpmlist
 install -m 400 %{name}/isomaker/config/${sys_arch}/desktop_normal.xml %{buildroot}/opt/oemaker/config/${sys_arch}/desktop_normal.xml
 install -m 400 %{name}/isomaker/config/${sys_arch}/edge_normal.xml %{buildroot}/opt/oemaker/config/${sys_arch}/edge_normal.xml
 install -m 400 %{name}/isomaker/config/${sys_arch}/normal.xml %{buildroot}/opt/oemaker/config/${sys_arch}/normal.xml
 install -m 400 %{name}/isomaker/config/${sys_arch}/standard.conf %{buildroot}/opt/oemaker/config/${sys_arch}/standard.conf
 %ifarch x86_64
 install -m 700 %{name}/isomaker/config/x86_64/livecd/live/x86.tmpl %{buildroot}/opt/oemaker/config/x86_64/livecd/live/x86.tmpl
+install -m 700 %{name}/isomaker/config/x86_64/livecd/devstation_live/x86.tmpl %{buildroot}/opt/oemaker/config/x86_64/livecd/devstation_live/x86.tmpl
 install -m 400 %{name}/isomaker/config/x86_64/ks.cfg %{buildroot}/opt/oemaker/config/x86_64/ks.cfg
 %endif
 %ifarch aarch64
 install -m 700 %{name}/isomaker/config/aarch64/livecd/live/aarch64.tmpl %{buildroot}/opt/oemaker/config/aarch64/livecd/live/aarch64.tmpl
+install -m 700 %{name}/isomaker/config/aarch64/livecd/devstation_live/aarch64.tmpl %{buildroot}/opt/oemaker/config/aarch64/livecd/devstation_live/aarch64.tmpl
+%endif
+%ifarch riscv64
+install -m 700 %{name}/isomaker/config/riscv64/livecd/live/riscv64.tmpl %{buildroot}/opt/oemaker/config/riscv64/livecd/live/riscv64.tmpl
+%endif
+%ifarch loongarch64
+install -m 700 %{name}/isomaker/config/loongarch64/livecd/live/loongarch64.tmpl %{buildroot}/opt/oemaker/config/loongarch64/livecd/live/loongarch64.tmpl
+install -m 400 %{name}/isomaker/config/loongarch64/ks.cfg %{buildroot}/opt/oemaker/config/loongarch64/ks.cfg
 %endif
 %ifarch riscv64
 install -m 700 %{name}/isomaker/config/riscv64/livecd/live/riscv64.tmpl %{buildroot}/opt/oemaker/config/riscv64/livecd/live/riscv64.tmpl
@@ -147,6 +165,7 @@ install -m 700 %{name}/isomaker/config/loongarch64/livecd/live/loongarch64.tmpl 
 install -m 400 %{name}/isomaker/config/loongarch64/ks.cfg %{buildroot}/opt/oemaker/config/loongarch64/ks.cfg
 %endif
 install -m 700 %{name}/isomaker/config/common/livecd/live/* %{buildroot}/opt/oemaker/config/common/livecd/live/
+install -m 700 %{name}/isomaker/config/common/livecd/live/* %{buildroot}/opt/oemaker/config/${sys_arch}/livecd/devstation_live/
 install -m 400 %{name}/isomaker/config/common/livecd/root_pwd %{buildroot}/opt/oemaker/config/common/livecd/root_pwd
 install -m 700 %{name}/isomaker/docs/* %{buildroot}/opt/oemaker/docs/
 cp -ar %{name}/isomaker/80-openeuler %{buildroot}/opt/oemaker/
@@ -215,40 +234,109 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
-* Wed Apr 09 2025 Funda Wang <fundawang@yeah.net> - 3.2.0-14
+* Fri Apr 18 2025 Liu Wang <1823363429@qq.com> - 3.3.0-7
 - ID:NA
 - SUG:NA
-- DESC: vinagre has been archived into recycle sig
+- DESC: sync openEuler-24.03-LTS-SP2 branch to master
 
-* Tue Apr 8 2025 xiangyuning <xiangyuning@huawei.com> - 3.2.0-13
+* Tue Apr 15 2025 Liu Wang <1823363429@qq.com> - 3.3.0-6
 - ID:NA
 - SUG:NA
-- DESC: upgrade to 3.2.0 and sync change from 2403-sp1
+- DESC: sync 25.03 modify to master branch and add roo-code, uv, python3-mcp packages
 
-* Mon Mar 24 2025 wangchong <wangchong56@huawei.com> - 3.1.0-10
+* Sat Mar 22 2025 Funda Wang <fundawang@yeah.net> - 3.3.0-5
 - ID:NA
 - SUG:NA
-- DESC: delete libvirt and initial-setup-gui
+- DESC: logrotate-help was merged into logrotate
 
-* Fri Mar 14 2025 wangchong <wangchong56@huawei.com> - 3.1.0-9
+* Fri Mar 14 2025 wangchong <wangchong56@huawei.com> - 3.3.0-4
 - ID:NA
 - SUG:NA
-- DESC: add kernel-rt, raspberrypi-kernel, raspberrypi-kernel-rt, haoc-kernel, vk-kernel and kernel-extra-modules tothe exclude tag
+- DESC: add kernel-rt, raspberrypi-kernel, raspberrypi-kernel-rt, haoc-kernel, vk-kernel and kernel-extra-modules to the exclude tag
 
-* Thu Dec 5 2024 zhaolichang <zhaolichang@huawei.com> - 3.1.0-8
+* Mon Mar 3 2025 hugel <gengqihu2@h-partners.com> - 3.3.0-3
+- ID:NA
+- SUG:NA
+- DESC: Fix boot failure caused by invalid volume IDs
+
+* Thu Jan 23 2025 Funda Wang <fundawang@yeah.net> - 3.3.0-2
+- ID:NA
+- SUG:NA
+- DESC: tpm2-tools-help was merged into tpm2-tools as of Oct 2024
+- DESC: attr-help was merged into attr as of Dec 2024
+- DESC: xorg-x11-utils was retired as of Dec 2024
+
+* Thu Jan 23 2025 Li Ping <1477412247@qq.com> - 3.3.0-1
+- ID:NA
+- SUG:NA
+- DESC: add new iso_type devstation devstation_netinst support for oemaker and update to 3.3.0
+
+* Mon Dec 30 2024 Wenlong Zhang <zhangwenlong@loongson.cn> - 3.2.0-11
+- ID:NA
+- SUG:NA
+- DESC: add rpmlist.xml normal.xml for loongarch64
+	enable efi boot for loongarch64
+
+* Tue Dec 24 2024 Ouuleilei <wangliu@iscas.ac.cn> - 3.2.0-10
+- fix riscv64 livecd grub2-efi.cfg not found 
+
+* Fri Dec 20 2024 wangchong <wangchong56@huawei.com> - 3.2.0-9
+- ID:NA
+- SUG:NA
+- DESC: add kernel-rt, raspberrypi-kernel, raspberrypi-kernel-rt and haoc-kernel to the exclude tag
+
+* Fri Dec 6 2024 yangchaohao <yangchaohao@huawei.com> - 3.2.0-8
+- ID:NA
+- SUG:NA
+- DESC: edge_ISO change kubeedge to k3s
+
+* Thu Dec 5 2024 zhaolichang <zhaolichang@huawei.com> - 3.2.0-7
 - ID:NA
 - SUG:NA
 - DESC: delete libkperf in rpmlist.xml
 
-* Tue Dec 3 2024 zhaolichang <zhaolichang@huawei.com> - 3.1.0-7
+* Wed Dec 4 2024 zhaolichang <zhaolichang@huawei.com> - 3.2.0-6
+- ID:NA
+- SUG:NA
+- DESC: delete libkperf and oeAware-manager in minimal install
+
+* Tue Dec 3 2024 sunsuwan <sunsuwan3@huawei.com> - 3.2.0-5
+- ID:NA
+- SUG:NA
+- DESC: use xtables-nft instead of xtables-legacy for high performance
+
+* Tue Dec 3 2024 zhaolichang <zhaolichang@huawei.com> - 3.2.0-4
 - ID:NA
 - SUG:NA
 - DESC: add libkperf and oeAware-manager
 
-* Wed Jul 10 2024 wangchong <wangchong56@huawei.com> - 3.1.0-6
+* Wed Sep 18 2024 xiangyuning <xiangyuning@huawei.com> - 3.2.0-3
+- ID:NA
+- SUG:NA
+- DESC: enable encrypt need install systemd-cryptsetup package
+
+* Mon Sep 23 2024 Ouuleilei <wangliu@iscas.ac.cn> - 3.2.0-2
+- fix riscv64.tmpl file miss problem and add riscv64 rpmlist.xml normal.xml
+
+* Wed Sep 18 2024 xiangyuning <xiangyuning@huawei.com> - 3.2.0-1
+- ID:NA
+- SUG:NA
+- upgrade to 3.2.0
+
+* Wed Jul 10 2024 wangchong <wangchong56@huawei.com> - 3.1.0-8
 - ID:NA
 - SUG:NA
 - DESC: fix issue IABY7K
+
+* Thu Mar 28 2024 mayunlong <mayunlong6@huawei.com> - 3.1.0-7
+- ID:NA
+- SUG:NA
+- DESC: delete libvirt package
+
+* Wed Mar 20 2024 sunhai <sunhai10@huawei.com> - 3.1.0-6
+- ID:NA
+- SUG:NA
+- DESC: delete initial-setup-gui
 
 * Tue Mar 19 2024 sunhai <sunhai10@huawei.com> - 3.1.0-5
 - ID:NA
