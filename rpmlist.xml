@@ -1433,10 +1433,6 @@
         <packagereq>kubernetes-kubelet</packagereq>
         <packagereq>kubernetes-master</packagereq>
         <packagereq>kubernetes-node</packagereq>
-        <packagereq>kubernetes-cloudcore</packagereq>
-        <packagereq>kubernetes-edgecore</packagereq>
-        <packagereq>kubernetes-edgesite</packagereq>
-        <packagereq>kubernetes-keadm</packagereq>
         <packagereq type="default">k3s</packagereq>
         <packagereq type="default">k3s-selinux</packagereq>
         <packagereq type="default">k3s-plugins</packagereq>
