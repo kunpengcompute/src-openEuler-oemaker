@@ -187,6 +187,7 @@ oedp
 kernel-extra-modules
 epkg
 euler-copilot-shell
+euler-copilot-desktop
 vscodium
 oegitext
 kf5-kcalendarcore-devel
@@ -212,4 +213,3 @@ roo-code
 uv
 python3-mcp
 nodejs-packaging
-euler-copilot-web
