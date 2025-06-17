@@ -16,22 +16,6 @@
         <packagereq>python3-abrt-container-addon</packagereq>
     </packagelist>
     <packagelist type="exclude">
-        <packagereq>texlive-collection-bibtexextra</packagereq>
-        <packagereq>texlive-collection-mathscience</packagereq>
-        <packagereq>texlive-collection-latexextra</packagereq>
-        <packagereq>texlive-collection-fontsextra</packagereq>
-        <packagereq>texlive-ctanupload</packagereq>
-        <packagereq>texlive-exceltex</packagereq>
-        <packagereq>texlive-latexindent</packagereq>
-        <packagereq>texlive-biblatex-apa</packagereq>
-        <packagereq>texlive-collection-binextra</packagereq>
-        <packagereq>texlive-collection-fontutils</packagereq>
-        <packagereq>texlive-includernw</packagereq>
-        <packagereq>texlive-oldstandard</packagereq>
-        <packagereq>texlive-scheme-full</packagereq>
-        <packagereq>texlive-scheme-gust</packagereq>
-        <packagereq>texlive-scheme-medium</packagereq>
-        <packagereq>texlive-scheme-tetex</packagereq>
         <packagereq>drbd</packagereq>
         <packagereq>drbd-bash-completion</packagereq>
         <packagereq>drbd-pacemaker</packagereq>
