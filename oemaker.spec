@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        13
+Release:        14
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -45,6 +45,7 @@ Requires:       xorriso
 Patch0001:      0001-bugfix-IABY7K.patch
 Patch0002:      0001-fix-livecd-grub2-efi.cfg-not-found.patch
 Patch0003:      0001-Fixes-boot-failure-caused-by-invalid-volume-IDs.patch
+Patch0004:      0001-fix-riscv64-devstation-livecd-config-not-found.patch
 
 %description
 a building tool for DVD ISO making and ISO cutting
@@ -152,6 +153,7 @@ install -m 700 %{name}/isomaker/config/aarch64/livecd/devstation_live/aarch64.tm
 %endif
 %ifarch riscv64
 install -m 700 %{name}/isomaker/config/riscv64/livecd/live/riscv64.tmpl %{buildroot}/opt/oemaker/config/riscv64/livecd/live/riscv64.tmpl
+install -m 700 %{name}/isomaker/config/riscv64/livecd/devstation_live/riscv64.tmpl %{buildroot}/opt/oemaker/config/riscv64/livecd/devstation_live/riscv64.tmpl
 %endif
 %ifarch loongarch64
 install -m 700 %{name}/isomaker/config/loongarch64/livecd/live/loongarch64.tmpl %{buildroot}/opt/oemaker/config/loongarch64/livecd/live/loongarch64.tmpl
@@ -234,6 +236,9 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Mon Jun 16 2025 Ouuleilei <wangliu@iscas.ac.cn> - 3.3.0-14
+- remove texlive packages from exclude list and fix riscv64 devstation livecd config not found 
+
 * Wed Jun 04 2025 Shi Hongyu <shywzt@iCloud.com> - 3.3.0-13
 - ID:NA
 - SUG:NA
