@@ -351,7 +351,6 @@
         <packagereq>findutils</packagereq>
         <packagereq>findutils-help</packagereq>
         <packagereq>fipscheck</packagereq>
-        <packagereq>fipscheck-help</packagereq>
         <packagereq>firewalld</packagereq>
         <packagereq>firewalld-doc</packagereq>
         <packagereq>firewalld-filesystem</packagereq>
@@ -853,7 +852,6 @@
         <packagereq>lz4-libs</packagereq>
         <packagereq>lz4-devel</packagereq>
         <packagereq>lzo</packagereq>
-        <packagereq>lzo-help</packagereq>
         <packagereq>lzo-minilzo</packagereq>
         <packagereq>lzop</packagereq>
         <packagereq>lzop-help</packagereq>

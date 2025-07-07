@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        11
+Release:        12
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -45,6 +45,7 @@ Requires:       xorriso
 Patch0001:      0001-bugfix-IABY7K.patch
 Patch0002:      0001-fix-livecd-grub2-efi.cfg-not-found.patch
 Patch0003:      0001-Fixes-boot-failure-caused-by-invalid-volume-IDs.patch
+Patch0004:      0002-delete-package-xorg-x11-server-utils.patch
 
 %description
 a building tool for DVD ISO making and ISO cutting
@@ -234,6 +235,11 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Mon Jul 07 2025 wangchong <wangchong56@huawei.com> - 3.3.0-12
+- ID:NA
+- SUG:NA
+- DESC: delete package xorg-x11-server-utils
+
 * Wed Jun 04 2025 Shi Hongyu <shywzt@iCloud.com> - 3.3.0-11
 - ID:NA
 - SUG:NA

@@ -1,0 +1,43 @@
+From 569b7943b15ecec7a11f551cd81a454c13a66cb4 Mon Sep 17 00:00:00 2001
+From: wangchong1995924 <15229716099@163.com>
+Date: Mon, 7 Jul 2025 14:33:56 +0800
+Subject: [PATCH] delete package xorg-x11-server-utils
+
+
+diff --git a/isomaker/80-openeuler/runtime-cleanup.tmpl b/isomaker/80-openeuler/runtime-cleanup.tmpl
+index 876bbbd..d2bf781 100644
+--- a/isomaker/80-openeuler/runtime-cleanup.tmpl
++++ b/isomaker/80-openeuler/runtime-cleanup.tmpl
+@@ -320,7 +320,6 @@ removefrom xorg-x11-drv-openchrome /usr/${libdir}/libchrome*
+ removefrom xorg-x11-drv-synaptics /usr/bin/*
+ removefrom xorg-x11-drv-wacom /usr/bin/*
+ removefrom xorg-x11-fonts-misc --allbut /usr/share/X11/fonts/misc/{6x13,encodings,fonts,*cursor}*
+-removefrom xorg-x11-server-utils --allbut /usr/bin/xrandr /usr/share/X11/rgb.txt /usr/bin/xrdb
+ removefrom yum /etc/* /usr/share/locale/* /usr/share/yum-cli/*
+ removefrom ${product.name}-logos /etc/*
+ removefrom ${product.name}-logos /usr/share/icons/{Bluecurve,oxygen}/*
+@@ -356,7 +355,7 @@ removefrom gstreamer1-plugins-base --allbut \
+ removepkg geoclue2
+ 
+ ## And remove the packages that those extra libraries pulled in
+-removepkg cdparanoia-libs opus libtheora libvisual flac-libs gsm avahi-glib avahi-libs \
++removepkg cdparanoia-libs libtheora libvisual flac-libs gsm avahi-glib avahi-libs \
+           ModemManager-glib
+ 
+ ## metacity requires libvorbis and libvorbisfile, but enc/dec are no longer needed
+diff --git a/isomaker/80-openeuler/runtime-install.tmpl b/isomaker/80-openeuler/runtime-install.tmpl
+index d59f863..bef92c0 100644
+--- a/isomaker/80-openeuler/runtime-install.tmpl
++++ b/isomaker/80-openeuler/runtime-install.tmpl
+@@ -89,7 +89,7 @@ installpkg rsyslog
+ 
+ ## xorg/GUI packages
+ installpkg xorg-x11-drivers xorg-x11-server-Xorg
+-installpkg xorg-x11-server-utils xorg-x11-xauth
++installpkg xorg-x11-xauth
+ installpkg dbus-x11 metacity gsettings-desktop-schemas
+ installpkg nm-connection-editor
+ installpkg librsvg2
+-- 
+2.27.0
+
