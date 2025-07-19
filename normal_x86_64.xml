@@ -130,7 +130,6 @@
       <packagereq type="mandatory">libteam</packagereq>
       <packagereq type="mandatory">tmux</packagereq>
       <packagereq type="mandatory">xfsprogs</packagereq>
-      <packagereq type="mandatory">authselect-compat</packagereq>
       <packagereq type="mandatory">kdump-anaconda-addon</packagereq>
     </packagelist>
   </group>

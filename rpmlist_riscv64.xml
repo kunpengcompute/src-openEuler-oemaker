@@ -159,7 +159,6 @@
         <packagereq>authd</packagereq>
         <packagereq>authd-help</packagereq>
         <packagereq>authselect</packagereq>
-        <packagereq>authselect-compat</packagereq>
         <packagereq>authselect-help</packagereq>
         <packagereq>authselect-libs</packagereq>
         <packagereq>avahi</packagereq>
