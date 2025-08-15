@@ -1,0 +1,6 @@
+label: isocut使用指南
+isManual: true
+description: 对 openEuler 光盘镜像进行裁剪定制
+sections:
+  - label: isocut使用指南
+    href: ./isocut_user_guide.md
