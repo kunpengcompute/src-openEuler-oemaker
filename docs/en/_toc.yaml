@@ -1,0 +1,6 @@
+label: isocut User Guide
+isManual: true
+description: Customize openEuler ISO images
+sections:
+  - label: isocut User Guide
+    href: ./isocut_user_guide.md
