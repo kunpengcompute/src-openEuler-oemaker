@@ -218,7 +218,3 @@ grub2-efi-x64-modules
 grub2-common
 dev-store
 python3-django-rest-framework
-desktop-pet
-xdotool
-libxdo
-libxdo-devel
