@@ -213,8 +213,8 @@ roo-code
 uv
 python3-mcp
 nodejs-packaging
-tigervnc
 grub2-efi-x64-modules
 grub2-common
 dev-store
 python3-django-rest-framework
+tigervnc-server
