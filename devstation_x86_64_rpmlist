@@ -218,3 +218,5 @@ grub2-common
 dev-store
 python3-django-rest-framework
 tigervnc-server
+mysql-selinux
+tigervnc-selinux

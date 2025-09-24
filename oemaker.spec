@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        17
+Release:        18
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -235,6 +235,11 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Wed Sep 24 2025 Li Ping <1477412247@qq.com> - 3.3.0-18
+- ID:NA
+- SUG:NA
+- DESC: add tigervnc-selinux and mysql-selinux
+
 * Wed Sep 17 2025 Liu Wang <1823363429@qq.com> - 3.3.0-17
 - ID:NA
 - SUG:NA
