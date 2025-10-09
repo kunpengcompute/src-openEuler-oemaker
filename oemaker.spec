@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        18
+Release:        19
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -46,6 +46,7 @@ Patch0001:      0001-bugfix-IABY7K.patch
 Patch0002:      0001-fix-livecd-grub2-efi.cfg-not-found.patch
 Patch0003:      0001-Fixes-boot-failure-caused-by-invalid-volume-IDs.patch
 Patch0004:      0002-delete-package-xorg-x11-server-utils.patch
+Patch0005:      backport-Compatible-with-single-line-no-newline-configuration.patch
 
 %description
 a building tool for DVD ISO making and ISO cutting
@@ -235,6 +236,11 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Thu Oct 9 2025 yixiangzhike <yixiangzhike007@163.com> - 3.3.0-19
+- ID:NA
+- SUG:NA
+- DESC: compatible with single-line no-newline configuration
+
 * Wed Sep 24 2025 Li Ping <1477412247@qq.com> - 3.3.0-18
 - ID:NA
 - SUG:NA
