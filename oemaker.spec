@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        14
+Release:        15
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -46,6 +46,7 @@ Patch0001:      0001-bugfix-IABY7K.patch
 Patch0002:      0001-fix-livecd-grub2-efi.cfg-not-found.patch
 Patch0003:      0001-Fixes-boot-failure-caused-by-invalid-volume-IDs.patch
 Patch0004:      0001-fix-riscv64-devstation-livecd-config-not-found.patch
+Patch0005:      backport-Compatible-with-single-line-no-newline-configuration.patch
 
 %description
 a building tool for DVD ISO making and ISO cutting
@@ -236,6 +237,9 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Thu Oct 9 2025 yixiangzhike <yixiangzhike007@163.com> - 3.3.0-15
+- compatible with single-line no-newline configuration
+
 * Mon Jun 16 2025 Ouuleilei <wangliu@iscas.ac.cn> - 3.3.0-14
 - remove texlive packages from exclude list and fix riscv64 devstation livecd config not found 
 
