@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        19
+Release:        20
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -236,6 +236,11 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Tue Oct 21 2025 Funda Wang <fundawang@yeah.net> - 3.3.0-20
+- ID:NA
+- SUG:NA
+- DESC: deprecate libsexy, it was dead upstream
+
 * Thu Oct 9 2025 yixiangzhike <yixiangzhike007@163.com> - 3.3.0-19
 - ID:NA
 - SUG:NA

@@ -711,8 +711,6 @@
         <packagereq>libsemanage-help</packagereq>
         <packagereq>libsepol</packagereq>
         <packagereq>libsepol-help</packagereq>
-        <packagereq>libsexy</packagereq>
-        <packagereq>libsexy-help</packagereq>
         <packagereq>libsigsegv</packagereq>
         <packagereq>libsmartcols</packagereq>
         <packagereq>libsolv</packagereq>
