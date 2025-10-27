@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        16
+Release:        17
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -237,6 +237,9 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Tue Oct 21 2025 Liu Wang <1823363429@qq.com> - 3.3.0-17
+- devstation add grub2-efi-x86_64/aa64-modules packages
+
 * Tue Oct 21 2025 Funda Wang <fundawang@yeah.net> - 3.3.0-16
 - deprecate libsexy, it was dead upstream
 

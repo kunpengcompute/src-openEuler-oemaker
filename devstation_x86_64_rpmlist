@@ -213,3 +213,5 @@ roo-code
 uv
 python3-mcp
 nodejs-packaging
+grub2-efi-x64-modules
+grub2-common
