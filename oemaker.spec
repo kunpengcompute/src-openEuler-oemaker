@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        17
+Release:        18
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -47,6 +47,7 @@ Patch0002:      0001-fix-livecd-grub2-efi.cfg-not-found.patch
 Patch0003:      0001-Fixes-boot-failure-caused-by-invalid-volume-IDs.patch
 Patch0004:      0001-fix-riscv64-devstation-livecd-config-not-found.patch
 Patch0005:      backport-Compatible-with-single-line-no-newline-configuration.patch
+Patch0006:      0001-replace-calamares-with-heolleo-tool.patch
 
 %description
 a building tool for DVD ISO making and ISO cutting
@@ -237,6 +238,9 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Fri Nov 21 2025 Liu Wang <1823363429@qq.com> - 3.3.0-18
+- DevStation Installer: Replace calamares with heolleo tool
+
 * Tue Oct 21 2025 Liu Wang <1823363429@qq.com> - 3.3.0-17
 - devstation add grub2-efi-x86_64/aa64-modules packages
 
