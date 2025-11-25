@@ -1,0 +1,422 @@
+From 10e8bf8c9a2e2dba6810fc52a729bd60bea750d3 Mon Sep 17 00:00:00 2001
+From: Wenlong Zhang <zhangwenlong@loongson.cn>
+Date: Mon, 24 Nov 2025 11:36:24 +0800
+Subject: [PATCH] fix loongarch64 devstation livecd config notfound
+
+---
+ .../config_files/loongarch64/boot.msg         |   4 +
+ .../config_files/loongarch64/grub.conf        |   9 ++
+ .../config_files/loongarch64/grub2-efi.cfg    |  38 ++++++
+ .../livecd/devstation_live/loongarch64.tmpl   |  75 ++++++++++++
+ .../livecd/devstation_livecd_loongarch64.ks   | 105 ++++++++++++++++
+ .../loongarch64/livecd/devstation_rpmlist     | 114 ++++++++++++++++++
+ isomaker/config/loongarch64/normal.xml        |   5 +
+ 7 files changed, 350 insertions(+)
+ create mode 100644 isomaker/config/loongarch64/livecd/devstation_live/config_files/loongarch64/boot.msg
+ create mode 100644 isomaker/config/loongarch64/livecd/devstation_live/config_files/loongarch64/grub.conf
+ create mode 100644 isomaker/config/loongarch64/livecd/devstation_live/config_files/loongarch64/grub2-efi.cfg
+ create mode 100644 isomaker/config/loongarch64/livecd/devstation_live/loongarch64.tmpl
+ create mode 100644 isomaker/config/loongarch64/livecd/devstation_livecd_loongarch64.ks
+ create mode 100644 isomaker/config/loongarch64/livecd/devstation_rpmlist
+
+diff --git a/isomaker/config/loongarch64/livecd/devstation_live/config_files/loongarch64/boot.msg b/isomaker/config/loongarch64/livecd/devstation_live/config_files/loongarch64/boot.msg
+new file mode 100644
+index 0000000..5605477
+--- /dev/null
++++ b/isomaker/config/loongarch64/livecd/devstation_live/config_files/loongarch64/boot.msg
+@@ -0,0 +1,4 @@
++^L 
++^Xsplash.lss
++
++ -  Press the ^O01<ENTER>^O07 key to begin the installation process.
+diff --git a/isomaker/config/loongarch64/livecd/devstation_live/config_files/loongarch64/grub.conf b/isomaker/config/loongarch64/livecd/devstation_live/config_files/loongarch64/grub.conf
+new file mode 100644
+index 0000000..ee47854
+--- /dev/null
++++ b/isomaker/config/loongarch64/livecd/devstation_live/config_files/loongarch64/grub.conf
+@@ -0,0 +1,9 @@
++#debug --graphics
++default=0
++splashimage=@SPLASHPATH@
++timeout 60
++hiddenmenu
++title Start @PRODUCT@ @VERSION@
++        findiso
++        kernel @KERNELPATH@ @ROOT@ quiet inst.text rd.live.ram net.ifnames=0 biosdevname=0 rd.shell=0
++        initrd @INITRDPATH@
+\ No newline at end of file
+diff --git a/isomaker/config/loongarch64/livecd/devstation_live/config_files/loongarch64/grub2-efi.cfg b/isomaker/config/loongarch64/livecd/devstation_live/config_files/loongarch64/grub2-efi.cfg
+new file mode 100644
+index 0000000..aa36684
+--- /dev/null
++++ b/isomaker/config/loongarch64/livecd/devstation_live/config_files/loongarch64/grub2-efi.cfg
+@@ -0,0 +1,38 @@
++set default="0"
++
++function load_video {
++  if [ x$feature_all_video_module = xy ]; then
++    insmod all_video
++  else
++    insmod efi_gop
++    insmod efi_uga
++    insmod ieee1275_fb
++    insmod vbe
++    insmod vga
++    insmod video_bochs
++    insmod video_cirrus
++  fi
++}
++
++load_video
++set gfxpayload=keep
++insmod gzio
++insmod part_gpt
++insmod ext2
++
++set timeout=60
++### END /etc/grub.d/00_header ###
++
++search --no-floppy --set=root -l '@ISOLABEL@'
++
++### BEGIN /etc/grub.d/10_linux ###
++menuentry 'Start @PRODUCT@ @VERSION@ with text mode' --class red --class gnu-linux --class gnu --class os {
++        linux @KERNELPATH@ @ROOT@ ro inst.text console=ttyS0 console=tty0 rd.live.ram net.ifnames=0 biosdevname=0 rd.shell=0
++        initrd @INITRDPATH@
++}
++submenu 'Troubleshooting -->' {
++        menuentry 'Rescue a @PRODUCT@ system' --class red --class gnu-linux --class gnu --class os {
++                linux @KERNELPATH@ @ROOT@ rescue console=ttyS0 console=tty0 rd.live.ram net.ifnames=0 biosdevname=0 rd.shell=0
++                initrd @INITRDPATH@
++        }
++}
+diff --git a/isomaker/config/loongarch64/livecd/devstation_live/loongarch64.tmpl b/isomaker/config/loongarch64/livecd/devstation_live/loongarch64.tmpl
+new file mode 100644
+index 0000000..6986478
+--- /dev/null
++++ b/isomaker/config/loongarch64/livecd/devstation_live/loongarch64.tmpl
+@@ -0,0 +1,75 @@
++<%page args="kernels, runtime_img, basearch, inroot, outroot, product, isolabel"/>
++<%
++configdir="tmp/config_files/loongarch64"
++PXEBOOTDIR="images/pxeboot"
++KERNELDIR=PXEBOOTDIR
++LORAXDIR="usr/share/lorax/"
++LIVEDIR="LiveOS"
++
++
++from os.path import basename
++%>
++
++## Test ${runtime_img} to see if udf is needed
++<%
++    import os
++    from pylorax.sysutils import joinpaths
++    if os.stat(joinpaths(inroot, runtime_img)).st_size >= 4*1024**3:
++        udfargs = "-allow-limited-size"
++    else:
++        udfargs = ""
++%>
++mkdir ${LIVEDIR}
++install ${runtime_img} ${LIVEDIR}/squashfs.img
++treeinfo stage2 mainimage ${LIVEDIR}/squashfs.img
++
++
++## install kernels
++mkdir ${KERNELDIR}
++%for kernel in kernels:
++    ## normal loongarch64
++    installkernel images-${basearch} ${kernel.path} ${KERNELDIR}/vmlinuz
++    installinitrd images-${basearch} ${kernel.initrd.path} ${KERNELDIR}/initrd.img
++%endfor
++
++
++## WHeeeeeeee, EFI.
++## We could remove the basearch restriction someday..
++<% efiargs=""; efigraft="" %>
++%if exists("boot/efi/EFI/*/grubloongarch64.efi"):
++    <%
++    efiarch32 = None
++    efiarch64 = 'loongarch64'
++    efigraft="EFI/BOOT={0}/EFI/BOOT".format(outroot)
++    images = ["images/efiboot.img"]
++    %>
++    %for img in images:
++        <%
++        efiargs += " -eltorito-alt-boot -e {0} -no-emul-boot".format(img)
++        efigraft += " {0}={1}/{0}".format(img,outroot)
++        %>
++        treeinfo images-${basearch} ${img|basename} ${img}
++    %endfor
++    <%include file="efi.tmpl" args="configdir=configdir, KERNELDIR=KERNELDIR, efiarch32=efiarch32, efiarch64=efiarch64, isolabel=isolabel"/>
++%endif
++
++# Create optional product.img and updates.img
++<% filegraft=""; images=["product", "updates"] %>
++%for img in images:
++    %if exists("%s/%s/" % (LORAXDIR, img)):
++        installimg ${LORAXDIR}/${img}/ images/${img}.img
++        treeinfo images-${basearch} ${img}.img images/${img}.img
++        <% filegraft += " images/{0}.img={1}/images/{0}.img".format(img, outroot) %>
++    %endif
++%endfor
++
++%if exists("boot/efi/EFI/*/grubloongarch64.efi"):
++## make boot.iso
++runcmd mkisofs -o ${outroot}/images/boot.iso \
++       ${efiargs} -R -J -V '${isolabel}' -T ${udfargs} \
++       -graft-points \
++       ${KERNELDIR}=${outroot}/${KERNELDIR} \
++       ${LIVEDIR}=${outroot}/${LIVEDIR} \
++       ${efigraft} ${filegraft}
++treeinfo images-${basearch} boot.iso images/boot.iso
++%endif
+diff --git a/isomaker/config/loongarch64/livecd/devstation_livecd_loongarch64.ks b/isomaker/config/loongarch64/livecd/devstation_livecd_loongarch64.ks
+new file mode 100644
+index 0000000..be247e6
+--- /dev/null
++++ b/isomaker/config/loongarch64/livecd/devstation_livecd_loongarch64.ks
+@@ -0,0 +1,105 @@
++# Minimal Disk Image
++#
++# Firewall configuration
++firewall --enabled
++# Use network installation
++url --url="INSTALL_REPO"
++# Root password
++rootpw --iscrypted ROOT_PWD
++
++# Network information
++network  --bootproto=dhcp --onboot=on --activate
++# System keyboard
++keyboard --xlayouts=us --vckeymap=us
++# System language
++lang en_US.UTF-8
++# SELinux configuration
++selinux --enforcing
++# Installation logging level
++logging --level=info
++# Shutdown after installation
++shutdown
++# System timezone
++timezone Asia/Beijing
++# System bootloader configuration
++bootloader --location=mbr
++# Clear the Master Boot Record
++zerombr
++# Partition clearing information
++clearpart --all
++# Disk partitioning information
++part / --fstype="ext4" --size=15000
++part swap --size=1000
++%pre
++#!/bin/bash
++mkdir -p /mnt/sysimage/usr/lib64/
++chmod 0755 /mnt/sysimage/usr/lib64/
++cp /usr/lib64/libbep_env.so /mnt/sysimage/usr/lib64
++%end
++%post
++echo "LANG=zh_CN.UTF-8" > /etc/locale.conf
++useradd -m devstation
++usermod -aG wheel devstation
++echo "devstation ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
++echo "devstation" | passwd --stdin devstation
++passwd -d devstation
++passwd -d root
++
++if ! grep -q "\[daemon\]" /etc/gdm/custom.conf; then
++    echo "[daemon]" >> /etc/gdm/custom.conf
++fi
++
++sed -i "/\[daemon\]/a AutomaticLoginEnable=true" /etc/gdm/custom.conf
++sed -i "/\[daemon\]/a AutomaticLogin=devstation" /etc/gdm/custom.conf
++
++echo "devstation ALL=(ALL) NOPASSWD: /usr/bin/nautilus" >> /etc/sudoers
++touch /etc/polkit-1/rules.d/50-nautilus.rules
++cat << EOR > /etc/polkit-1/rules.d/50-nautilus.rules
++polkit.addRule(function(action, subject) {
++    if (action.id == "org.freedesktop.policykit.exec" &&
++        action.lookup("action_id") == "org.gnome.nautilus.file-manager" &&
++        subject.isInGroup("sudo")) {
++        return polkit.Result.YES;
++    }
++});
++EOR
++
++cp /usr/share/applications/calamares.desktop /etc/xdg/autostart/
++
++systemctl enable gdm
++systemctl set-default graphical.target
++
++systemctl enable calamares
++
++su - devstation -c gsettings set org.gnome.desktop.input-sources sources "[(xkb, us), (ibus, libpinyin)]"
++
++touch /etc/sysconfig/network
++
++cat << EOF > /etc/sysconfig/network-scripts/ifcfg-eth0
++TYPE=Ethernet
++BOOTPROTO=dhcp
++NAME=eth0
++DEVICE=eth0
++ONBOOT=yes
++EOF
++
++rm -rf /etc/systemd/system/multi-user.target.wants/kbox.service
++rm -rf /etc/systemd/system/multi-user.target.wants/kdump.service
++rm -rf /usr/lib/systemd/system/kbox.service
++rm -rf /usr/lib/systemd/system/kdump.service
++rm -rf /boot/initramfs*
++
++#fix shadows and shadows- time field
++awk 'BEGIN{FS=OFS=":"} {$3=18099; print $0 > "/etc/shadow"}' /etc/shadow;
++awk 'BEGIN{FS=OFS=":"} {$3=18099; print $0 > "/etc/shadow-"}' /etc/shadow-;
++
++#fix /etc/pki/ca-trust/extracted/java/cacerts time field
++rm /etc/pki/ca-trust/extracted/java/cacerts
++/usr/bin/ca-legacy install
++/usr/bin/update-ca-trust
++
++
++%end
++
++%packages --excludedocs
++%end
+diff --git a/isomaker/config/loongarch64/livecd/devstation_rpmlist b/isomaker/config/loongarch64/livecd/devstation_rpmlist
+new file mode 100644
+index 0000000..f3db092
+--- /dev/null
++++ b/isomaker/config/loongarch64/livecd/devstation_rpmlist
+@@ -0,0 +1,114 @@
++abattis-cantarell-fonts
++audit
++authselect
++basesystem
++bash
++bind
++bind-dnssec-utils
++boost-iostreams
++checkpolicy
++coreutils
++cronie
++cryptsetup
++CUnit
++CUnit-devel
++curl
++dejavu-fonts
++devstation-config
++dhcp
++dnf
++dnf-plugins-core
++dosfstools
++dracut-config-generic
++dracut-config-rescue
++dracut-live
++dracut-network
++e2fsprogs
++efibootmgr
++filesystem
++fipscheck
++firefox
++firewalld
++gdb
++gdm
++glibc
++gnome-menus
++gnome-session
++gnome-shell
++gnome-software
++gnome-terminal
++google-*-fonts
++grub2-efi-loongarch64
++grub2-efi-loongarch64-cdboot
++grub2-tools
++grub2-tools-extra
++grubby
++gtest
++gtest-devel
++hostname
++ibus-libpinyin
++initscripts
++ipmitool
++iproute
++iprutils
++iputils
++irqbalance
++java-21-openjdk-devel
++kbd
++kernel
++kernel-tools
++kexec-tools
++less
++libdaemon
++liberation-fonts
++libnet
++libteam
++libX11
++linux-firmware
++lshw
++lsscsi
++lvm2
++man-db
++nautilus
++ncurses
++net-snmp
++NetworkManager
++NetworkManager-config-server
++openssh
++openssh-clients
++openssh-server
++parted
++passwd
++policycoreutils
++procps-ng
++python3-decorator
++python3-ply
++python3-pytest
++python3-slip
++rdma-core
++rng-tools
++rootfiles
++rpm
++rsync
++rsyslog
++samba-client
++samba-libs
++security-tool
++selinux-policy-mls
++selinux-policy-targeted
++setup
++sg3_utils
++shadow
++sssd
++sudo
++sysfsutils
++systemd
++tuned
++unzip
++util-linux
++vim-minimal
++wget
++wqy-zenhei-fonts
++xdg-utils
++xfsprogs
++yum
+diff --git a/isomaker/config/loongarch64/normal.xml b/isomaker/config/loongarch64/normal.xml
+index db16e4b..0f49c50 100644
+--- a/isomaker/config/loongarch64/normal.xml
++++ b/isomaker/config/loongarch64/normal.xml
+@@ -118,6 +118,11 @@
+       <packagereq type="mandatory">glibc-all-langpacks</packagereq>
+       <packagereq type="mandatory">grub2-tools</packagereq>
+       <packagereq type="mandatory">grub2-tools-extra</packagereq>
++      <packagereq type="mandatory">grub2-tools-minimal</packagereq>
++      <packagereq type="mandatory">grub2-efi-loongarch64</packagereq>
++      <packagereq type="mandatory">grub2-efi-loongarch64-cdboot</packagereq>
++      <packagereq type="mandatory">grub2-common</packagereq>
++      <packagereq type="mandatory">grub2-efi-loongarch64-modules</packagereq>
+       <packagereq type="mandatory">iscsi-initiator-utils</packagereq>
+       <packagereq type="mandatory">lvm2</packagereq>
+       <packagereq type="mandatory">mdadm</packagereq>
+-- 
+2.43.0
+
