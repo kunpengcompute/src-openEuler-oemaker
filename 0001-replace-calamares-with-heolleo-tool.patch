@@ -1,0 +1,39 @@
+From 25b7793a0f5fb2526d61297eee89e257be8c03ae Mon Sep 17 00:00:00 2001
+From: lw520203 <1823363429@qq.com>
+Date: Thu, 6 Nov 2025 15:40:23 +0800
+Subject: [PATCH] xxx
+
+---
+ isomaker/config/x86_64/livecd/devstation_livecd_x86_64.ks | 2 +-
+ isomaker/iso.sh                                           | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/isomaker/config/x86_64/livecd/devstation_livecd_x86_64.ks b/isomaker/config/x86_64/livecd/devstation_livecd_x86_64.ks
+index 488a71c..1b858c3 100644
+--- a/isomaker/config/x86_64/livecd/devstation_livecd_x86_64.ks
++++ b/isomaker/config/x86_64/livecd/devstation_livecd_x86_64.ks
+@@ -66,7 +66,7 @@ polkit.addRule(function(action, subject) {
+     }
+ });
+ EOR
+-cp /usr/share/applications/calamares.desktop /etc/xdg/autostart/
++cp /usr/share/applications/heolleo.desktop /etc/xdg/autostart/
+ systemctl enable gdm
+ systemctl set-default graphical.target
+ systemctl enable calamares
+diff --git a/isomaker/iso.sh b/isomaker/iso.sh
+index e2daf2b..e48e8f1 100755
+--- a/isomaker/iso.sh
++++ b/isomaker/iso.sh
+@@ -307,7 +307,7 @@ function gen_devstation_livecd_iso() {
+     cp config/${ARCH}/livecd/devstation_livecd_${ARCH}.ks ${cfg_dir}
+     sed -i 's#ROOT_PWD#'${root_pwd}'#' ${cfg_dir}/devstation_livecd_${ARCH}.ks
+     sed -i 's#INSTALL_REPO#'${INSTALL_URL}'#' ${cfg_dir}/devstation_livecd_${ARCH}.ks
+-    extra_packages="calamares calamares-devel calamares-interactiveterminal calamares-libs kpmcore kpmcore-devel"
++    extra_packages="heolleo-backend heolleo-frontend"
+     rpmlist="${rpmlist} ${extra_packages}"
+     for rpm_name in ${rpmlist}
+     do
+-- 
+2.43.0
+
