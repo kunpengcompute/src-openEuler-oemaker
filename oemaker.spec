@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        19
+Release:        20
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -239,6 +239,9 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Mon Dec 01 2025 Liu Wang <1823363429@qq.com> - 3.3.0-20
+- add dev-store,polymind to DevStation
+
 * Mon Nov 24 2025 Wenlong Zhang <zhangwenlong@loongson.cn> - 3.3.0-19
 - fix loongarch64 devstation livecd config notfound
 
