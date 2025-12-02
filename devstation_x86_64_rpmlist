@@ -215,3 +215,9 @@ python3-mcp
 nodejs-packaging
 grub2-efi-x64-modules
 grub2-common
+dev-store
+python3-django-rest-framework
+tigervnc-server
+mysql-selinux
+tigervnc-selinux
+polymind
