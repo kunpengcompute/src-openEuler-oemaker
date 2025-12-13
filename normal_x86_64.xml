@@ -740,7 +740,6 @@
     <default>true</default>
     <uservisible>false</uservisible>
     <packagelist>
-      <packagereq type="mandatory">firefox</packagereq>
     </packagelist>
   </group>
     <group>
