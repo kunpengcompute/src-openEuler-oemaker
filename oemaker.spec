@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        22
+Release:        23
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -237,6 +237,11 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Sat Dec 13 2025 xiexiunian <xiexiunian@h-partners.com> - 3.3.0-23
+- ID:NA 
+- SUG:NA
+- DESC: remove firefox and gjs from baseos
+
 * Fri Dec 12 2025 wangmian <wangmian19@h-partners.com> - 3.3.0-22
 - ID:NA 
 - SUG:NA

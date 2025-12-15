@@ -385,7 +385,6 @@
         <packagereq>git</packagereq>
         <packagereq>git-clang-format</packagereq>
         <packagereq>git-help</packagereq>
-        <packagereq>gjs</packagereq>
         <packagereq>glib2</packagereq>
         <packagereq>glib2-help</packagereq>
         <packagereq>glibc</packagereq>
