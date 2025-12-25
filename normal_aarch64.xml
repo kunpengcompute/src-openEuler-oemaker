@@ -743,7 +743,7 @@
     <packagelist>
     </packagelist>
   </group>
-    <group>
+  <group>
     <id>java-platform</id>
     <name>Java Platform</name>
     <name xml:lang="zh_CN">Java 平台</name>
