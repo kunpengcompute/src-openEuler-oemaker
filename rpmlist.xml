@@ -149,7 +149,6 @@
         <packagereq>bc</packagereq>
         <packagereq>bc-help</packagereq>
         <packagereq>bind-chroot</packagereq>
-        <packagereq>bind-dyndb-ldap</packagereq>
         <packagereq>bind-libs</packagereq>
         <packagereq>bind-utils</packagereq>
         <packagereq>binutils</packagereq>

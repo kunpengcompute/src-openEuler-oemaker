@@ -407,7 +407,6 @@
     <packagelist>
       <packagereq type="default">bind</packagereq>
       <packagereq type="default">bind-chroot</packagereq>
-      <packagereq type="optional">bind-dyndb-ldap</packagereq>
       <packagereq type="optional">unbound</packagereq>
     </packagelist>
   </group>
