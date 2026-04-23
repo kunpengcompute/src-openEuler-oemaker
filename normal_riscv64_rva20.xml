@@ -303,7 +303,7 @@
       <packagereq type="default">rsyslog</packagereq>
       <packagereq type="default">security-tool</packagereq>
       <packagereq type="default">sg3_utils</packagereq>
-      <packagereq type="default">systemd-cryptsetup</packagereq>
+	  <packagereq type="default">systemd-cryptsetup</packagereq>
       <packagereq type="optional">dracut-config-generic</packagereq>
       <packagereq type="optional">dracut-network</packagereq>
       <packagereq type="optional">rdma-core</packagereq>
@@ -367,6 +367,8 @@
       <packagereq type="default">pesign</packagereq>
       <packagereq type="default">source-highlight</packagereq>
       <packagereq type="default">systemtap</packagereq>
+      <packagereq type="default">valgrind</packagereq>
+      <packagereq type="default">valgrind-devel</packagereq>
       <packagereq type="optional">babel</packagereq>
       <packagereq type="optional">chrpath</packagereq>
       <packagereq type="optional">expect</packagereq>
@@ -737,10 +739,9 @@
     <default>true</default>
     <uservisible>false</uservisible>
     <packagelist>
-      <packagereq type="mandatory">firefox</packagereq>
     </packagelist>
   </group>
-    <group>
+  <group>
     <id>java-platform</id>
     <name>Java Platform</name>
     <name xml:lang="zh_CN">Java 平台</name>
@@ -1299,6 +1300,7 @@
       <packagereq type="optional">net-snmp-utils</packagereq>
       <packagereq type="optional">oddjob</packagereq>
       <packagereq type="optional">oddjob-mkhomedir</packagereq>
+      <packagereq type="optional">rear</packagereq>
       <packagereq type="optional">sysstat</packagereq>
       <packagereq type="optional">x3270-x11</packagereq>
     </packagelist>
@@ -1345,7 +1347,6 @@
       <packagereq type="mandatory">qemu</packagereq>
       <packagereq type="mandatory">qemu-block-iscsi</packagereq>
       <packagereq type="mandatory">qemu-img</packagereq>
-      <packagereq type="mandatory">stratovirt</packagereq>
     </packagelist>
   </group>
   <group>

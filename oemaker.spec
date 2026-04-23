@@ -10,12 +10,26 @@
 %global efi_loongarch64 1
 %endif
 
+# copy from https://atomgit.com/src-openeuler/openEuler-repos/blob/openEuler-24.03-LTS-SP3/generic-repos.spec#L33
+%bcond  riscv64_default_repo_subarch_override 0
+%ifarch riscv64
+# riscv64 subarch specific changes (approved)
+# Expected values: `rva23`, `rva20`
+## Default: `OS/riscv64` -> `OS/riscv64/rva23/riscv64`
+## Overrided: `OS/riscv64` -> `OS/riscv64/${EXAMPLE}/riscv64`
+%if %{with riscv64_default_repo_subarch_override}
+%define riscv64_default_repo_subarch_override_name rva20
+%else
+%define riscv64_default_repo_subarch_override_name rva23
+%endif
+%endif
+
 Name:           oemaker
 Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        22
+Release:        24
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -26,14 +40,18 @@ Source4:        edge_normal_aarch64.xml
 Source5:        edge_normal_x86_64.xml
 Source6:        desktop_normal_aarch64.xml
 Source7:        desktop_normal_x86_64.xml
-Source8:        rpmlist_riscv64.xml
-Source9:        normal_riscv64.xml
+Source8:        rpmlist_riscv64_rva20.xml
+Source9:        normal_riscv64_rva20.xml
 Source10:	normal_loongarch64.xml
 Source11:	rpmlist_loongarch64.xml
 Source12:	desktop_normal_loongarch64.xml
 Source13:       devstation_aarch64_rpmlist
 Source14:       devstation_x86_64_rpmlist
-Source15:       edge_normal_riscv64.xml
+Source15:       edge_normal_riscv64_rva20.xml
+Source16:       rpmlist_riscv64_rva23.xml
+Source17:       normal_riscv64_rva23.xml
+Source18:       edge_normal_riscv64_rva23.xml
+
 
 Requires:       createrepo dnf-plugins-core genisoimage isomd5sum grep bash libselinux-utils libxml2 anaconda libselinux-utils
 Requires:       lorax >= 19.6.78-1
@@ -49,6 +67,11 @@ Patch0004:      0001-fix-riscv64-devstation-livecd-config-not-found.patch
 Patch0005:      backport-Compatible-with-single-line-no-newline-configuration.patch
 Patch0006:      0001-replace-calamares-with-heolleo-tool.patch
 Patch0007:	0001-fix-loongarch64-devstation-livecd-config-not-found.patch
+Patch0008:      0001-riscv64-remove-temporarily-added-no4lvl-from-kernel-.patch
+Patch0009:	0002-riscv64-update-the-kernel-cmdline-in-grub2-efi.cfg.patch
+%if "%{riscv64_default_repo_subarch_override_name}" == "rva23"
+Patch0010:	0001-add-24.03SP3-RVA23-support.patch
+%endif 
 
 %description
 a building tool for DVD ISO making and ISO cutting
@@ -107,6 +130,14 @@ rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/normal.xm
 cp %{SOURCE9} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/normal.xml
 rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/edge_normal.xml
 cp %{SOURCE15} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/edge_normal.xml
+%if "%{riscv64_default_repo_subarch_override_name}" == "rva23"
+rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/rpmlist.xml
+cp %{SOURCE16} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/rpmlist.xml
+rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/normal.xml
+cp %{SOURCE17} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/normal.xml
+rm -rf %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/edge_normal.xml
+cp %{SOURCE18} %{_builddir}/%{name}-%{version}/%{name}/isomaker/config/riscv64/edge_normal.xml
+%endif 
 %endif
 
 
@@ -239,6 +270,13 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Wed Jan 07 2026 ouuleilei <wangliu@iscas.ac.cn> - 3.3.0-24
+- add riscv64 rva20 rpmlist, add riscv64 rva23 support
+
+* Fri Dec 19 2025 xiexiunian <xiexiunian@h-partners.com> - 3.3.0-23
+- ID:NA 
+- SUG:NA
+- DESC: remove strongswan from baseos
 
 * Thu Mar 26 2026 xinghe <xingheyd@163.com> - 3.3.0-22
 - remove bind-dyndb-ldap packages

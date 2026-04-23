@@ -1,0 +1,42 @@
+From c75c5c90a5f6a9b5e6e57a535b5fc78a1b417d6b Mon Sep 17 00:00:00 2001
+From: jchzhou <zhoujiacheng@iscas.ac.cn>
+Date: Fri, 27 Feb 2026 16:11:39 +0800
+Subject: [PATCH 2/2] riscv64: update the kernel cmdline in grub2-efi.cfg
+
+---
+ isomaker/80-openeuler/config_files/riscv64/grub2-efi.cfg | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/isomaker/80-openeuler/config_files/riscv64/grub2-efi.cfg b/isomaker/80-openeuler/config_files/riscv64/grub2-efi.cfg
+index da7c1c5..cc407f6 100644
+--- a/isomaker/80-openeuler/config_files/riscv64/grub2-efi.cfg
++++ b/isomaker/80-openeuler/config_files/riscv64/grub2-efi.cfg
+@@ -27,20 +27,20 @@ search --no-floppy --set=root -l '@ISOLABEL@'
+ 
+ ### BEGIN /etc/grub.d/10_linux ###
+ menuentry 'Install @PRODUCT@ @VERSION@' --class red --class gnu-linux --class gnu --class os {
+-    linux @KERNELPATH@ @ROOT@ ro inst.geoloc=0 systemd.default_timeout_start_sec=600 selinux=0 highres=off earlycon
++    linux @KERNELPATH@ @ROOT@ ro inst.geoloc=0 systemd.default_timeout_start_sec=600 highres=off earlycon
+     initrd @INITRDPATH@
+ }
+ menuentry 'Test this media & install @PRODUCT@ @VERSION@' --class red --class gnu-linux --class gnu --class os {
+-    linux @KERNELPATH@ @ROOT@ rd.live.check inst.geoloc=0 systemd.default_timeout_start_sec=600 selinux=0 highres=off earlycon
++    linux @KERNELPATH@ @ROOT@ rd.live.check inst.geoloc=0 systemd.default_timeout_start_sec=600 highres=off earlycon
+     initrd @INITRDPATH@
+ }
+ submenu 'Troubleshooting -->' {
+     menuentry 'Install @PRODUCT@ @VERSION@ in basic graphics mode' --class red --class gnu-linux --class gnu --class os {
+-            linux @KERNELPATH@ @ROOT@ nomodeset inst.geoloc=0 systemd.default_timeout_start_sec=600 selinux=0 highres=off earlycon
++            linux @KERNELPATH@ @ROOT@ nomodeset inst.geoloc=0 systemd.default_timeout_start_sec=600 highres=off earlycon
+             initrd @INITRDPATH@
+     }
+     menuentry 'Rescue the @PRODUCT@ system' --class red --class gnu-linux --class gnu --class os {
+-            linux @KERNELPATH@ @ROOT@ rescue systemd.default_timeout_start_sec=600 selinux=0 highres=off earlycon
++            linux @KERNELPATH@ @ROOT@ rescue systemd.default_timeout_start_sec=600 highres=off earlycon
+             initrd @INITRDPATH@
+     }
+ }
+\ No newline at end of file
+-- 
+2.53.0
+

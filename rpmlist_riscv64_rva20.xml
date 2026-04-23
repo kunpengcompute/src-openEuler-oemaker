@@ -47,6 +47,11 @@
         <packagereq>vk-kernel-source</packagereq>
         <packagereq>vk-kernel-tools</packagereq>
         <packagereq>vk-kernel-tools-devel</packagereq>
+        <packagereq>firefox</packagereq>
+        <packagereq>firefox-debuginfo</packagereq>
+        <packagereq>firefox-debugsource</packagereq>
+        <packagereq>glusterfs-resource-agents</packagereq>
+        <packagereq>nvwa</packagereq>
     </packagelist>
     <packagelist type="src_exclude">
         <packagereq>drbd</packagereq>
@@ -72,8 +77,8 @@
     <packagelist type="aarch64">
         <packagereq>edk2-aarch64</packagereq>
         <packagereq>grub2-efi-aa64</packagereq>
-	<packagereq>grub2-efi-aa64-modules</packagereq>
-	<packagereq>kae-driver</packagereq>
+        <packagereq>grub2-efi-aa64-modules</packagereq>
+        <packagereq>kae-driver</packagereq>
         <packagereq>kae-openssl</packagereq>
         <packagereq>kae-zip</packagereq>
         <packagereq>uadk_engine</packagereq>
@@ -85,6 +90,11 @@
         <packagereq>grub2-efi-x64</packagereq>
         <packagereq>grub2-efi-x64-modules</packagereq>
         <packagereq>shim</packagereq>
+    </packagelist>
+    <packagelist type="riscv64">
+        <packagereq>edk2-ovmf-riscv64</packagereq>
+        <packagereq>grub2-efi-riscv64</packagereq>
+        <packagereq>grub2-efi-riscv64-modules</packagereq>
     </packagelist>
     <packagelist type="common">
         <packagereq>abattis-cantarell-fonts</packagereq>
@@ -476,7 +486,6 @@
         <packagereq>json-c-help</packagereq>
         <packagereq>json-glib</packagereq>
         <packagereq>json-glib-help</packagereq>
-        <packagereq>kata-containers</packagereq>
         <packagereq>kbd</packagereq>
         <packagereq>kbd-help</packagereq>
         <packagereq>kbd-legacy</packagereq>
@@ -750,7 +759,7 @@
         <packagereq>libvirt-daemon-driver-storage-mpath</packagereq>
         <packagereq>libvirt-daemon-driver-storage-rbd</packagereq>
         <packagereq>libvirt-daemon-driver-storage-scsi</packagereq>
-	<packagereq>libvirt-daemon-kvm</packagereq>
+        <packagereq>libvirt-daemon-kvm</packagereq>
         <packagereq>libvirt-daemon-qemu</packagereq>
         <packagereq>libvirt-devel</packagereq>
         <packagereq>libvirt-docs</packagereq>
@@ -1392,17 +1401,23 @@
         <packagereq>jemalloc-devel</packagereq>
         <packagereq>DCF</packagereq>
         <packagereq>opengauss</packagereq>
-        <packagereq>oeAware-manager</packagereq>
     </packagelist>
     <packagelist type="edge_aarch64">
         <packagereq>grub2-efi-aa64</packagereq>
         <packagereq>grub2-efi-aa64-cdboot</packagereq>
         <packagereq>grub2-efi-aa64-modules</packagereq>
+        <packagereq>shim</packagereq>
     </packagelist>
     <packagelist type="edge_x86_64">
         <packagereq>grub2-pc</packagereq>
         <packagereq>grub2-pc-modules</packagereq>
         <packagereq>grub2-efi-x64</packagereq>
+        <packagereq>shim</packagereq>
+    </packagelist>
+    <packagelist type="edge_riscv64">
+        <packagereq>grub2-efi-riscv64</packagereq>
+        <packagereq>grub2-efi-riscv64-cdboot</packagereq>
+        <packagereq>grub2-efi-riscv64-modules</packagereq>
     </packagelist>
     <packagelist type="edge_common">
         <packagereq>kubernetes</packagereq>
@@ -1423,7 +1438,6 @@
         <packagereq>grub2-help</packagereq>
         <packagereq>lvm2-help</packagereq>
         <packagereq>lvm2</packagereq>
-        <packagereq>shim</packagereq>
         <packagereq>mdadm</packagereq>
         <packagereq>mdadm-help</packagereq>
         <packagereq>dosfstools-help</packagereq>
