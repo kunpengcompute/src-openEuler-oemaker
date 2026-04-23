@@ -265,7 +265,6 @@
         <packagereq>cups-filters</packagereq>
         <packagereq>cups-help</packagereq>
         <packagereq>cups-libs</packagereq>
-        <packagereq>cups-pk-helper</packagereq>
         <packagereq>curl</packagereq>
         <packagereq>curl-help</packagereq>
         <packagereq>cvs</packagereq>
@@ -980,7 +979,6 @@
         <packagereq>opus-help</packagereq>
         <packagereq>ORBit2</packagereq>
         <packagereq>orc</packagereq>
-        <packagereq>orc-help</packagereq>
         <packagereq>osinfo-db</packagereq>
         <packagereq>osinfo-db-tools</packagereq>
         <packagereq>osinfo-db-tools-help</packagereq>

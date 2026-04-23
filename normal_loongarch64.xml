@@ -77,7 +77,6 @@
       <packagereq type="mandatory">libpfm-devel</packagereq>
       <packagereq type="mandatory">libpq-devel</packagereq>
       <packagereq type="mandatory">librsvg2-devel</packagereq>
-      <packagereq type="mandatory">libsoup-devel</packagereq>
       <packagereq type="mandatory">libssh-devel</packagereq>
       <packagereq type="mandatory">libtiff-devel</packagereq>
       <packagereq type="mandatory">libxslt-devel</packagereq>
