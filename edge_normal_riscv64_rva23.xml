@@ -79,9 +79,6 @@
       <packagereq type="optional">selinux-policy-mls</packagereq>
       <packagereq type="default">patch</packagereq>
       <packagereq type="default">patch-help</packagereq>
-      <packagereq type="default">ntp</packagereq>
-      <packagereq type="default">ntp-help</packagereq>
-      <packagereq type="default">ntp-perl</packagereq>
       <packagereq type="default">iSulad</packagereq>
       <packagereq type="default">tar</packagereq>
       <packagereq type="default">socat</packagereq>
