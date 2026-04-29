@@ -1031,7 +1031,6 @@
         <packagereq>opus-help</packagereq>
         <packagereq>ORBit2</packagereq>
         <packagereq>orc</packagereq>
-        <packagereq>orc-help</packagereq>
         <packagereq>osinfo-db</packagereq>
         <packagereq>osinfo-db-tools</packagereq>
         <packagereq>osinfo-db-tools-help</packagereq>
