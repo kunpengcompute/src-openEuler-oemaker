@@ -29,7 +29,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        25
+Release:        26
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -270,6 +270,12 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Thu Apr 30 2026 zhaoyonghao <zhaoyonghao10@h-partners.com> - 3.3.0-26
+- Type:requirement
+- CVE:NA
+- SUG:NA
+- DESC:add kernel-64k and related software packages to aarch64
+
 * Wed Apr 29 2026 yangchaohao <yangchaohao@huawei.com> - 3.3.0-25
 - DESC: remove orc-help, it is not buildable due to missing hotdoc
 
