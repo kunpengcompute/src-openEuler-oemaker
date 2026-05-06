@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        25
+Release:        26
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -237,6 +237,13 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Wed May 6 2026 zhaoyonghao <zhaoyonghao10@h-partners.com> - 3.3.0-26
+- Type:requirement
+- CVE:NA
+- SUG:NA
+- DESC:add kernel-64k and related software packages to aarch64
+       remove kernel-64k-headers for aarch64
+
 * Sun Apr 19 2026 Funda Wang <fundawang@yeah.net> - 3.3.0-25
 - ID:NA
 - SUG:NA
