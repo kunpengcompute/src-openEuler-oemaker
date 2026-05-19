@@ -82,6 +82,12 @@
         <packagereq>kernel-64k</packagereq>
  	    <packagereq>kernel-64k-devel</packagereq>
  	    <packagereq>kernel-64k-source</packagereq>        
+        <packagereq>krun</packagereq>
+        <packagereq>krun-devkit</packagereq>
+        <packagereq>krun-driver</packagereq>
+        <packagereq>krun-rtLogd</packagereq>
+        <packagereq>krun-sdk</packagereq>
+        <packagereq>krun-server</packagereq>
     </packagelist>
     <packagelist type="x86_64">
         <packagereq>edk2-ovmf</packagereq>
