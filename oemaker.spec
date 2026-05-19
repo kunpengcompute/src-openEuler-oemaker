@@ -29,7 +29,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        27
+Release:        28
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -270,6 +270,12 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Tue May 19 2026 hewanhan <hewanhan@h-partners.com> - 3.3.0-28
+- Type:requirement
+- CVE:NA
+- SUG:NA
+- DESC:add krun to aarch64
+
 * Wed May 6 2026 zhaoyonghao <zhaoyonghao10@h-partners.com> - 3.3.0-27
 - Type:requirement
 - CVE:NA
