@@ -1410,6 +1410,9 @@
         <packagereq>grub2-efi-aa64</packagereq>
         <packagereq>grub2-efi-aa64-cdboot</packagereq>
         <packagereq>grub2-efi-aa64-modules</packagereq>
+        <packagereq>kernel-64k</packagereq>
+ 	    <packagereq>kernel-64k-devel</packagereq>
+ 	    <packagereq>kernel-64k-source</packagereq>
     </packagelist>
     <packagelist type="edge_x86_64">
         <packagereq>grub2-pc</packagereq>
