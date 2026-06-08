@@ -16,38 +16,17 @@
         <packagereq>python3-abrt-container-addon</packagereq>
     </packagelist>
     <packagelist type="exclude">
-	<packagereq>abrt-atomic</packagereq>
 	<packagereq>abrt-cli</packagereq>
 	<packagereq>abrt-console-notification</packagereq>
 	<packagereq>abrt-desktop</packagereq>
 	<packagereq>apptainer</packagereq>
 	<packagereq>apptainer-suid</packagereq>
-	<packagereq>castor</packagereq>
-	<packagereq>castor-maven-plugin</packagereq>
-	<packagereq>compat-openssl11-devel</packagereq>
 	<packagereq>gnome-boxes</packagereq>
-	<packagereq>ibus-table-chinese-array</packagereq>
-	<packagereq>ldapjdk</packagereq>
-	<packagereq>libcmpiCppImpl0</packagereq>
-	<packagereq>libev-libevent-devel</packagereq>
-	<packagereq>moby-client</packagereq>
-	<packagereq>moby-engine</packagereq>
-	<packagereq>moby</packagereq>
-	<packagereq>nfs-utils-min</packagereq>
 	<packagereq>nodejs-grunt-contrib-watch</packagereq>
-	<packagereq>oncn-bwm-devel</packagereq>
-	<packagereq>pcp-pmda-bpftrace</packagereq>
-	<packagereq>pcp-testsuite</packagereq>
-	<packagereq>postgresql-private-devel</packagereq>
-	<packagereq>protobuf2-compiler</packagereq>
-	<packagereq>protobuf2-devel</packagereq>
-	<packagereq>protobuf2-lite-devel</packagereq>
-	<packagereq>protobuf2-lite-static</packagereq>
-	<packagereq>protobuf2-static</packagereq>
-	<packagereq>protobuf2-vim</packagereq>
-	<packagereq>python3-abrt-addon</packagereq>
 	<packagereq>python3-keras-rl2</packagereq>
-	<packagereq>python3-pytype</packagereq>
+	<packagereq>qt6-qtwebview</packagereq>
+	<packagereq>qt6-qtwebview-devel</packagereq>
+	<packagereq>qt6-qtwebview-examples</packagereq>
 	<packagereq>texlive-biblatex-apa</packagereq>
 	<packagereq>texlive-collection-bibtexextra</packagereq>
 	<packagereq>texlive-collection-binextra</packagereq>
@@ -55,77 +34,18 @@
 	<packagereq>texlive-collection-fontutils</packagereq>
 	<packagereq>texlive-collection-latexextra</packagereq>
 	<packagereq>texlive-collection-mathscience</packagereq>
-	<packagereq>texlive-ctanupload</packagereq>
-	<packagereq>texlive-exceltex</packagereq>
 	<packagereq>texlive-includernw</packagereq>
-	<packagereq>texlive-latexindent</packagereq>
 	<packagereq>texlive-oldstandard</packagereq>
 	<packagereq>texlive-scheme-full</packagereq>
 	<packagereq>texlive-scheme-gust</packagereq>
 	<packagereq>texlive-scheme-medium</packagereq>
 	<packagereq>texlive-scheme-tetex</packagereq>
-	<packagereq>tomcatjss</packagereq>
-	<packagereq>cassandra-java-driver</packagereq>
-	<packagereq>cassandra-java-driver-extras</packagereq>
-	<packagereq>cassandra-java-driver-mapping</packagereq>
-	<packagereq>cassandra-java-driver-tests</packagereq>
-	<packagereq>closure-compiler</packagereq>
-	<packagereq>gala-anteater</packagereq>
-	<packagereq>gala-ops</packagereq>
-	<packagereq>google-http-java-client-protobuf</packagereq>
-	<packagereq>hdf5-openmpi</packagereq>
-	<packagereq>hdf5-openmpi-devel</packagereq>
-	<packagereq>hdf5-openmpi-static</packagereq>
-	<packagereq>language-detector</packagereq>
-	<packagereq>linkchecker</packagereq>
-	<packagereq>mailman</packagereq>
-	<packagereq>netcdf-openmpi</packagereq>
-	<packagereq>netcdf-openmpi-devel</packagereq>
-	<packagereq>netcdf-openmpi-static</packagereq>
-	<packagereq>nodejs-closure-compiler</packagereq>
-	<packagereq>nodejs-lodash-cli</packagereq>
-	<packagereq>obs-service-rust2rpm</packagereq>
-	<packagereq>pcp-pmda-mongodb</packagereq>
-	<packagereq>protostream</packagereq>
-	<packagereq>python3-authheaders</packagereq>
-	<packagereq>python3-dkimpy</packagereq>
-	<packagereq>python3-email-validator</packagereq>
-	<packagereq>python3-eventlet</packagereq>
-	<packagereq>python3-gala-anteater</packagereq>
-	<packagereq>python3-kdcproxy</packagereq>
-	<packagereq>python3-pydantic</packagereq>
-	<packagereq>python3-pymongo</packagereq>
-	<packagereq>python3-pymongo-gridfs</packagereq>
-	<packagereq>python3-rust2rpm</packagereq>
-	<packagereq>python3-samba</packagereq>
-	<packagereq>python3-samba-dc</packagereq>
-	<packagereq>python3-samba-test</packagereq>
-	<packagereq>rust-packaging</packagereq>
-	<packagereq>samba-test</packagereq>
-	<packagereq>samba-tools</packagereq>
 	<packagereq>texlive-fontspec-doc</packagereq>
 	<packagereq>texlive-polyglossia-doc</packagereq>
 	<packagereq>texlive-unicode-math-doc</packagereq>
 	<packagereq>docker-client-java</packagereq>
-	<packagereq>glassfish-hk2-configuration</packagereq>
-	<packagereq>hibernate</packagereq>
-	<packagereq>infinispan</packagereq>
-	<packagereq>ironjacamar</packagereq>
 	<packagereq>jetty</packagereq>
 	<packagereq>jetty-infinispan</packagereq>
-	<packagereq>mysql-connector-java</packagereq>
-	<packagereq>picketbox</packagereq>
-	<packagereq>resteasy</packagereq>
-	<packagereq>resteasy-optional</packagereq>
-	<packagereq>resteasy-test</packagereq>
-	<packagereq>wildfly-core</packagereq>
-	<packagereq>wildfly-core-feature-pack</packagereq>
-	<packagereq>xstream-hibernate</packagereq>
-	<packagereq>resteasy-optional</packagereq>
-	<packagereq>artemis-rest</packagereq>
-	<packagereq>infinispan</packagereq>
-	<packagereq>protostream</packagereq>
-	<packagereq>hibernate4-infinispan</packagereq>
     </packagelist>
     <packagelist type="src_exclude">
         <packagereq>drbd</packagereq>

@@ -29,7 +29,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        30
+Release:        31
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -270,6 +270,12 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Thu May 28 2026 Wenlong Zhang <zhangwenlong@loongson.cn> - 3.3.0-31
+- Type:requirement
+- CVE:NA
+- SUG:NA
+- DESC: modify rpmlist.xml on loongarch64 for openEuler-24.03-LTS-SP4
+
 * Tue May 26 2026 zhaoyonghao <zhaoyonghao10@h-partners.com> - 3.3.0-30
 - Type:requirement
 - CVE:NA
