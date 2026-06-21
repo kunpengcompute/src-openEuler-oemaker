@@ -1340,10 +1340,6 @@
         <packagereq>tcpdump-help</packagereq>
         <packagereq>tcsh</packagereq>
         <packagereq>tcsh-help</packagereq>
-        <packagereq>telepathy-filesystem</packagereq>
-        <packagereq>telepathy-glib</packagereq>
-        <packagereq>telepathy-logger</packagereq>
-        <packagereq>telepathy-logger-help</packagereq>
         <packagereq>telnet</packagereq>
         <packagereq>telnet-help</packagereq>
         <packagereq>tftp</packagereq>
