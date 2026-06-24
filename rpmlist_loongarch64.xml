@@ -21,6 +21,7 @@
 	<packagereq>abrt-desktop</packagereq>
 	<packagereq>apptainer</packagereq>
 	<packagereq>apptainer-suid</packagereq>
+	<packagereq>epiphany</packagereq>
 	<packagereq>gnome-boxes</packagereq>
 	<packagereq>nodejs-grunt-contrib-watch</packagereq>
 	<packagereq>python3-keras-rl2</packagereq>
