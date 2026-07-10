@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        27
+Release:        28
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -48,6 +48,7 @@ Patch0003:      0001-Fixes-boot-failure-caused-by-invalid-volume-IDs.patch
 Patch0004:      0002-delete-package-xorg-x11-server-utils.patch
 Patch0005:      backport-Compatible-with-single-line-no-newline-configuration.patch
 Patch0006:      0001-replace-calamares-with-heolleo-tool.patch
+Patch0007:      delete-package-avahi-libs.patch
 
 %description
 a building tool for DVD ISO making and ISO cutting
@@ -237,6 +238,12 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Fri Jul 10 2026 xinghe <xingheyd@163.com> - 3.3.0-28
+- Type:bugfix
+- CVE:NA
+- SUG:NA
+- DESC:remove avahi-libs packages
+
 * Tue May 26 2026 zhaoyonghao <zhaoyonghao10@h-partners.com> - 3.3.0-27
 - Type:requirement
 - CVE:NA
