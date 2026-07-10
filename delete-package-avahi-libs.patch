@@ -1,0 +1,22 @@
+From 569b7943b15ecec7a11f551cd81a454c13a66cb4 Mon Sep 17 00:00:00 2001
+From: xh <xingheyd@163.com>
+Date: Mon, 7 Jul 2025 14:33:56 +0800
+Subject: [PATCH] delete avahi-libs package
+
+
+diff --git a/isomaker/80-openeuler/runtime-cleanup.tmpl b/isomaker/80-openeuler/runtime-cleanup.tmpl
+index 876bbbd..d2bf781 100644
+--- a/isomaker/80-openeuler/runtime-cleanup.tmpl
++++ b/isomaker/80-openeuler/runtime-cleanup.tmpl
+@@ -355,7 +355,7 @@ removefrom gstreamer1-plugins-base --allbut \
+ removepkg geoclue2
+ 
+ ## And remove the packages that those extra libraries pulled in
+-removepkg cdparanoia-libs libtheora libvisual flac-libs gsm avahi-glib avahi-libs \
++removepkg cdparanoia-libs libtheora libvisual flac-libs gsm avahi-glib \
+           ModemManager-glib
+ 
+ ## metacity requires libvorbis and libvorbisfile, but enc/dec are no longer needed
+-- 
+2.27.0
+
