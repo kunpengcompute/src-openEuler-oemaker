@@ -29,7 +29,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        31
+Release:        32
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -270,6 +270,9 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Wed Jun 24 2026 Wenlong Zhang <zhangwenlong@loongson.cn> - 3.3.0-32
+- exclude epiphany on loongarch64
+
 * Thu May 28 2026 Wenlong Zhang <zhangwenlong@loongson.cn> - 3.3.0-31
 - Type:requirement
 - CVE:NA
