@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        29
+Release:        30
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -238,6 +238,12 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Sat Jul 25 2026 yangchaohao <yangchaohao@huawei.com> - 3.3.0-30
+- Type:requirement
+- CVE:NA
+- SUG:NA
+- DESC:remove clutter-gst3 and related software packages
+
 * Sat Jul 11 2026 Funda Wang <fundawang@yeah.net> - 3.3.0-29
 - drop telepathy*, they are dead for years
 

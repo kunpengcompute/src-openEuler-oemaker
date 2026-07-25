@@ -232,8 +232,6 @@
         <packagereq>cloud-init</packagereq>
         <packagereq>cloud-init-help</packagereq>
         <packagereq>clutter</packagereq>
-        <packagereq>clutter-gst3</packagereq>
-        <packagereq>clutter-gst3-help</packagereq>
         <packagereq>clutter-gtk</packagereq>
         <packagereq>clutter-gtk-help</packagereq>
         <packagereq>clutter-help</packagereq>
