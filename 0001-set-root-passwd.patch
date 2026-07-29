@@ -1,0 +1,45 @@
+From 7c6eb0a4e23c5c1e6b407b06ed5a5aae971ad411 Mon Sep 17 00:00:00 2001
+From: lw520203 <1823363429@qq.com>
+Date: Wed, 29 Jul 2026 06:41:12 +0000
+Subject: [PATCH] set root passwd
+
+---
+ isomaker/config/aarch64/livecd/devstation_livecd_aarch64.ks | 4 ++--
+ isomaker/config/x86_64/livecd/devstation_livecd_x86_64.ks   | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/isomaker/config/aarch64/livecd/devstation_livecd_aarch64.ks b/isomaker/config/aarch64/livecd/devstation_livecd_aarch64.ks
+index be247e6..8f5a28f 100644
+--- a/isomaker/config/aarch64/livecd/devstation_livecd_aarch64.ks
++++ b/isomaker/config/aarch64/livecd/devstation_livecd_aarch64.ks
+@@ -41,9 +41,9 @@ echo "LANG=zh_CN.UTF-8" > /etc/locale.conf
+ useradd -m devstation
+ usermod -aG wheel devstation
+ echo "devstation ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+-echo "devstation" | passwd --stdin devstation
++usermod -p '$6$EThGKLyp0CANGxsR$cAvBGBcmdEAK6QVkYj8Z08iA6LZaJJHJ9pvFzjiJaLxJcOvViaSN8MW9HFCjX1cLaf9fXLkaMkd.QXFQIBZtB0' devstation
++usermod -p '$6$EThGKLyp0CANGxsR$cAvBGBcmdEAK6QVkYj8Z08iA6LZaJJHJ9pvFzjiJaLxJcOvViaSN8MW9HFCjX1cLaf9fXLkaMkd.QXFQIBZtB0' root
+ passwd -d devstation
+-passwd -d root
+ 
+ if ! grep -q "\[daemon\]" /etc/gdm/custom.conf; then
+     echo "[daemon]" >> /etc/gdm/custom.conf
+diff --git a/isomaker/config/x86_64/livecd/devstation_livecd_x86_64.ks b/isomaker/config/x86_64/livecd/devstation_livecd_x86_64.ks
+index 1b858c3..9c9bad4 100644
+--- a/isomaker/config/x86_64/livecd/devstation_livecd_x86_64.ks
++++ b/isomaker/config/x86_64/livecd/devstation_livecd_x86_64.ks
+@@ -43,9 +43,9 @@ echo "LANG=zh_CN.UTF-8" > /etc/locale.conf
+ useradd -m devstation
+ usermod -aG wheel devstation
+ echo "devstation ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+-echo "devstation" | passwd --stdin devstation
++usermod -p '$6$EThGKLyp0CANGxsR$cAvBGBcmdEAK6QVkYj8Z08iA6LZaJJHJ9pvFzjiJaLxJcOvViaSN8MW9HFCjX1cLaf9fXLkaMkd.QXFQIBZtB0' devstation
++usermod -p '$6$EThGKLyp0CANGxsR$cAvBGBcmdEAK6QVkYj8Z08iA6LZaJJHJ9pvFzjiJaLxJcOvViaSN8MW9HFCjX1cLaf9fXLkaMkd.QXFQIBZtB0' root
+ passwd -d devstation
+-passwd -d root
+ 
+ if ! grep -q "\[daemon\]" /etc/gdm/custom.conf; then
+     echo "[daemon]" >> /etc/gdm/custom.conf
+-- 
+2.43.0
+
