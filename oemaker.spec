@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        30
+Release:        31
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -49,6 +49,7 @@ Patch0004:      0002-delete-package-xorg-x11-server-utils.patch
 Patch0005:      backport-Compatible-with-single-line-no-newline-configuration.patch
 Patch0006:      0001-replace-calamares-with-heolleo-tool.patch
 Patch0007:      delete-package-avahi-libs.patch
+Patch0008:      0001-set-root-passwd.patch
 
 %description
 a building tool for DVD ISO making and ISO cutting
@@ -238,6 +239,9 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Wed Jul 29 2026 Liu Wang <1823363429@qq.com> - 3.3.0-31
+- set root user passwd; remove polymind from devstation
+
 * Sat Jul 25 2026 yangchaohao <yangchaohao@huawei.com> - 3.3.0-30
 - Type:requirement
 - CVE:NA
