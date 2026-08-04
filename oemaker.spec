@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        31
+Release:        32
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -239,6 +239,9 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Tue Aug 04 2026 Liu Wang <1823363429@qq.com> - 3.3.0-32
+- remove kernel-extra-modules euler-copilot from devstation
+
 * Wed Jul 29 2026 Liu Wang <1823363429@qq.com> - 3.3.0-31
 - set root user passwd; remove polymind from devstation
 
