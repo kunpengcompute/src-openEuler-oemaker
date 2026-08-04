@@ -162,10 +162,7 @@ rust-cbindgen
 polkit-qt5-1
 polkit-qt5-1-devel
 oedp
-kernel-extra-modules
 epkg
-euler-copilot-shell
-euler-copilot-desktop
 vscodium
 oegitext
 kf5-kcalendarcore-devel
