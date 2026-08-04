@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        32
+Release:        33
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -198,14 +198,6 @@ install -m 700 %{name}/envmaker/utils/parse_rpmlist_xml.sh %{buildroot}/opt/envm
 install -m 600 %{name}/envmaker/config/${sys_arch}/openEuler_repo.conf %{buildroot}/opt/envmaker/config/${sys_arch}/openEuler_repo.conf
 install -m 600 %{name}/envmaker/config/compile_env_rpmlist.xml %{buildroot}/opt/envmaker/config/compile_env_rpmlist.xml
 
-%pre
-
-%post
-
-%preun
-
-%postun
-
 %postun -n isocut
 if [ "$1" = "0" ]; then
   rm -rf %{_sysconfdir}/isocut/*
@@ -239,6 +231,9 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Tue Aug 04 2026 Funda Wang <fundawang@yeah.net> - 3.3.0-33
+- google noto sans symbols2 has been renamed
+
 * Tue Aug 04 2026 Liu Wang <1823363429@qq.com> - 3.3.0-32
 - remove kernel-extra-modules euler-copilot from devstation
 
