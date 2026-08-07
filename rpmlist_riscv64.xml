@@ -247,7 +247,17 @@
         <packagereq>clutter-gtk-help</packagereq>
         <packagereq>clutter-help</packagereq>
         <packagereq>cockpit</packagereq>
+        <packagereq>cockpit-bridge</packagereq>
         <packagereq>cockpit-help</packagereq>
+        <packagereq>cockpit-kdump</packagereq>
+        <packagereq>cockpit-networkmanager</packagereq>
+        <packagereq>cockpit-packagekit</packagereq>
+        <packagereq>cockpit-selinux</packagereq>
+        <packagereq>cockpit-sosreport</packagereq>
+        <packagereq>cockpit-storaged</packagereq>
+        <packagereq>cockpit-system</packagereq>
+        <packagereq>cockpit-ws</packagereq>
+        <packagereq>cockpit-ws-selinux</packagereq>
         <packagereq>cogl</packagereq>
         <packagereq>cogl-help</packagereq>
         <packagereq>color-filesystem</packagereq>
