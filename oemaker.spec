@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        33
+Release:        34
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -231,6 +231,9 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Fri Aug 07 2026 lingsheng <ultra_planet@qq.com> - 3.3.0-34
+- add cockpit sub packages in rpmlist
+
 * Tue Aug 04 2026 Funda Wang <fundawang@yeah.net> - 3.3.0-33
 - google noto sans symbols2 has been renamed
 
