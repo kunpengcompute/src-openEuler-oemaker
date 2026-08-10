@@ -1,0 +1,226 @@
+From 925633662f34cb679fd6e1fe191d00cd53267ebd Mon Sep 17 00:00:00 2001
+From: Wenlong Zhang <zhangwenlong@loongson.com>
+Date: Mon, 10 Aug 2026 14:21:05 +0800
+Subject: [PATCH 1/1] reset the path of yum.repos.d for oemaker
+
+---
+ isomaker/img_repo.sh   |  7 ++++---
+ isomaker/make_debug.sh |  6 +++---
+ isomaker/rpm.sh        | 40 ++++++++++++++++++++--------------------
+ 3 files changed, 27 insertions(+), 26 deletions(-)
+
+diff --git a/isomaker/img_repo.sh b/isomaker/img_repo.sh
+index 530f3c7..c78e292 100755
+--- a/isomaker/img_repo.sh
++++ b/isomaker/img_repo.sh
+@@ -47,15 +47,16 @@ function create_install_img()
+ 
+ function create_repos()
+ {
+-    if [ -d /etc/yum.repos.d ];then
+-        rm -fr repos.old && mv /etc/yum.repos.d repos.old && mkdir -p /etc/yum.repos.d/
++    if [ -d yum.repos.d ];then
++        rm -fr yum.repos.d
+     fi
++    mkdir -p yum.repos.d
+ 
+     repos=($(echo "$YUMREPO" | sed 's/-s//g'))
+ 
+     for repo in  ${repos[@]}
+     do
+-        yum-config-manager  --add-repo "$repo"
++        yum-config-manager --setopt=reposdir=yum.repos.d --add-repo "$repo"
+     done
+ 
+     yum clean all
+diff --git a/isomaker/make_debug.sh b/isomaker/make_debug.sh
+index 05ad97c..dcf730a 100755
+--- a/isomaker/make_debug.sh
++++ b/isomaker/make_debug.sh
+@@ -20,9 +20,9 @@ set -e
+ function down_ava_debug_rpm()
+ {
+     [ -d "$DBG_DIR" ] && rm -rf "$DBG_DIR"
+-    yum list --installroot="${BUILD}"/tmp available | awk '{print $1}' | grep -E 'devel|debuginfo' | grep -v "i686" > ava_deb_lst
++    yum list -setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp available | awk '{print $1}' | grep -E 'devel|debuginfo' | grep -v "i686" > ava_deb_lst
+     local yumdownloader_log_startline=$(($(awk 'END{print NR}' /var/log/dnf.log)+1))
+-    yumdownloader --installroot="${BUILD}"/tmp --destdir="$DBG_DIR" $(cat ava_deb_lst | tr '\n' ' ') > /dev/null
++    yumdownloader --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp --destdir="$DBG_DIR" $(cat ava_deb_lst | tr '\n' ' ') > /dev/null
+     if [ $? -ne 0 ] || sed -n ''${yumdownloader_log_startline}',$p' /var/log/dnf.log | grep -n 'conflicting requests'; then
+         return 1
+     fi
+@@ -46,7 +46,7 @@ function get_debug_rpm()
+     done
+     set -e
+     local yumdownloader_log_startline=$(($(awk 'END{print NR}' /var/log/dnf.log)+1))
+-    yumdownloader --resolve --installroot="${BUILD}"/tmp --destdir="$DBG_DIR" $(cat debug_rpm_lst | tr '\n' ' ')
++    yumdownloader --resolve --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp --destdir="$DBG_DIR" $(cat debug_rpm_lst | tr '\n' ' ')
+     if [ $? -ne 0 ] || sed -n ''${yumdownloader_log_startline}',$p' /var/log/dnf.log | grep -n 'conflicting requests'; then
+         echo "Download debug rpms failed!"
+         return 1
+diff --git a/isomaker/rpm.sh b/isomaker/rpm.sh
+index a033328..71326b8 100755
+--- a/isomaker/rpm.sh
++++ b/isomaker/rpm.sh
+@@ -100,9 +100,9 @@ function check_and_fix_rich_deps()
+         #    c) 仍查不到且是合法包名格式时，交给 yumdownloader 用裸名解析（存在即下载，不存在即报错，提前暴露问题）
+         : > _rich_fix.lst
+         while read -r pkg; do
+-            found=$(repoquery --installroot="${BUILD}"/tmp --queryformat="%{name}.%{arch}" -q --whatprovides "${pkg}" 2>/dev/null || true)
++            found=$(repoquery --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp --queryformat="%{name}.%{arch}" -q --whatprovides "${pkg}" 2>/dev/null || true)
+             if [ -z "${found}" ]; then
+-                found=$(repoquery --installroot="${BUILD}"/tmp --queryformat="%{name}.%{arch}" -q "${pkg}" 2>/dev/null || true)
++                found=$(repoquery --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp --queryformat="%{name}.%{arch}" -q "${pkg}" 2>/dev/null || true)
+             fi
+             if [ -n "${found}" ]; then
+                 echo "${found}" >> _rich_fix.lst
+@@ -120,7 +120,7 @@ function check_and_fix_rich_deps()
+         # 4. 自动补下载（--resolve 会同时拉取其自身依赖），随后进入下一轮迭代检查
+         added=1
+         echo "Auto download missing rich-dependency packages: $(tr '\n' ' ' < _rich_fix.lst)"
+-        yumdownloader --resolve --installroot="${BUILD}"/tmp --destdir="${BUILD}"/iso/Packages/ $(cat _rich_fix.lst | tr '\n' ' ') ${exclude_cmd} || {
++        yumdownloader --resolve --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp --destdir="${BUILD}"/iso/Packages/ $(cat _rich_fix.lst | tr '\n' ' ') ${exclude_cmd} || {
+             echo "Auto download rich-dependency packages failed!"
+             exit 133
+         }
+@@ -156,7 +156,7 @@ function download_rpms()
+     [ -d "${BUILD}"/tmp ] && rm -rf "${BUILD}"/tmp
+     ret=0
+     rm -rf not_find __*
+-    yum list --installroot="${BUILD}"/tmp available | awk '{print $1}' > __list.arch
++    yum list --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp available | awk '{print $1}' > __list.arch
+ 
+     set +e
+     for rname in $(cat _all_rpms.lst)
+@@ -178,7 +178,7 @@ function download_rpms()
+         fi
+         cat __list.arch | grep -w "^$rname" > /dev/null 2>&1
+         if [ $? != 0 ]; then
+-            rname_tmp=`repoquery --queryformat="%{name}.%{arch}" -q --whatprovides $rname`
++            rname_tmp=`repoquery --setopt=reposdir=yum.repos.d --queryformat="%{name}.%{arch}" -q --whatprovides $rname`
+             if [ -z "${rname_tmp}" ]; then
+                 echo "cannot find $rname in yum repo" >> not_find
+                 ret=1
+@@ -220,7 +220,7 @@ function download_rpms()
+         done
+     fi
+     local yumdownloader_log_startline=$(($(awk 'END{print NR}' /var/log/dnf.log)+1))
+-    yumdownloader --resolve --installroot="${BUILD}"/tmp --destdir="${BUILD}"/iso/Packages/ $(cat __rpm.list | tr '\n' ' ') ${exclude_cmd}
++    yumdownloader --resolve --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp --destdir="${BUILD}"/iso/Packages/ $(cat __rpm.list | tr '\n' ' ') ${exclude_cmd}
+     if [ $? != 0 ] || sed -n ''${yumdownloader_log_startline}',$p' /var/log/dnf.log | grep -n 'conflicting requests'; then
+        echo "Download rpms failed!"
+        exit 133
+@@ -229,7 +229,7 @@ function download_rpms()
+     parse_rpmlist_xml "conflict"
+     set -e
+     if [ -s parsed_rpmlist_conflict ];then
+-        yumdownloader --resolve --installroot="${BUILD}"/tmp --destdir="${BUILD}"/iso/Packages/ $(cat parsed_rpmlist_conflict | tr '\n' ' ') ${exclude_cmd}
++        yumdownloader --resolve --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp --destdir="${BUILD}"/iso/Packages/ $(cat parsed_rpmlist_conflict | tr '\n' ' ') ${exclude_cmd}
+     fi
+ 
+     set +e
+@@ -239,8 +239,8 @@ function download_rpms()
+     elif [ "${ISO_TYPE}" == "source" ]; then
+         [ -d "$SRC_DIR" ] && rm -rf "$SRC_DIR"
+         mkdir "$SRC_DIR"
+-        ls "${BUILD}"/iso/Packages/ | sed 's/.rpm$//g'| tr '\n' ' ' | sort | uniq | xargs yumdownloader --installroot="${BUILD}"/tmp --source --destdir="$SRC_DIR"
+-        yumdownloader kernel-source  --installroot="${BUILD}"/tmp  --destdir="$SRC_DIR"
++        ls "${BUILD}"/iso/Packages/ | sed 's/.rpm$//g'| tr '\n' ' ' | sort | uniq | xargs yumdownloader --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp --source --destdir="$SRC_DIR"
++        yumdownloader kernel-source --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp  --destdir="$SRC_DIR"
+     elif [ "${ISO_TYPE}" == "everything" ]; then
+         everything_rpms_download
+     elif [ "${ISO_TYPE}" == "everything_src" ]; then
+@@ -277,7 +277,7 @@ function get_edge_rpms()
+     cat parsed_rpmlist_edge_common >> _edge_rpms.lst
+     cat "config/${ARCH}/edge_normal.xml" | grep packagereq | cut -d ">" -f 2 | cut -d "<" -f 1 >> _edge_rpms.lst
+     sort -r -u _edge_rpms.lst -o _edge_rpms.lst
+-    yumdownloader --resolve --installroot="${BUILD}"/tmp --destdir="${BUILD}"/iso/Packages/ $(cat _edge_rpms.lst | tr '\n' ' ')
++    yumdownloader --resolve --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp --destdir="${BUILD}"/iso/Packages/ $(cat _edge_rpms.lst | tr '\n' ' ')
+     if [ $? != 0 ] || [ $(ls "${BUILD}"/iso/Packages/ | wc -l) == 0 ]; then
+         echo "Download rpms failed!"
+         exit 133
+@@ -293,7 +293,7 @@ function get_desktop_rpms()
+     cat parsed_rpmlist_desktop_common >> _desktop_rpms.lst
+     cat "config/${ARCH}/desktop_normal.xml" | grep packagereq | cut -d ">" -f 2 | cut -d "<" -f 1 >> _desktop_rpms.lst
+     sort -r -u _desktop_rpms.lst -o _desktop_rpms.lst
+-    yumdownloader --resolve --installroot="${BUILD}"/tmp --destdir="${BUILD}"/iso/Packages/ $(cat _desktop_rpms.lst | tr '\n' ' ')
++    yumdownloader --resolve --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp --destdir="${BUILD}"/iso/Packages/ $(cat _desktop_rpms.lst | tr '\n' ' ')
+     if [ $? != 0 ] || [ $(ls "${BUILD}"/iso/Packages/ | wc -l) == 0 ]; then
+         echo "Download rpms failed!"
+         exit 133
+@@ -305,7 +305,7 @@ function get_devstation_rpms()
+ {
+     cat "config/${ARCH}/livecd/devstation_rpmlist" >> _devstation_rpms.lst
+     sort -r -u _devstation_rpms.lst -o _devstation_rpms.lst
+-    yumdownloader --resolve --installroot="${BUILD}"/tmp --destdir="${BUILD}"/iso/Packages/ $(cat _devstation_rpms.lst | tr '\n' ' ')
++    yumdownloader --resolve --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp --destdir="${BUILD}"/iso/Packages/ $(cat _devstation_rpms.lst | tr '\n' ' ')
+     if [ $? != 0 ] || [ $(ls "${BUILD}"/iso/Packages/ | wc -l) == 0 ]; then
+         echo "Download rpms failed!"
+         exit 133
+@@ -315,7 +315,7 @@ function get_devstation_rpms()
+ 
+ function get_everything_rpms()
+ {
+-    yum list --installroot="${BUILD}"/tmp --available | awk '{print $1}' | grep -E "\.noarch|\.${ARCH}" | grep -v "debuginfo\." | grep -v "debugsource\." > ava_every_lst
++    yum list --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp --available | awk '{print $1}' | grep -E "\.noarch|\.${ARCH}" | grep -v "debuginfo" | grep -v "debugsource" > ava_every_lst
+     parse_rpmlist_xml "exclude"
+     cat parsed_rpmlist_exclude
+     if [ -s parsed_rpmlist_exclude ];then
+@@ -357,20 +357,20 @@ function everything_rpms_download()
+ {
+     mkdir ${EVERY_DIR}
+     get_everything_rpms
+-    yumdownloader --resolve --installroot="${BUILD}"/tmp --destdir="${EVERY_DIR}" $(cat ava_every_lst | tr '\n' ' ')
++    yumdownloader --resolve --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp --destdir="${EVERY_DIR}" $(cat ava_every_lst | tr '\n' ' ')
+     if [ $? != 0 ] || [ $(ls ${EVERY_DIR} | wc -l) == 0 ]; then
+        echo "Download rpms failed!"
+        exit 133
+     fi
+     if [ -s conflict_list ];then
+-        yumdownloader --resolve --installroot="${BUILD}"/tmp --destdir="${EVERY_DIR}" $(cat conflict_list | tr '\n' ' ')
++        yumdownloader --resolve --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp --destdir="${EVERY_DIR}" $(cat conflict_list | tr '\n' ' ')
+     fi
+ }
+ 
+ function everything_source_rpms_download()
+ {
+     mkdir ${EVERY_SRC_DIR}
+-    yum list --installroot="${BUILD}"/tmp --available | awk '{print $1}' | grep "\.src" > ava_every_lst
++    yum list --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp --available | awk '{print $1}' | grep "\.src" > ava_every_lst
+     parse_rpmlist_xml "src_exclude"
+     cat parsed_rpmlist_src_exclude
+     if [ -s parsed_rpmlist_src_exclude ];then
+@@ -379,7 +379,7 @@ function everything_source_rpms_download()
+             sed -i "/^${rpmname}\./d" ava_every_lst
+         done
+     fi 
+-    yumdownloader --installroot="${BUILD}"/tmp --destdir="${EVERY_SRC_DIR}" --source $(cat ava_every_lst | tr '\n' ' ')
++    yumdownloader --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp --destdir="${EVERY_SRC_DIR}" --source $(cat ava_every_lst | tr '\n' ' ')
+     if [ $? != 0 ] || [ $(ls ${EVERY_SRC_DIR} | wc -l) == 0 ]; then
+        echo "Download rpms failed!"
+        exit 133
+@@ -389,7 +389,7 @@ function everything_source_rpms_download()
+ function everything_debug_rpms_download()
+ {
+     mkdir ${EVERY_DEBUG_DIR}
+-    yum list --installroot="${BUILD}"/tmp --available | awk '{print $1}' | grep -E "debuginfo\.|debugsource\." > ava_debug_lst
++    yum list --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp --available | awk '{print $1}' | grep -E "debuginfo|debugsource" > ava_debug_lst
+     parse_rpmlist_xml "everything_debug_exclude"
+     cat parsed_rpmlist_everything_debug_exclude
+     if [ -s parsed_rpmlist_everything_debug_exclude ];then
+@@ -398,10 +398,10 @@ function everything_debug_rpms_download()
+             sed -i "/^${rpmname}\./d" ava_debug_lst
+         done
+     fi
+-    yumdownloader --resolve --installroot="${BUILD}"/tmp --destdir="${EVERY_DEBUG_DIR}" $(cat ava_debug_lst | tr '\n' ' ')
++    yumdownloader --resolve --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp --destdir="${EVERY_DEBUG_DIR}" $(cat ava_debug_lst | tr '\n' ' ')
+     if [ $? != 0 ] || [ $(ls ${EVERY_DEBUG_DIR} | wc -l) == 0 ]; then
+         echo "yumdownloader with --resolve failed, trying to yumdownloader without --resolve"
+-        yumdownloader --installroot="${BUILD}"/tmp --destdir="${EVERY_DEBUG_DIR}" $(cat ava_debug_lst | tr '\n' ' ')
++        yumdownloader --setopt=reposdir=yum.repos.d --installroot="${BUILD}"/tmp --destdir="${EVERY_DEBUG_DIR}" $(cat ava_debug_lst | tr '\n' ' ')
+     fi
+ }
+  
+-- 
+2.43.7
+
