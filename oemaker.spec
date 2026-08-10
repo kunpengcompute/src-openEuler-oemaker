@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        34
+Release:        35
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -50,6 +50,7 @@ Patch0005:      backport-Compatible-with-single-line-no-newline-configuration.pa
 Patch0006:      0001-replace-calamares-with-heolleo-tool.patch
 Patch0007:      delete-package-avahi-libs.patch
 Patch0008:      0001-set-root-passwd.patch
+Patch0009:      0001-add-rich-dependency-closure-check-and-auto-download.patch
 
 %description
 a building tool for DVD ISO making and ISO cutting
@@ -231,6 +232,9 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Sat Aug 08 2026 dingxudong <dingxudong1@huawei.com> - 3.3.0-35
+- add rich dependency closure check and auto-download 
+
 * Fri Aug 07 2026 lingsheng <ultra_planet@qq.com> - 3.3.0-34
 - add cockpit sub packages in rpmlist
 
