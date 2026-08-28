@@ -15,7 +15,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        37
+Release:        38
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -233,6 +233,9 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Fri Aug 28 2026 xujingmin <xujingmin@iscas.ac.cn> - 3.3.0-38
+- add liteview to devstation
+
 * Wed Aug 19 2026 maolintao <1158944345@qq.com> - 3.3.0-37
 - add polymind to devstation
 
