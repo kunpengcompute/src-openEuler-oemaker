@@ -1,60 +1,63 @@
-From 9a6a2ea7843c4f2f2f503866fc403a178e5ed40e Mon Sep 17 00:00:00 2001
-From: wangliu-iscas <wangliu@iscas.ac.cn>
-Date: Thu, 26 Mar 2026 16:08:55 +0800
-Subject: [PATCH] add 24.03SP3 RVA23 support
+From 6ac4b5742c7404b42076cfed389ade587ff95a64 Mon Sep 17 00:00:00 2001
+From: ouuleilei <wangliu@iscas.ac.cn>
+Date: Fri, 4 Sep 2026 17:32:48 +0800
+Subject: [PATCH] support riscv64 rva23
 
 ---
- .../config_files/riscv64/grub2-efi.cfg        | 17 ++++---
- isomaker/80-openeuler/efi.tmpl                |  1 +
+ .../config_files/riscv64/grub2-efi.cfg        | 16 +++---
+ isomaker/80-openeuler/efi.tmpl                |  4 ++
  isomaker/img_repo.sh                          | 11 ++--
+ isomaker/init.sh                              | 15 +++---
  isomaker/iso.sh                               | 50 ++++++++++++++-----
- 4 files changed, 54 insertions(+), 25 deletions(-)
+ 5 files changed, 64 insertions(+), 32 deletions(-)
 
 diff --git a/isomaker/80-openeuler/config_files/riscv64/grub2-efi.cfg b/isomaker/80-openeuler/config_files/riscv64/grub2-efi.cfg
-index cc407f6..ca2bb5b 100644
+index cc407f6..bbe7ed1 100644
 --- a/isomaker/80-openeuler/config_files/riscv64/grub2-efi.cfg
 +++ b/isomaker/80-openeuler/config_files/riscv64/grub2-efi.cfg
-@@ -26,21 +26,22 @@ set timeout=60
+@@ -26,21 +26,21 @@ set timeout=60
  search --no-floppy --set=root -l '@ISOLABEL@'
  
  ### BEGIN /etc/grub.d/10_linux ###
 -menuentry 'Install @PRODUCT@ @VERSION@' --class red --class gnu-linux --class gnu --class os {
 -    linux @KERNELPATH@ @ROOT@ ro inst.geoloc=0 systemd.default_timeout_start_sec=600 highres=off earlycon
-+menuentry 'Install @PRODUCT@ @VERSION@ @RELEASE@' --class red --class gnu-linux --class gnu --class os {
++menuentry 'Install @PRODUCT@ @VERSION@ @ARCH@ @RELEASE@' --class red --class gnu-linux --class gnu --class os {
 +    linux @KERNELPATH@ @ROOT@ ro inst.geoloc=0 systemd.default_timeout_start_sec=600 highres=off earlycon inst.xtimeout=600
      initrd @INITRDPATH@
  }
 -menuentry 'Test this media & install @PRODUCT@ @VERSION@' --class red --class gnu-linux --class gnu --class os {
 -    linux @KERNELPATH@ @ROOT@ rd.live.check inst.geoloc=0 systemd.default_timeout_start_sec=600 highres=off earlycon
-+menuentry 'Test this media & install @PRODUCT@ @VERSION@ @RELEASE@' --class red --class gnu-linux --class gnu --class os {
++menuentry 'Test this media & install @PRODUCT@ @VERSION@ @ARCH@ @RELEASE@' --class red --class gnu-linux --class gnu --class os {
 +    linux @KERNELPATH@ @ROOT@ rd.live.check inst.geoloc=0 systemd.default_timeout_start_sec=600 highres=off earlycon inst.xtimeout=600
      initrd @INITRDPATH@
  }
  submenu 'Troubleshooting -->' {
 -    menuentry 'Install @PRODUCT@ @VERSION@ in basic graphics mode' --class red --class gnu-linux --class gnu --class os {
 -            linux @KERNELPATH@ @ROOT@ nomodeset inst.geoloc=0 systemd.default_timeout_start_sec=600 highres=off earlycon
-+    menuentry 'Install @PRODUCT@ @VERSION@ @RELEASE@ in basic graphics mode' --class red --class gnu-linux --class gnu --class os {
++    menuentry 'Install @PRODUCT@ @VERSION@ @ARCH@ @RELEASE@ in basic graphics mode' --class red --class gnu-linux --class gnu --class os {
 +            linux @KERNELPATH@ @ROOT@ nomodeset inst.geoloc=0 systemd.default_timeout_start_sec=600 highres=off earlycon inst.xtimeout=600
              initrd @INITRDPATH@
      }
      menuentry 'Rescue the @PRODUCT@ system' --class red --class gnu-linux --class gnu --class os {
 -            linux @KERNELPATH@ @ROOT@ rescue systemd.default_timeout_start_sec=600 highres=off earlycon
 +            linux @KERNELPATH@ @ROOT@ rescue systemd.default_timeout_start_sec=600 highres=off earlycon inst.xtimeout=600
-+>>>>>>> add 24.03SP3 RVA23 support
              initrd @INITRDPATH@
      }
 -}
 \ No newline at end of file
 +}
 diff --git a/isomaker/80-openeuler/efi.tmpl b/isomaker/80-openeuler/efi.tmpl
-index c9cbc33..0a8989d 100644
+index c9cbc33..3ceeaf3 100644
 --- a/isomaker/80-openeuler/efi.tmpl
 +++ b/isomaker/80-openeuler/efi.tmpl
-@@ -48,6 +48,7 @@ ${make_efiboot("images/efiboot.img")}
+@@ -48,6 +48,10 @@ ${make_efiboot("images/efiboot.img")}
      install ${configdir}/grub2-efi.cfg ${eficonf}
      replace @PRODUCT@ '${product.name}' ${eficonf}
      replace @VERSION@ ${product.version} ${eficonf}
 +    replace @RELEASE@ ${product.release} ${eficonf}
++    %if efiarch64 == 'RISCV64':
++    replace @ARCH@ ${efiarch64|lower} ${eficonf}
++    %endif
      replace @KERNELNAME@ vmlinuz ${eficonf}
      replace @KERNELPATH@ /${kdir}/vmlinuz ${eficonf}
      replace @INITRDPATH@ /${kdir}/initrd.img ${eficonf}
@@ -80,8 +83,38 @@ index 530f3c7..5a5884d 100755
      set +e
      lorax --isfinal -p "${PRODUCT}" -v "${vertmp}" -r "${RELEASE}" -t "${VARIANT}" --sharedir 80-openeuler --rootfs-size=4 --buildarch="$ARCH" $(cat yumrepo.file) --nomacboot --noupgrade "${BUILD}"/iso > lorax.logfile 2>&1
  
+diff --git a/isomaker/init.sh b/isomaker/init.sh
+index 35481cb..28dc127 100755
+--- a/isomaker/init.sh
++++ b/isomaker/init.sh
+@@ -111,17 +111,18 @@ function global_var_init()
+     SYSID_PPC="PPC"
+ 
+     if [ -n "${RELEASE}" ];then
+-        RELEASE_NAME="${PRODUCT}-${VERSION}-${RELEASE}-${ARCH}"
+-        STANDARD_ISO_NAME="${PRODUCT}-${VERSION}-${RELEASE}-${ARCH}-dvd.iso"
++        RELEASE_NAME="${PRODUCT}-${VERSION}-${ARCH}-${RELEASE}"
++        LABEL_NAME="${PRODUCT}-${VERSION}-${ARCH}"
++        STANDARD_ISO_NAME="${PRODUCT}-${VERSION}-${ARCH}-${RELEASE}-dvd.iso"
+         SRC_ISO_NAME="${PRODUCT}-${VERSION}-${RELEASE}-source-dvd.iso"
+         DBG_ISO_NAME="${PRODUCT}-${VERSION}-${RELEASE}-debug-${ARCH}-dvd.iso"
+-        EVE_ISO_NAME="${PRODUCT}-${VERSION}-${RELEASE}-everything-${ARCH}-dvd.iso"
+-        EVE_DEBUG_ISO_NAME="${PRODUCT}-${VERSION}-${RELEASE}-everything-debug-${ARCH}-dvd.iso"
++        EVE_ISO_NAME="${PRODUCT}-${VERSION}-everything-${ARCH}-${RELEASE}-dvd.iso"
++        EVE_DEBUG_ISO_NAME="${PRODUCT}-${VERSION}-everything-debug-${ARCH}-${RELEASE}-dvd.iso"
+         EVE_SRC_ISO_NAME="${PRODUCT}-${VERSION}-${RELEASE}-everything-source-dvd.iso"
+-        NETINST_ISO_NAME="${PRODUCT}-${VERSION}-${RELEASE}-netinst-${ARCH}-dvd.iso"
+-        EDGE_ISO_NAME="${PRODUCT}-${VERSION}-${RELEASE}-edge-${ARCH}-dvd.iso"
++        NETINST_ISO_NAME="${PRODUCT}-${VERSION}-netinst-${ARCH}-${RELEASE}-dvd.iso"
++        EDGE_ISO_NAME="${PRODUCT}-${VERSION}-edge-${ARCH}-${RELEASE}-dvd.iso"
+         DESKTOP_ISO_NAME="${PRODUCT}-Desktop-${VERSION}-${RELEASE}-${ARCH}-dvd.iso"
+-        LIVE_CD_ISO_NAME="${PRODUCT}-livecd-${VERSION}-${RELEASE}-${ARCH}.iso"
++        LIVE_CD_ISO_NAME="${PRODUCT}-livecd-${VERSION}-${ARCH}-${RELEASE}.iso"
+         DEVSTATION_ISO_NAME="${PRODUCT}-${VERSION}-${RELEASE}-DevStation-${ARCH}-dvd.iso"
+         DEVSTATION_NETINST_ISO_NAME="${PRODUCT}-${VERSION}-${RELEASE}-DevStation-netinst-${ARCH}-dvd.iso"
+     else
 diff --git a/isomaker/iso.sh b/isomaker/iso.sh
-index f53c081..ef20b97 100755
+index f53c081..7acb3e9 100755
 --- a/isomaker/iso.sh
 +++ b/isomaker/iso.sh
 @@ -26,9 +26,12 @@ function gen_debug_iso()
@@ -93,7 +126,7 @@ index f53c081..ef20b97 100755
          mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME}" -o "${OUTPUT_DIR}/${DBG_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
          [ $? != 0 ] && return 1
 +    elif [ "$ARCH" == "riscv64" ]; then
-+        mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME/-RVA23/}" -o "${OUTPUT_DIR}/${DBG_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
++        mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${LABEL_NAME}" -o "${OUTPUT_DIR}/${DBG_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
 +        [ $? != 0 ] && return 1
      elif [ "$ARCH" == "loongarch64" ]; then
          # Enable EFI boot loongarch64
@@ -107,7 +140,7 @@ index f53c081..ef20b97 100755
          mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME}" -o "${OUTPUT_DIR}/${STANDARD_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
          [ $? != 0 ] && return 1
 +    elif [ "$ARCH" == "riscv64" ]; then
-+        mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME/-RVA23/}" -o "${OUTPUT_DIR}/${STANDARD_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
++        mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${LABEL_NAME}" -o "${OUTPUT_DIR}/${STANDARD_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
 +        [ $? != 0 ] && return 1
      elif [ "$ARCH" == "loongarch64" ]; then
          xorriso as mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME}" -o "${OUTPUT_DIR}/${STANDARD_ISO_NAME}" -efi-boot-part --efi-boot-image -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
@@ -121,7 +154,7 @@ index f53c081..ef20b97 100755
          mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME}" -o "${OUTPUT_DIR}/${EDGE_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
          [ $? != 0 ] && return 1
 +    elif [ "$ARCH" == "riscv64" ]; then
-+        mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME/-RVA23/}" -o "${OUTPUT_DIR}/${EDGE_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
++        mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${LABEL_NAME}" -o "${OUTPUT_DIR}/${EDGE_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
 +        [ $? != 0 ] && return 1
      elif [ "$ARCH" == "loongarch64" ]; then
          xorriso as mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME}" -o "${OUTPUT_DIR}/${EDGE_ISO_NAME}" -efi-boot-part --efi-boot-image -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
@@ -135,7 +168,7 @@ index f53c081..ef20b97 100755
          mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME}" -o "${OUTPUT_DIR}/${DESKTOP_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
          [ $? != 0 ] && return 1
 +    elif [ "$ARCH" == "riscv64" ]; then
-+        mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME/-RVA23/}" -o "${OUTPUT_DIR}/${DESKTOP_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
++        mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${LABEL_NAME}" -o "${OUTPUT_DIR}/${DESKTOP_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
 +        [ $? != 0 ] && return 1
      elif [ "$ARCH" == "loongarch64" ]; then
          xorriso as mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME}" -o "${OUTPUT_DIR}/${DESKTOP_ISO_NAME}" -efi-boot-part --efi-boot-image -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
@@ -149,7 +182,7 @@ index f53c081..ef20b97 100755
          mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME}" -o "${OUTPUT_DIR}/${SRC_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
          [ $? != 0 ] && return 1
 +    elif [ "$ARCH" == "riscv64" ]; then
-+        mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME/-RVA23/}" -o "${OUTPUT_DIR}/${SRC_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
++        mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${LABEL_NAME}" -o "${OUTPUT_DIR}/${SRC_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
 +        [ $? != 0 ] && return 1
      elif [ "$ARCH" == "loongarch64" ]; then
          xorriso as mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME}" -o "${OUTPUT_DIR}/${SRC_ISO_NAME}" -efi-boot-part --efi-boot-image -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
@@ -164,7 +197,7 @@ index f53c081..ef20b97 100755
 -        [ $? != 0  ] && return 1
 +        [ $? != 0 ] && return 1
 +    elif [ "$ARCH" == "riscv64" ]; then
-+        mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME/-RVA23/}" -o /result/"${EVE_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
++        mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${LABEL_NAME}" -o /result/"${EVE_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
 +        [ $? != 0 ] && return 1
      elif [ "$ARCH" == "loongarch64" ]; then
          xorriso as mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME}" -o /result/"${EVE_ISO_NAME}" -efi-boot-part --efi-boot-image -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
@@ -179,7 +212,7 @@ index f53c081..ef20b97 100755
 -        [ $? != 0  ] && return 1
 +        [ $? != 0 ] && return 1
 +    elif [ "$ARCH" == "riscv64" ]; then
-+        mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME/-RVA23/}" -o /result/"${EVE_DEBUG_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
++        mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${LABEL_NAME}" -o /result/"${EVE_DEBUG_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
 +        [ $? != 0 ] && return 1
      elif [ "$ARCH" == "loongarch64" ]; then
          xorriso as mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME}" -o /result/"${EVE_DEBUG_ISO_NAME}" -efi-boot-part --efi-boot-image -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
@@ -194,7 +227,7 @@ index f53c081..ef20b97 100755
 -        [ $? != 0  ] && return 1
 +        [ $? != 0 ] && return 1
 +    elif [ "$ARCH" == "riscv64" ]; then
-+        mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME/-RVA23/}" -o /result/"${EVE_SRC_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
++        mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${LABEL_NAME}" -o /result/"${EVE_SRC_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
 +        [ $? != 0 ] && return 1
      elif [ "$ARCH" == "loongarch64" ]; then
          xorriso as mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME}" -o /result/"${EVE_SRC_ISO_NAME}" -efi-boot-part --efi-boot-image -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
@@ -207,10 +240,10 @@ index f53c081..ef20b97 100755
 +    elif [ "$ARCH" == "aarch64" ]; then
          mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME}" -o /result/"${NETINST_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
 +    elif [ "$ARCH" == "riscv64" ]; then
-+        mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME/-RVA23/}" -o /result/"${NETINST_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
++        mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${LABEL_NAME}" -o /result/"${NETINST_ISO_NAME}" -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
      elif [ "$ARCH" == "loongarch64" ]; then
          xorriso as mkisofs -R -J -T -r -l -d -joliet-long -allow-multidot -allow-leading-dots -no-bak -V "${RELEASE_NAME}" -o /result/"${NETINST_ISO_NAME}" -efi-boot-part --efi-boot-image -e images/efiboot.img -no-emul-boot "${BUILD}"/iso
      elif [ "$ARCH" == "ppc64le" ]; then
 -- 
-2.53.0
+2.55.0
 
