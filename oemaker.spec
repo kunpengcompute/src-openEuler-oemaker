@@ -29,7 +29,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        32
+Release:        33
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -70,7 +70,7 @@ Patch0007:	0001-fix-loongarch64-devstation-livecd-config-not-found.patch
 Patch0008:      0001-riscv64-remove-temporarily-added-no4lvl-from-kernel-.patch
 Patch0009:	0002-riscv64-update-the-kernel-cmdline-in-grub2-efi.cfg.patch
 %if "%{riscv64_default_repo_subarch_override_name}" == "rva23"
-Patch0010:	0001-add-24.03SP3-RVA23-support.patch
+Patch0010:	0001-support-riscv64-rva23.patch	
 %endif 
 
 %description
@@ -270,6 +270,9 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Fri Sep 4 2026 ouuleilei <wangliu@iscas.ac.cn> - 3.3.0-33
+- add riscv64 rva23 rpmlist,update riscv64 rva23 support
+
 * Wed Jun 24 2026 Wenlong Zhang <zhangwenlong@loongson.cn> - 3.3.0-32
 - exclude epiphany on loongarch64
 

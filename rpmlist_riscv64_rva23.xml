@@ -47,138 +47,14 @@
         <packagereq>vk-kernel-source</packagereq>
         <packagereq>vk-kernel-tools</packagereq>
         <packagereq>vk-kernel-tools-devel</packagereq>
-        <packagereq>AFLplusplus</packagereq>
-        <packagereq>AFLplusplus-clang</packagereq>
-        <packagereq>AFLplusplus-debuginfo</packagereq>
-        <packagereq>AFLplusplus-debugsource</packagereq>
-        <packagereq>Bear</packagereq>
-        <packagereq>Bear-debuginfo</packagereq>
-        <packagereq>Bear-debugsource</packagereq>
-        <packagereq>annobin</packagereq>
-        <packagereq>annobin-debuginfo</packagereq>
-        <packagereq>annobin-debugsource</packagereq>
-        <packagereq>annobin-help</packagereq>
-        <packagereq>apache-commons-collections4</packagereq>
-        <packagereq>apache-commons-collections4-javadoc</packagereq>
-        <packagereq>apache-poi</packagereq>
-        <packagereq>apache-poi-javadoc</packagereq>
-        <packagereq>firefox</packagereq>
-        <packagereq>firefox-debuginfo</packagereq>
-        <packagereq>firefox-debugsource</packagereq>
-        <packagereq>flink</packagereq>
-        <packagereq>gmetrics</packagereq>
-        <packagereq>gmetrics-help</packagereq>
-        <packagereq>hadoop-3.1-client</packagereq>
-        <packagereq>hadoop-3.1-common</packagereq>
-        <packagereq>hadoop-3.1-common-native</packagereq>
-        <packagereq>hadoop-3.1-debuginfo</packagereq>
-        <packagereq>hadoop-3.1-debugsource</packagereq>
-        <packagereq>hadoop-3.1-devel</packagereq>
-        <packagereq>hadoop-3.1-hdfs</packagereq>
-        <packagereq>hadoop-3.1-httpfs</packagereq>
-        <packagereq>hadoop-3.1-mapreduce</packagereq>
-        <packagereq>hadoop-3.1-mapreduce-examples</packagereq>
-        <packagereq>hadoop-3.1-maven-plugin</packagereq>
-        <packagereq>hadoop-3.1-tests</packagereq>
-        <packagereq>hadoop-3.1-yarn</packagereq>
-        <packagereq>hadoop-3.1-yarn-security</packagereq>
-        <packagereq>hadoop-client</packagereq>
-        <packagereq>hadoop-common</packagereq>
-        <packagereq>hadoop-common-native</packagereq>
-        <packagereq>hadoop-debuginfo</packagereq>
-        <packagereq>hadoop-debugsource</packagereq>
-        <packagereq>hadoop-devel</packagereq>
-        <packagereq>hadoop-hdfs</packagereq>
-        <packagereq>hadoop-httpfs</packagereq>
-        <packagereq>hadoop-mapreduce</packagereq>
-        <packagereq>hadoop-mapreduce-examples</packagereq>
-        <packagereq>hadoop-maven-plugin</packagereq>
-        <packagereq>hadoop-tests</packagereq>
-        <packagereq>hadoop-yarn</packagereq>
-        <packagereq>hadoop-yarn-security</packagereq>
-        <packagereq>hbase</packagereq>
-        <packagereq>httpcomponents-asyncclient</packagereq>
-        <packagereq>httpcomponents-asyncclient-cache</packagereq>
-        <packagereq>httpcomponents-asyncclient-javadoc</packagereq>
-        <packagereq>httpcomponents-asyncclient-parent</packagereq>
-        <packagereq>libhdfs</packagereq>
-        <packagereq>llvm-bolt</packagereq>
-        <packagereq>llvm-bolt-debuginfo</packagereq>
-        <packagereq>llvm-bolt-debugsource</packagereq>
-        <packagereq>llvm-bolt-doc</packagereq>
-        <packagereq>memkind</packagereq>
-        <packagereq>memkind-debuginfo</packagereq>
-        <packagereq>memkind-debugsource</packagereq>
-        <packagereq>memkind-devel</packagereq>
-        <packagereq>memkind-help</packagereq>
-        <packagereq>ntp</packagereq>
-        <packagereq>ntp-debuginfo</packagereq>
-        <packagereq>ntp-debugsource</packagereq>
-        <packagereq>ntp-help</packagereq>
-        <packagereq>ntp-perl</packagereq>
-        <packagereq>procmail</packagereq>
-        <packagereq>procmail-debuginfo</packagereq>
-        <packagereq>procmail-debugsource</packagereq>
-        <packagereq>procmail-help</packagereq>
-        <packagereq>python3-pytorch</packagereq>
-        <packagereq>pytorch-debuginfo</packagereq>
-        <packagereq>pytorch-debugsource</packagereq>
-        <packagereq>pytorch-help</packagereq>
-        <packagereq>qt6-qtpdf</packagereq>
-        <packagereq>qt6-qtpdf-devel</packagereq>
-        <packagereq>qt6-qtpdf-examples</packagereq>
-        <packagereq>qt6-qtwebengine</packagereq>
-        <packagereq>qt6-qtwebengine-debuginfo</packagereq>
-        <packagereq>qt6-qtwebengine-debugsource</packagereq>
-        <packagereq>qt6-qtwebengine-devel</packagereq>
-        <packagereq>qt6-qtwebengine-devtools</packagereq>
-        <packagereq>qt6-qtwebengine-examples</packagereq>
-        <packagereq>sbt</packagereq>
-        <packagereq>scala</packagereq>
-        <packagereq>zeromq</packagereq>
-        <packagereq>zeromq-debuginfo</packagereq>
-        <packagereq>zeromq-debugsource</packagereq>
-        <packagereq>zeromq-devel</packagereq>
-        <packagereq>zeromq-help</packagereq>
-        <packagereq>libvirt</packagereq>
-        <packagereq>libvirt-daemon-driver-storage</packagereq>
-        <packagereq>libvirt-daemon-driver-storage-rbd</packagereq>
-        <packagereq>libvirt-daemon-kvm</packagereq>
-        <packagereq>libvirt-daemon-qemu</packagereq>
-        <packagereq>bcc</packagereq>
-        <packagereq>bpftrace</packagereq>
-        <packagereq>pcp-pmda-bcc</packagereq>
         <packagereq>pcp-pmda-bpftrace</packagereq>
         <packagereq>pcp-testsuite</packagereq>
-        <packagereq>python3-bpfcc</packagereq>
-        <packagereq>fence-virtd-libvirt</packagereq>
-        <packagereq>fence-virtd-serial</packagereq>
+        <packagereq>A-FOT</packagereq>
+        <packagereq>apache-poi</packagereq>
         <packagereq>glusterfs-resource-agents</packagereq>
-        <packagereq>guestfs-tools</packagereq>
-        <packagereq>libguestfs</packagereq>
-        <packagereq>guestfs-tools-bash-completion</packagereq>
-        <packagereq>guestfs-tools-man-pages-ja</packagereq>
-        <packagereq>guestfs-tools-man-pages-uk</packagereq>
-        <packagereq>libguestfs-devel</packagereq>
-        <packagereq>libguestfs-gobject</packagereq>
-        <packagereq>libguestfs-gobject-devel</packagereq>
-        <packagereq>libguestfs-vala</packagereq>
-        <packagereq>lua-guestfs</packagereq>
-        <packagereq>nbdkit-guestfs-plugin</packagereq>
+        <packagereq>metrics-httpasyncclient</packagereq>
         <packagereq>nvwa</packagereq>
-        <packagereq>ocaml-libguestfs</packagereq>
-        <packagereq>ocaml-libguestfs-devel</packagereq>
-        <packagereq>perl-Sys-Guestfs</packagereq>
-        <packagereq>php-libguestfs</packagereq>
         <packagereq>python3-keras-rl2</packagereq>
-        <packagereq>python3-libguestfs</packagereq>
-        <packagereq>qemu-block-rbd</packagereq>
-        <packagereq>ruby-libguestfs</packagereq>
-        <packagereq>scsi-target-utils-rbd</packagereq>
-        <packagereq>skylark</packagereq>
-        <packagereq>virt-dib</packagereq>
-        <packagereq>virt-win-reg</packagereq>
-        <packagereq>vmtop</packagereq>
     </packagelist>
     <packagelist type="src_exclude">
         <packagereq>drbd</packagereq>
@@ -211,6 +87,9 @@
         <packagereq>uadk_engine</packagereq>
         <packagereq>libwd</packagereq>
         <packagereq>shim-aa64</packagereq>
+        <packagereq>kernel-64k</packagereq>
+        <packagereq>kernel-64k-devel</packagereq>
+        <packagereq>kernel-64k-source</packagereq>
     </packagelist>
     <packagelist type="x86_64">
         <packagereq>edk2-ovmf</packagereq>
@@ -219,7 +98,6 @@
         <packagereq>shim</packagereq>
     </packagelist>
     <packagelist type="riscv64">
-        <packagereq>edk2-ovmf-riscv64</packagereq>
         <packagereq>grub2-efi-riscv64</packagereq>
         <packagereq>grub2-efi-riscv64-modules</packagereq>
     </packagelist>
@@ -286,7 +164,6 @@
         <packagereq>bc</packagereq>
         <packagereq>bc-help</packagereq>
         <packagereq>bind-chroot</packagereq>
-        <packagereq>bind-dyndb-ldap</packagereq>
         <packagereq>bind-libs</packagereq>
         <packagereq>bind-utils</packagereq>
         <packagereq>binutils</packagereq>
@@ -801,6 +678,7 @@
         <packagereq>libpsl-help</packagereq>
         <packagereq>libpwquality</packagereq>
         <packagereq>libpwquality-help</packagereq>
+        <packagereq>librados2</packagereq>
         <packagereq>libref_array</packagereq>
         <packagereq>librepo</packagereq>
         <packagereq>libreport-filesystem</packagereq>
@@ -866,6 +744,7 @@
         <packagereq>libverto-devel</packagereq>
         <packagereq>libverto-glib</packagereq>
         <packagereq>libverto-libevent</packagereq>
+        <packagereq>libvirt</packagereq>
         <packagereq>libvirt-client</packagereq>
         <packagereq>libvirt-daemon</packagereq>
         <packagereq>libvirt-daemon-config-network</packagereq>
@@ -876,6 +755,7 @@
         <packagereq>libvirt-daemon-driver-nwfilter</packagereq>
         <packagereq>libvirt-daemon-driver-qemu</packagereq>
         <packagereq>libvirt-daemon-driver-secret</packagereq>
+        <packagereq>libvirt-daemon-driver-storage</packagereq>
         <packagereq>libvirt-daemon-driver-storage-core</packagereq>
         <packagereq>libvirt-daemon-driver-storage-disk</packagereq>
         <packagereq>libvirt-daemon-driver-storage-gluster</packagereq>
@@ -883,7 +763,10 @@
         <packagereq>libvirt-daemon-driver-storage-iscsi-direct</packagereq>
         <packagereq>libvirt-daemon-driver-storage-logical</packagereq>
         <packagereq>libvirt-daemon-driver-storage-mpath</packagereq>
+        <packagereq>libvirt-daemon-driver-storage-rbd</packagereq>
         <packagereq>libvirt-daemon-driver-storage-scsi</packagereq>
+        <packagereq>libvirt-daemon-kvm</packagereq>
+        <packagereq>libvirt-daemon-qemu</packagereq>
         <packagereq>libvirt-devel</packagereq>
         <packagereq>libvirt-docs</packagereq>
         <packagereq>libvirt-libs</packagereq>
@@ -1196,6 +1079,8 @@
         <packagereq>ppp</packagereq>
         <packagereq>ppp-help</packagereq>
         <packagereq>pprof</packagereq>
+        <packagereq>procmail</packagereq>
+        <packagereq>procmail-help</packagereq>
         <packagereq>procps-ng</packagereq>
         <packagereq>procps-ng-devel</packagereq>
         <packagereq>procps-ng-i18n</packagereq>
@@ -1522,6 +1407,9 @@
         <packagereq>grub2-efi-aa64</packagereq>
         <packagereq>grub2-efi-aa64-cdboot</packagereq>
         <packagereq>grub2-efi-aa64-modules</packagereq>
+        <packagereq>kernel-64k</packagereq>
+        <packagereq>kernel-64k-devel</packagereq>
+        <packagereq>kernel-64k-source</packagereq>
         <packagereq>shim</packagereq>
     </packagelist>
     <packagelist type="edge_x86_64">
