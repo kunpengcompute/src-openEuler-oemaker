@@ -126,7 +126,7 @@
       <packagereq type="mandatory">lvm2</packagereq>
       <packagereq type="mandatory">mdadm</packagereq>
       <packagereq type="mandatory">realmd</packagereq>
-      <packagereq type="mandatory">shim-aa64</packagereq>
+      <packagereq type="mandatory">shim</packagereq>
       <packagereq type="mandatory">libteam</packagereq>
       <packagereq type="mandatory">tmux</packagereq>
       <packagereq type="mandatory">xfsprogs</packagereq>
