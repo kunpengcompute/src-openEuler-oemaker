@@ -29,7 +29,7 @@ Summary:        a building tool for DVD ISO making and ISO cutting
 License:        Mulan PSL v2
 Group:          System/Management
 Version:        3.3.0
-Release:        33
+Release:        34
 BuildRoot:      %{_tmppath}/%{name}
 
 Source:         https://gitee.com/openeuler/oemaker/repository/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -270,6 +270,9 @@ rm -rf %{buildroot}
 rm -rf $RPM_BUILD_DIR/%{name}
 
 %changelog
+* Thu Sep 10 202 niutao <niutao2@huawei.com> - 3.3.0-34
+- install ub
+
 * Fri Sep 4 2026 ouuleilei <wangliu@iscas.ac.cn> - 3.3.0-33
 - add riscv64 rva23 rpmlist,update riscv64 rva23 support
 

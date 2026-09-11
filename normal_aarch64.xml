@@ -309,6 +309,12 @@
       <packagereq type="optional">dracut-network</packagereq>
       <packagereq type="optional">rdma-core</packagereq>
       <packagereq type="optional">selinux-policy-mls</packagereq>
+      <packagereq type="mandatory">ub-pkg-mem</packagereq>
+      <packagereq type="mandatory">ub-pkg-urma</packagereq>
+      <packagereq type="mandatory">ubs-engine</packagereq>
+      <packagereq type="mandatory">ubs-mem</packagereq>
+      <packagereq type="mandatory">ublinkdt</packagereq>
+      <packagereq type="mandatory">hikptool</packagereq>
     </packagelist>
   </group>
   <group>
