@@ -76,12 +76,10 @@
 	<packagereq>kae-driver</packagereq>
         <packagereq>kae-openssl</packagereq>
         <packagereq>kae-zip</packagereq>
-        <packagereq>uadk_engine</packagereq>
         <packagereq>libwd</packagereq>
-        <packagereq>shim-aa64</packagereq>
+        <packagereq>shim</packagereq>
         <packagereq>kernel-64k</packagereq>
- 	    <packagereq>kernel-64k-devel</packagereq>
- 	    <packagereq>kernel-64k-source</packagereq>        
+ 	<packagereq>kernel-64k-devel</packagereq>
     </packagelist>
     <packagelist type="x86_64">
         <packagereq>edk2-ovmf</packagereq>
