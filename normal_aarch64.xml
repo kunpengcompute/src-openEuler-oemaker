@@ -315,7 +315,7 @@
       <packagereq type="mandatory">ubs-mem</packagereq>
       <packagereq type="mandatory">ublinkdt</packagereq>
       <packagereq type="mandatory">hikptool</packagereq>
-      <packagereq type="mandatory">vim</packagereq>
+      <packagereq type="mandatory">vim-enhanced</packagereq>
       <packagereq type="mandatory">net-tools</packagereq>
     </packagelist>
   </group>
